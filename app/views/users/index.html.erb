@@ -1,4 +1,4 @@
-<h1>Listing users</h1>
+﻿<h1>Users Data(::Base)</h1>
 
 <table>
   <thead>
@@ -11,6 +11,7 @@
       <th>Worktype</th>
       <th>Birth</th>
       <th>Gender</th>
+      <th>Admin</th>
       <th></th>
       <th></th>
       <th></th>
@@ -23,11 +24,12 @@
         <td><%= user.name %></td>
         <td><%= user.country %></td>
         <td><%= user.address %></td>
-        <td><%= user.tel %></td>
-        <td><%= user.work %></td>
-        <td><%= user.worktype %></td>
-        <td><%= user.birth %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.job %></td>
+        <td><%= user.job_type %></td>
+        <td><%= user.birthday %></td>
         <td><%= user.gender %></td>
+        <td><%= user.admin %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

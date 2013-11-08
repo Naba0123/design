@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20131106084324) do
     t.integer  "wish"
     t.integer  "wish_course"
     t.string   "teacher"
-    t.boolean  "changed"
+    t.boolean  "ischange"
     t.date     "finish_date"
     t.date     "meeting_date"
     t.string   "meeting_place"

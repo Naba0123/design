@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+﻿<%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -24,20 +24,20 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :tel %><br>
-    <%= f.text_field :tel %>
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :work %><br>
-    <%= f.text_field :work %>
+    <%= f.label :job %><br>
+    <%= f.text_field :job %>
   </div>
   <div class="field">
-    <%= f.label :worktype %><br>
-    <%= f.number_field :worktype %>
+    <%= f.label :job_type %><br>
+    <%= f.number_field :job_type %>
   </div>
   <div class="field">
     <%= f.label :birth %><br>
-    <%= f.date_select :birth %>
+    <%= f.date_select :birthday %>
   </div>
   <div class="field">
     <%= f.label :gender %><br>

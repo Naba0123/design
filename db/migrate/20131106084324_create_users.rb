@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Base
+﻿class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :user_id
@@ -24,7 +24,7 @@ class CreateUsers < ActiveRecord::Base
       t.integer :wish
       t.integer :wish_course
       t.string :teacher
-      t.boolean :changed
+      t.boolean :ischange
       t.date :finish_date
       t.date :meeting_date
       t.string :meeting_place
@@ -37,7 +37,3 @@ class CreateUsers < ActiveRecord::Base
     end
   end
 end
-
-    end
-  end
-end 
