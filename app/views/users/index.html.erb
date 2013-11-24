@@ -1,16 +1,8 @@
 ﻿<h1>Users Data(::Base)</h1>
 
-<%= search_form_for @search do |f| %>
-  <%= f.label :name_cont %>
-  <%= f.text_field :name_cont %>
-  <%= f.label :address_cont %>
-  <%= f.text_field :address_cont %>
-  <%= f.label :birthday %>
-  <%= f.date_select :birthday_gteq %>
-  <%= f.submit %>
-<% end %>
+<%= render 'search_form' %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
