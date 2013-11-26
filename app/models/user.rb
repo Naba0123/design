@@ -1,5 +1,6 @@
 ﻿class User < ActiveRecord::Base
     validates_presence_of :name, :address
+    validates :phone, format: { with:/\A[0-9]+\z/ }
 end
 
 class Student < User
