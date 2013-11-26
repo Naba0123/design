@@ -9,7 +9,7 @@ gem 'sqlite3', group: [:development]
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'capybara', '2.2.0'
-  gem 'factory_girl', '4.3.0'
+  gem 'factory_girl_rails', '4.3.0'
 end
 
 # Use SCSS for stylesheets
