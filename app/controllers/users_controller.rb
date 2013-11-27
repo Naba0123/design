@@ -15,8 +15,18 @@
   # GET /users/1
   # GET /users/1.json
   def show
-    @type=@user.user_type
+    type=@user.user_type
     @info=[["氏名",@user.name],["生年月日",@user.birthday],["国籍",@user.country],["住所",@user.address],["電話番号",@user.phone],["仕事",@user.job],["職種",@user.job_type],["性別",@user.gender]]
+    if type==:student
+      @info.push(["学年",@user.students.grade],["学部",@user.students.department])
+    end
+#      t.integer :research_subject
+#      t.integer :research_room
+#      t.string :student_number
+#      t.string :guarantor_name
+#      t.string :guarantor_address
+#      t.string :guarantor_phone
+#      t.date :entry_date
   end
 
   # GET /users/new
