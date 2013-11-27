@@ -16,6 +16,7 @@
   # GET /users/1.json
   def show
     @type=@user.user_type
+    @info=[["氏名",@user.name],["生年月日",@user.birthday],["国籍",@user.country],["住所",@user.address],["電話番号",@user.phone],["仕事",@user.job],["職種",@user.job_type],["性別",@user.gender]]
   end
 
   # GET /users/new
