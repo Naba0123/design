@@ -15,6 +15,7 @@
   # GET /users/1
   # GET /users/1.json
   def show
+    @type=@user.user_type
   end
 
   # GET /users/new

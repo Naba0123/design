@@ -1,0 +1,3 @@
+﻿class Participant < ActiveRecord::Base
+  belongs_to :user
+end
