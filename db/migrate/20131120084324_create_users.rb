@@ -42,7 +42,7 @@
       #登録済み、登録日を削除
     end
     create_table :meetings do |t|
-      t.ineger :user_id
+      t.integer :user_id
       
       t.date :meeting_date
       t.string :meeting_place
