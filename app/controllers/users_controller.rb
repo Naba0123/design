@@ -4,7 +4,12 @@
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    #@users = User.all
+    @search = User.search(params[:q])
+    @users   = @search.result
+    #if @user == nil
+    #  @user = User.all
+    #end
   end
 
   # GET /users/1
