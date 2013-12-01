@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201101603) do
+ActiveRecord::Schema.define(version: 20131120084324) do
 
   create_table "after_graduations", force: true do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "belong"
     t.string   "position"
     t.integer  "work_type"
@@ -23,34 +23,28 @@ ActiveRecord::Schema.define(version: 20131201101603) do
     t.datetime "updated_at"
   end
 
-  create_table "country_tables", force: true do |t|
-    t.string "name", null: false
-  end
-
   create_table "graduates", force: true do |t|
-    t.string  "user_id"
+    t.integer "user_id"
     t.boolean "is_change"
     t.date    "finish_date"
   end
 
   create_table "meetings", force: true do |t|
-    t.string  "user_id"
+    t.integer "user_id"
     t.date    "meeting_date"
     t.string  "meeting_place"
     t.integer "event_type"
   end
 
   create_table "participants", force: true do |t|
-    t.string  "user_id"
+    t.integer "user_id"
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
-    t.boolean "entry_dended"
-    t.date    "entry_date"
   end
 
   create_table "students", force: true do |t|
-    t.string  "user_id"
+    t.integer "user_id"
     t.integer "grade"
     t.integer "department"
     t.integer "research_subject"
@@ -73,7 +67,6 @@ ActiveRecord::Schema.define(version: 20131201101603) do
     t.integer  "job_type"
     t.date     "birthday"
     t.integer  "gender"
-    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
