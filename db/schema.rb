@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120084324) do
+ActiveRecord::Schema.define(version: 20131201101603) do
 
   create_table "after_graduations", force: true do |t|
     t.string   "user_id"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20131120084324) do
     t.text     "other"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "country_tables", force: true do |t|
+    t.string "name", null: false
   end
 
   create_table "graduates", force: true do |t|
