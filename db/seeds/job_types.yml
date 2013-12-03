@@ -1,0 +1,61 @@
+information_technology:
+  id: 1
+  name: 'IT・インターネットビジネス'
+telecommunications:
+  id: 2
+  name: '電話・通信'
+automotive:
+  id: 3
+  name: '自動車・二輪車'
+heavy:
+  id: 4
+  name: '重工業'
+machine:
+  id: 5
+  name: '機械'
+electric_machinery:
+  id: 6
+  name: '電機・精密'
+construction:
+  id: 7
+  name: '建設'
+chemicals:
+  id: 8
+  name: '化学・医薬'
+transportation:
+  id: 9
+  name: '運輸・郵便'
+wholesales:
+  id: 10
+  name: '卸売・小売'
+financials:
+  id: 11
+  name: '金融・保険'
+real_estate:
+  id: 12
+  name: '不動産・物品賃貸'
+healthcare:
+  id: 13
+  name: '医療・福祉'
+hotels:
+  id: 14
+  name: '宿泊業・飲食サービス'
+masscommunications:
+  id: 15
+  name: 'マスコミ'
+educationals:
+  id: 16
+  name: '教育・学習支援'
+scientific_society:
+  id: 17
+  name: '学会･研究機関'
+public_administration:
+  id: 18
+  name: '官公庁･政府機関･公益法人'
+religion:
+  id: 19
+  name: '宗教'
+others:
+  id: 20
+  name: 'その他'
+

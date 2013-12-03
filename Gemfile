@@ -15,6 +15,8 @@ end
 # for search feature
 gem 'ransack', '1.1.0'
 
+gem 'localized_country_select', '0.9.7'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

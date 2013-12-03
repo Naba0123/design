@@ -52,6 +52,7 @@ GEM
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
     hike (1.2.3)
+    hpricot (0.8.6)
     i18n (0.6.5)
     jbuilder (1.5.2)
       activesupport (>= 3.0.0)
@@ -61,6 +62,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     libv8 (3.16.14.3)
+    localized_country_select (0.9.7)
+      actionpack (>= 3.0)
+      hpricot
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -155,6 +159,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.3.0)
   jbuilder (~> 1.2)
   jquery-rails
+  localized_country_select (= 0.9.7)
   rails (= 4.0.0)
   ransack (= 1.1.0)
   rspec-rails (= 2.13.1)

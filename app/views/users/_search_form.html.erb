@@ -12,6 +12,12 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :country, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= localized_country_select :user, :country, [], { include_blank: 'Please choose...' }, { class: "form-control" } %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= f.label :address_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_field :address_cont, class: "form-control" %>
@@ -20,7 +26,7 @@
   <div class="form-group">
     <%= f.label :phone_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :phone_cont, class: "form-control" %>
+      <%= f.telephone_field :phone_cont, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
@@ -30,9 +36,21 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :birthday, class: "col-sm-2 control-label" %>
+    <%= f.label :job_type_eq, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.date_select :birthday_gteq, class: "form-control" %>
+      <%= f.collection_select :job_type_eq, JobType.all, :id, :name, { prompt: "Please choose... " }, { class: "form-control" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthday_lteq, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :birthday_gteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthday_lteq, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :birthday_lteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
     </div>
   </div>
   <div class="form-group">
