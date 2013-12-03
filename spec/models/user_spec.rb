@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { FactoryGirl.build(:user) }
+  let(:user) { FactoryGirl.build(:arale) }
 
   specify '妥当なオブジェクト' do
     expect(user).to be_valid
