@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120084324) do
+ActiveRecord::Schema.define(version: 20131203091505) do
 
   create_table "after_graduations", force: true do |t|
     t.integer  "user_id"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20131120084324) do
     t.integer "user_id"
     t.boolean "is_change"
     t.date    "finish_date"
+  end
+
+  create_table "job_types", force: true do |t|
+    t.string "name"
   end
 
   create_table "meetings", force: true do |t|
