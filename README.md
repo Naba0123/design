@@ -13,11 +13,13 @@
 
 ```
 bundle install --without=production
-rake db:migrate
+rake db:setup
 ```
 
-なお，`rake db:migrate`し直してエラーが出る場合，
-一旦`/db/develop.sqlite3`を消してからマイグレーションを行うと成功するかもしれません．
+`rake db:setup` は `rake db:migrate + rake db:seeds`
+で，マイグレーションと初期データの投入を一度にやってくれます．
+なお，`rake db:setup`し直してエラーが出る場合，
+一旦`rake db:drop` でDBを消してからマイグレーションを行うと成功するかもしれません．
 
 サーバーを起動するには以下のコマンドを実行する．
 
