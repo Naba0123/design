@@ -8,7 +8,7 @@
       t.string :address
       t.string :phone
       t.string :job
-      t.integer :job_type
+      t.integer :job_kind
       t.date :birthday
       t.integer :gender
       #adminを削除

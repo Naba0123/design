@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20131203111218) do
     t.string   "address"
     t.string   "phone"
     t.string   "job"
-    t.integer  "job_type"
+    t.integer  "job_kind"
     t.date     "birthday"
     t.integer  "gender"
     t.datetime "created_at"
