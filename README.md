@@ -109,14 +109,14 @@ git push
 
 ローカルのブランチをリモートリポジトリにプッシュする．
 
-### マージする
+### トピックブランチでの作業が終わったので，マスターブランチにマージしたい．
 
 ```
 git checkout master
-git merge target-branch
+git merge --no-ff topic-branch
 ```
 
-上は`master`ブランチに`target-branch`ブランチをマージする場合．
+上は`master`ブランチに`topic-branch`ブランチをマージする場合．
 `merge`コマンドはいまいるブランチに引数で指定したブランチをマージする．
 したがってマージさせたいブランチに`checkout`コマンドで予め移動しておく．
 
