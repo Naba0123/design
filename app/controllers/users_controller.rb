@@ -20,13 +20,6 @@
     if type==:student
       @info.push(["学年",@user.students.grade],["学部",@user.students.department])
     end
-#      t.integer :research_subject
-#      t.integer :research_room
-#      t.string :student_number
-#      t.string :guarantor_name
-#      t.string :guarantor_address
-#      t.string :guarantor_phone
-#      t.date :entry_date
   end
 
   # GET /users/new
