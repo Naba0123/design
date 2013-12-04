@@ -1,60 +1,28 @@
-<<<<<<< HEAD
 ﻿<h1><%= @user.name %>さんの情報</h1>
+<p id="notice"><%= notice %></p>
 
 <dl class="dl-horizontal">
-  <% @info.each do |elem| %>
-		<dt><%= elem[0]%></dt>
-			<dd><%= elem[1]%></dd>
-	<% end %>
+  <dt>氏名</dt>
+    <dd><%= @user.name%></dd>
+  <dt>生年月日</dt>
+    <dd><%= @user.birthday%></dd>
+  <dt>国籍</dt>
+    <dd><%= @user.country%></dd>
+  <dt>住所</dt>
+    <dd><%= @user.address%></dd>
+  <dt>仕事</dt>
+    <dd><%= @user.job%></dd>
+  <dt>職種</dt>
+    <dd><%= @user.job_kind%></dd>
+  <dt>性別</dt>
+    <dd><%= @user.gender%></dd>
+  <%if @type ==:student %>
+  <dt>学年</dt>
+    <dd><%= @user.students.grade%></dd>
+  <dt>学部</dt>
+    <dd><%= @user.students.department%></dd>
+  <% end %>
 </dl>
-=======
-﻿<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @user.country %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Tel:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Work:</strong>
-  <%= @user.job %>
-</p>
-
-<p>
-  <strong>Worktype:</strong>
-  <%= @user.job_kind %>
-</p>
-
-<p>
-  <strong>Birth:</strong>
-  <%= @user.birthday %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @type %>
-</p>
->>>>>>> changeDB
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
