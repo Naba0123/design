@@ -8,7 +8,7 @@
       t.string :address
       t.string :phone
       t.string :job
-      t.integer :job_type
+      t.integer :job_kind
       t.date :birthday
       t.integer :gender
       #adminを削除
@@ -46,14 +46,14 @@
       
       t.date :meeting_date
       t.string :meeting_place
-      t.integer :event_type
+      t.integer :event_kind
     end
     create_table :after_graduations do |t|
       t.integer :user_id
       
       t.string :belong
       t.string :position
-      t.integer :work_type
+      t.integer :work_kind
       t.text :other
       
       t.timestamps

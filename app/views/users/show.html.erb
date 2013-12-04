@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<h1><%= @user.name %>さんの情報</h1>
 
 <dl class="dl-horizontal">
@@ -6,6 +7,54 @@
 			<dd><%= elem[1]%></dd>
 	<% end %>
 </dl>
+=======
+﻿<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @user.country %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>Tel:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Work:</strong>
+  <%= @user.job %>
+</p>
+
+<p>
+  <strong>Worktype:</strong>
+  <%= @user.job_kind %>
+</p>
+
+<p>
+  <strong>Birth:</strong>
+  <%= @user.birthday %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @user.gender %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @type %>
+</p>
+>>>>>>> changeDB
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
