@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20131203111218) do
     t.integer  "user_id"
     t.string   "belong"
     t.string   "position"
-    t.integer  "work_type"
+    t.integer  "work_kind"
     t.text     "other"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20131203111218) do
     t.integer "user_id"
     t.date    "meeting_date"
     t.string  "meeting_place"
-    t.integer "event_type"
+    t.integer "event_kind"
   end
 
   create_table "participants", force: true do |t|
