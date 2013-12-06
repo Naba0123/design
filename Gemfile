@@ -12,6 +12,9 @@ group :development, :test do
   gem 'factory_girl_rails', '4.3.0'
 end
 
+# for pagenate
+gem 'kaminari', '0.15.0'
+
 # for search feature
 gem 'ransack', '1.1.0'
 
