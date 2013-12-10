@@ -21,7 +21,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.country %></td>
+        <td><%= t "countries.#{user.country}" %></td>
         <td><%= user.address %></td>
         <td><%= user.phone %></td>
         <td><%= user.job %></td>
