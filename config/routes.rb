@@ -4,6 +4,9 @@
   resources :certificates
   resources :sessions
 
+  get 'statis' =>'statistics#index'
+  post 'statis' => 'statistics#index'
+
   resources :users do
     member do
       get 'authorize'
