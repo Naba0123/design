@@ -1,6 +1,8 @@
-<h1>Hello World</h1>
-
+﻿<h1>統計分析</h1>
 <%=render 'users/search_form' %>
-<p>
-<%= @search.result.size %>
-</p>
+<dl>
+<dt>検索内容を含む生徒数</dt>
+<dd>
+<%= @search.result.size %>人
+</dd>
+</dl>

@@ -1,0 +1,59 @@
+﻿  <div class="form-group">
+    <%= f.label :user_id_cont, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :user_id_cont, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :name_cont, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name_cont, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :country, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= localized_country_select :user, :country, [], { include_blank: 'Please choose...' }, { class: "form-control" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :address_cont, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :address_cont, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone_cont, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.telephone_field :phone_cont, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :job_cont, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :job_cont, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :job_kind_eq, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.collection_select :job_kind_eq, JobType.all, :id, :name, { prompt: "Please choose... " }, { class: "form-control" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthday_lteq, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :birthday_gteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthday_lteq, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :birthday_lteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-default" %>
+    </div>
+  </div>
