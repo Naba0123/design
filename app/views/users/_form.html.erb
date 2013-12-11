@@ -32,8 +32,8 @@
     <%= f.text_field :job %>
   </div>
   <div class="field">
-    <%= f.label :job_kind %><br>
-    <%= f.number_field :job_kind %>
+    <%= f.label :job_kind_id %><br>
+    <%= f.collection_select :job_kind_id, JobKind.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :birth %><br>

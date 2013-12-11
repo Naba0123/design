@@ -8,4 +8,4 @@
 
 require 'active_record/fixtures'
 
-ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "job_types"
+ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "job_kinds"
