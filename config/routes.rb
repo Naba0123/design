@@ -1,6 +1,13 @@
 ﻿Design::Application.routes.draw do
+  resources :certificates
+
   resources :users
   resources :students, :controller=>:users
+  resources :events
+  resources :evecompares
+  resources :cercompares
+  #match "/users/:user_id" => "users#show", :as => :user
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

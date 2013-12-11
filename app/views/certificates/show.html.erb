@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @certificate.kind %>
+</p>
+
+<p>
+  <strong>Finish year:</strong>
+  <%= @certificate.finish_year %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @certificate.count %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @certificate.purpose %>
+</p>
+
+<p>
+  <strong>Another address:</strong>
+  <%= @certificate.another_address %>
+</p>
+
+<%= link_to 'Edit', edit_certificate_path(@certificate) %> |
+<%= link_to 'Back', certificates_path %>
