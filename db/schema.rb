@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
+    t.boolean "unauthorized"
   end
 
   create_table "students", force: true do |t|
