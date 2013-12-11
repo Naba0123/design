@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203111218) do
+ActiveRecord::Schema.define(version: 20131206161112) do
 
   create_table "after_graduations", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(version: 20131203111218) do
     t.string   "position"
     t.integer  "work_kind"
     t.text     "other"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "certificates", force: true do |t|
+    t.integer  "kind"
+    t.integer  "finish_year"
+    t.integer  "count"
+    t.text     "purpose"
+    t.string   "another_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.date     "meeting_date"
+    t.string   "meeting_place"
+    t.integer  "event_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
