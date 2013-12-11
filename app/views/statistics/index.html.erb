@@ -1,22 +1,31 @@
 ﻿<h1>統計分析</h1>
 <div class="tabbable">
 <ul class="nav nav-tabs">
-<li class="active"><a href="#1" data-toggle="tab">情報 1</a>
-<i class="icon-remove-sign"></i></li>
-<li><a href="#2" data-toggle="tab">情報 2</a></li>
+<%= @queryNumber.times do |n| %>
+  <li><a href="#<%= n+1 %>" data-toggle="tab">検索 <%= n+1 %></a></li>
+<% end %>
+
 </ul>
+
+<form>
 <div class="tab-content">
-<div class="tab-pane active" id="1">
-<%=render 'users/search_form' %>
-</div>
-<div class="tab-pane" id="2">
-</div>
-</div>
+<%= @queryNumber.times do |n| %>
+<div class="tab-pane" id="<%= n+1 %>">
+<input type="text" name="q[][a]">
+
+<input type="text" name="q[][b]">
 </div>
 
-<dl>
-<dt>検索内容を含む生徒数</dt>
-<dd>
-<%= @search.result.size %>人
-</dd>
-</dl>
+<% end %>
+</div>
+<input type="submit">
+</form>
+<p>
+検索内容を含む生徒数
+<ul>
+<%= @search.each do |r| %>
+<li><%= r.result.size %>人</li>
+<% end %>
+</ul>
+</p>
+<%= @test %>
