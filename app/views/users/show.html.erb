@@ -13,7 +13,7 @@
   <dt>仕事</dt>
     <dd><%= @user.job%></dd>
   <dt>職種</dt>
-    <dd><%= @user.job_kind%></dd>
+    <dd><%= @user.job_kind.try(:name) %></dd>
   <dt>性別</dt>
     <dd><%= @user.gender%></dd>
   <%if @type ==:student %>

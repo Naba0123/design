@@ -27,7 +27,7 @@
         <td><%= user.address %></td>
         <td><%= user.phone %></td>
         <td><%= user.job %></td>
-        <td><%= user.job_kind %></td>
+        <td><%= user.job_kind.try(:name) %></td>
         <td><%= user.birthday %></td>
         <td><%= user.gender %></td>
         <td><%= link_to 'Show', user %></td>
