@@ -6,7 +6,7 @@
   def index
     #@users = User.all
     @search = User.search(params[:q])
-    @users   = @search.result
+    @users   = @search.result.page(params[:page]).per(10)
     #if @user == nil
     #  @user = User.all
     #end
