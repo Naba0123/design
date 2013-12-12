@@ -33,14 +33,6 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.datetime "updated_at"
   end
 
-  create_table "events", force: true do |t|
-    t.date     "meeting_date"
-    t.string   "meeting_place"
-    t.integer  "event_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "graduates", force: true do |t|
     t.integer "user_id"
     t.boolean "is_change"
@@ -63,7 +55,6 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
-    t.boolean "unauthorized"
   end
 
   create_table "students", force: true do |t|
@@ -80,7 +71,7 @@ ActiveRecord::Schema.define(version: 20131206161112) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "user_id"
+    t.string   "account"
     t.string   "password_digest"
     t.string   "name"
     t.string   "country"
