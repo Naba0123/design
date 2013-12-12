@@ -7,7 +7,7 @@
     has_one :participant
     has_one :after_graduation
 
-    has_one :job_type
+    belongs_to :job_kind
     def user_type
         if self.student
             return :student

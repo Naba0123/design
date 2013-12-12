@@ -61,6 +61,9 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.15.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     libv8 (3.16.14.3)
     localized_country_select (0.9.7)
       actionpack (>= 3.0)
@@ -163,6 +166,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.3.0)
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari (= 0.15.0)
   localized_country_select (= 0.9.7)
   rails (= 4.0.0)
   ransack (= 1.1.0)

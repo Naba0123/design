@@ -6,7 +6,7 @@
   def index
     #@users = User.all
     @search = User.search(params[:q])
-    @users   = @search.result
+    @users   = @search.result.page(params[:page]).per(10)
     #if @user == nil
     #  @user = User.all
     #end
@@ -76,6 +76,6 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :country, :address, :phone, :job, :job_kind, :birthday, :gender)
+      params.require(:user).permit(:name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender)
     end
 end

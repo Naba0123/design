@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.date    "finish_date"
   end
 
-  create_table "job_types", force: true do |t|
+  create_table "job_kinds", force: true do |t|
     t.string "name"
   end
 
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.string   "address"
     t.string   "phone"
     t.string   "job"
-    t.integer  "job_kind"
+    t.integer  "job_kind_id"
     t.date     "birthday"
     t.integer  "gender"
     t.datetime "created_at"
