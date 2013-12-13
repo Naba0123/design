@@ -17,6 +17,7 @@
     has_one :after_graduation
 
     belongs_to :job_kind
+    
     def user_type
         if self.student
             return :student
