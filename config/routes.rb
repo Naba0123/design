@@ -8,6 +8,7 @@
   resources :events
   resources :evecompares
   resources :cercompares
+  resources :sessions
   #match "/users/:user_id" => "users#show", :as => :user
   
   # The priority is based upon order of creation: first created -> highest priority.
