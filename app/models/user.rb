@@ -8,7 +8,8 @@
     validates :account, :uniqueness => true
     
     # アクセス制限 : 以下に書かれているものはフォーム（ハッシュ）から変更可能にする。
-    attr_accessible :account, :password, :password_confirmation, :name, :country, :address, :phone, :job, :job_kind, :birthday, :gender
+    attr_accessible :account, :password, :password_confirmation
+    attr_accessible :name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender
     
     has_one :student
     has_one :graduate

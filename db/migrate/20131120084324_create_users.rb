@@ -1,7 +1,7 @@
 ﻿class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.string :user_id
+      t.string :account
       t.string :password_digest
       t.string :name
       t.string :country
@@ -39,6 +39,7 @@
       t.integer :wish
       t.integer :wish_course
       t.string :teacher
+      t.boolean :unauthorized
       #登録済み、登録日を削除
     end
     create_table :meetings do |t|
