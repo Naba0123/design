@@ -36,7 +36,6 @@
 
     respond_to do |format|
       if @user.save
-        @user.unauthorized = false # 初期ユーザは
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
