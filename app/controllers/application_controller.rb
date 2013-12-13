@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       begin
         @user = User.find(session[:user_id])
+        @current_user = User.find(session[:user_id])
       rescue ActiveRecord::RecordNotFound
         flash.notice = "例外エラーが発生しました。"
         reset_session
