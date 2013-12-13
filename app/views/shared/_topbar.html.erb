@@ -6,6 +6,15 @@
 
       </button>
       <a class="navbar-brand" href="#home">情報システム</a>
+      
+      <!-- レイアウトはこれから頑張ります。追加したのはここから -->
+      <% if session[:user_id] %>
+        <font color="white">ようこそ<%= @current_user.name %>さん。</font></br>
+        <%= link_to 'ログアウトする', session_path(session[:user_id]), {:method => :delete, :confirm => 'ログアウトしますか？'}  %>
+      <% end %>
+      
+      <!-- ここまでです -->
+      
     </div>
   </div>
 </nav>

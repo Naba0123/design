@@ -24,10 +24,10 @@
             return :participant
         elsif self.graduate
             return :graduate
-        elsif  self.after_graduation
+        elsif self.after_graduation
             return :after_graduation 
         else
-          return :admin
+            return :admin
         end
     end
 end
