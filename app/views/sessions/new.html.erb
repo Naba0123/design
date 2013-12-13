@@ -1,0 +1,22 @@
+<h1>Please Signin</h1>
+
+<%= form_tag sessions_path do %>
+
+<font color="green"><%= notice %></font>
+</br></br>
+
+<table id="login_form">
+  <tr>
+    <td><%= label_tag :account, 'account' %></td>
+    <td><%= text_field_tag :account, params[:account] %></td>
+  </tr>
+  <tr>
+    <td><%= label_tag :pass, 'password' %></td>
+    <td><%= password_field_tag :pass, params[:pass] %></td>
+  </tr>
+  <tr>
+    <td><%= submit_tag "Signin" %></td>
+  </tr>
+</table>
+
+<% end %>
