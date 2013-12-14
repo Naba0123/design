@@ -41,8 +41,14 @@ bundle exec rspec path/to/testcase.rb
 `path/to/testcase.rb` はテストケースのファイルへのパス．
 これを省略するとすべてのテストケースを実行する．
 
-## Git 利用の方針
+## UML の生成方法
 
+実行にはgraphvizが必要．
+`sudo apt-get install graphviz` で予めインストールしておく．
+
+```
+rake diagram:all
+```
 
 ## Gitコマンドとりあえず
 
