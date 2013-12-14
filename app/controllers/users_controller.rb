@@ -1,5 +1,6 @@
 ﻿class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :check_logined, only: [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -31,8 +32,8 @@
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
+    @user = User.new(params[:user])
+    @user.build_participant(:unauthorized => true)
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
