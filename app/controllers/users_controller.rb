@@ -1,6 +1,7 @@
 ﻿class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :check_logined, only: [:new, :create]
+  before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -16,8 +17,6 @@
   # GET /users/1
   # GET /users/1.json
   def show
-    @type=@user.user_type
-
   end
 
   # GET /users/new
@@ -34,11 +33,13 @@
   def create
     @user = User.new(params[:user])
     @user.build_participant(:unauthorized => true)
-    # ここからデバッグ用
+    
+    # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
     @user.build_after_graduation(:other => "hogehoge")
     @user.build_graduate(:is_change => true)
     @user.build_student(:student_number => 12345)
     # ここまでデバッグ用
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -83,5 +84,14 @@
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender)
+    end
+    
+    def check_permission
+      # 大学以外は自分の情報しか参照できない
+      unless @current_user.user_type == :admin
+        unless @user.id == @current_user.id
+          render 'nopermission'
+        end
+      end
     end
 end
