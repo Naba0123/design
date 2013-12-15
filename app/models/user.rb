@@ -11,10 +11,10 @@
     attr_accessible :account, :password, :password_confirmation
     attr_accessible :name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender
     
-    has_one :student
-    has_one :graduate
-    has_one :participant
-    has_one :after_graduation
+    has_one :student, :dependent => :destroy
+    has_one :graduate, :dependent => :destroy
+    has_one :participant, :dependent => :destroy
+    has_one :after_graduation, :dependent => :destroy
 
     belongs_to :job_kind
     
