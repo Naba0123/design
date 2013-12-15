@@ -32,6 +32,8 @@
   # POST /users.json
   def create
     @user = User.new(params[:user])
+
+    # デバッグ用に一時コメントアウト
     @user.build_participant(:unauthorized => true)
     
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
