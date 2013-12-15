@@ -1,0 +1,19 @@
+<h3>＜基本情報＞</h3>
+<dt>アカウント名</dt>
+  <dd><%= @user.account%></dd>
+<dt>氏名</dt>
+  <dd><%= @user.name%></dd>
+<dt>国籍</dt>
+  <dd><%= @user.country%></dd>
+<dt>住所</dt>
+  <dd><%= @user.address%></dd>
+<dt>電話番号</dt>
+  <dd><%= @user.phone%></dd>
+<dt>職業</dt>
+  <dd><%= @user.job%></dd>
+<dt>業種</dt>
+  <dd><%= @user.job_kind.try(:name) %></dd>
+<dt>生年月日</dt>
+  <dd><%= @user.birthday%></dd>
+<dt>性別</dt>
+  <dd><%= @user.gender%></dd>

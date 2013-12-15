@@ -16,13 +16,20 @@ class SessionsController < ApplicationController
   
   def create
     user = User.find_by_account params[:account]
-    if user && user.authenticate(params[:pass])
-      session[:user_id] = user.id
-      flash.notice = "ログインしました"
-      redirect_to :root
-    else
-      flash.notice = "アカウント名またはパスワードが間違っています"
+    
+    # 参加者で認証をまだ受けていない人はログインできない
+    if (user.user_type == :participant) and (user.participant.unauthorized == true)
+      flash.notice = "大学の承認待ちによりログインできません。"
       redirect_to :controller => 'sessions', :action => 'new'
+    else
+      if user && user.authenticate(params[:pass])
+        session[:user_id] = user.id
+        flash.notice = "ログインしました"
+        redirect_to :root
+     else
+        flash.notice = "アカウント名またはパスワードが間違っています"
+        redirect_to :controller => 'sessions', :action => 'new'
+      end
     end
   end
   
