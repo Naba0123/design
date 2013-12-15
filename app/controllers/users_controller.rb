@@ -34,6 +34,11 @@
   def create
     @user = User.new(params[:user])
     @user.build_participant(:unauthorized => true)
+    # ここからデバッグ用
+    @user.build_after_graduation(:other => "hogehoge")
+    @user.build_graduate(:is_change => true)
+    @user.build_student(:student_number => 12345)
+    # ここまでデバッグ用
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
