@@ -1,5 +1,4 @@
-﻿
-<%= form_for(@user) do |f| %>
+﻿<%= form_for @user, :html => { class: "form-horizontal" } do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -14,54 +13,54 @@
   
   <div class="form-group">
     <%= f.label :account, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-      <%= f.text_field :account, class: "form-control" %><br>
+    <div class="col-sm-10">
+      <%= f.text_field :account, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :password, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-      <%= f.password_field :password, class: "form-control" %><br>
+    <div class="col-sm-10">
+      <%= f.password_field :password, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-      <%= f.password_field :password_confirmation, class: "form-control" %><br>
+    <div class="col-sm-10">
+      <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :name, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-      <%= f.text_field :name, class: "form-control" %><br>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :country, class: "col-sm-2 control-label" %><br>
-      <div class="col-sm-10">
-      <%= localized_country_select :user, :country, [], { include_blank: 'Please choose...' }, { class: "form-control" } %><br>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :address, class: "col-sm-2 control-label" %><br>
     <div class="col-sm-10">
-      <%= f.text_field :address, class: "form-control" %><br>
+      <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :phone, class: "col-sm-2 control-label" %><br>
+    <%= f.label :country, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.telephone_field :phone, class: "form-control" %><br>
+      <%= localized_country_select :user, :country, [], { include_blank: 'Please choose...' }, { class: "form-control" } %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :job, class: "col-sm-2 control-label" %><br>
+    <%= f.label :address, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :job, class: "form-control" %><br>
+      <%= f.text_field :address, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :job_kind_id, class: "col-sm-2 control-label" %><br>
+    <%= f.label :phone, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.telephone_field :phone, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :job, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :job, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :job_kind_id, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.collection_select :job_kind_id, JobKind.all, :id, :name, { prompt: "Please choose... " }, { class: "form-control" } %>
     </div>
@@ -69,14 +68,15 @@
   <div class="form-group">
     <%= f.label :birth, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.date_select :birthday, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %><br>
+      <%= f.date_select :birthday, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :gender, class: "col-sm-2 control-label" %><br>
-    <div class="col-sm-10">
-      <label class="radio"><input type="radio" name="gender" value="男">男</label>
-      <label class="radio"><input type="radio" name="gender" value="女">女</label>
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.radio_button :gender, 1, { id: 'user_gender_m' } %>
+      <%= f.label 'gender_m', '男' %>
+      <%= f.radio_button :gender, 2, { id: 'user_gender_f' } %>
+      <%= f.label 'gender_f', '女' %>
     </div>
   </div>
   <div class="actions">
