@@ -60,19 +60,20 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :job_kind_id, class: "col-sm-2 control-label" %>
+    <%= f.label :job_kind_id, t('activerecord.attributes.user.job_kind'), class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.collection_select :job_kind_id, JobKind.all, :id, :name, { prompt: "Please choose... " }, { class: "form-control" } %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :birth, class: "col-sm-2 control-label" %>
+    <%= f.label :birthday, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.date_select :birthday, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <%= f.label :gender, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
       <%= f.radio_button :gender, 1, { id: 'user_gender_m' } %>
       <%= f.label 'gender_m', '男' %>
       <%= f.radio_button :gender, 2, { id: 'user_gender_f' } %>

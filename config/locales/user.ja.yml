@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+    attributes:
+      user:
+        account:               'アカウント名'
+        password:              'パスワード'
+        password_confirmation: 'パスワード再入力'
+        name:                  '氏名'
+        country:               '国籍'
+        address:               '住所'
+        phone:                 '電話番号'
+        job:                   '職業'
+        job_kind:              '業種'
+        birthday:              '生年月日'
+        gender:                '性別'
