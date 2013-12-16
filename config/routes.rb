@@ -1,4 +1,6 @@
 ﻿Design::Application.routes.draw do
+  get "users/list"
+  get "users/search"
   root :to => 'users#index'
 
   resources :certificates
@@ -10,6 +12,14 @@
   resources :sessions
   
   #match "/users/:user_id" => "users#show", :as => :user
+
+  #match 'users/search', :via => :get
+  resources :users do
+    collection do
+      get :list
+      get :search
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
