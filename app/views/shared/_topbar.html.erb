@@ -1,20 +1,26 @@
-<nav class="navbar navbar-inverse navbar-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
   <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
-
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">情報システム</a>
-      
-      <!-- レイアウトはこれから頑張ります。追加したのはここから -->
-      <% if session[:user_id] %>
-        <font color="white"></br></br></br>ようこそ<%= @current_user.name %>（ユーザータイプ : <%= @current_user.user_type %>）さん。</font></br>
-        <%= link_to 'ログアウトする', session_path(session[:user_id]), {:method => :delete, :confirm => 'ログアウトしますか？'}  %>
-      <% end %>
-      
-      <!-- ここまでです -->
-      
+      <!-- HandShake means acsu in English :P -->
+      <%= link_to 'HandShake', root_url, { class: 'navbar-brand' } %>
     </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if session[:user_id] %>
+          <li><%= link_to @current_user.name, User.find(session[:user_id]) %></li>
+          <li><%= link_to 'ログアウト', session_path(session[:user_id]), {:method => :delete, :confirm => 'ログアウトしますか？'}  %></li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
   </div>
 </nav>
