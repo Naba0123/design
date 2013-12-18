@@ -81,12 +81,19 @@
     </div>
   </div>
   
+  <%= f.fields_for :participant, :html => { class: "form-horizontal" } do |participant_form| %>
+  <h3>デバッグ用</h3>
   <div class="form-group">
-    <%= f.label :student_number, class: "col-sm-2 control-label" %>
-    <%= f.fields_for :student do |student_form| %>
-      <%= student_form.text_field :student_number, class: "form-control" %>
-    <%- end -%>
+    <%= f.label :認証は？, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= participant_form.radio_button :unauthorized, 1 %>
+      <%= f.label 'されてない' %>
+      <%= participant_form.radio_button :unauthorized, 0 %>
+      <%= f.label 'されてる' %>
+    </div>
   </div>
+  
+  <% end %>
  
   <div class="actions">
     <div class="col-sm-offset-2 col-sm-10">
