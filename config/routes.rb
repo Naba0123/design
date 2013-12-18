@@ -3,7 +3,6 @@
 
   resources :certificates
   resources :users
-  resources :students, :controller=>:users
   resources :events
   resources :evecompares
   resources :cercompares
