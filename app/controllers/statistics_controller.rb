@@ -5,9 +5,15 @@
       @queryNumber=1
     end
     @search=[]
-    @test=params[:q][0]
-    @queryNumber.times do |num|
-      @search << User.search(params[:q][num])
+    @queryString=params[:q]
+    if @queryString != nil
+      @queryNumber.times do |num|
+        @search << User.search(@queryString[num])
+      end
+    else
+        @search << User.search(@queryString)
     end
+    
   end
+  
 end
