@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def new
     # セッション中ならログイン後ページに行く
     if session[:user_id]
-      flash.notice = "既にログインしています"
+#      flash.notice = "既にログインしています"
       redirect_to :root
     end
   end
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     user = User.find_by_account params[:account]
     if user && user.authenticate(params[:pass])
       session[:user_id] = user.id
-      flash.notice = "ログインしました"
+#      flash.notice = "ログインしました"
       redirect_to :root
     else
       flash.notice = "アカウント名またはパスワードが間違っています"
