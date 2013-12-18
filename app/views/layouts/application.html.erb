@@ -17,8 +17,6 @@
         <%= render 'shared/stusidebar' %>
       <% elsif @current_user.user_type == :graduate %>
         <%= render 'shared/grasidebar' %>
-      <% elsif @current_user.user_type == :after_graduation %>
-        <%= render 'shared/afgsidebar' %>
       <% else %>
         <%= render 'shared/sidebar' %>
       <% end %>

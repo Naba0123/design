@@ -19,20 +19,16 @@
     belongs_to :job_kind
     
     def user_type
-      if self.after_graduation
-        return :after_graduation
+      if self.graduate
+        return :graduate
       else
-        if self.graduate
-          return :graduate
+        if self.student
+          return :student
         else
-          if self.student
-            return :student
+          if self.participant
+            return :participant
           else
-            if self.participant
-              return :participant
-            else
-              return :admin
-            end
+            return :admin
           end
         end
       end
