@@ -2,14 +2,16 @@
   root :to => 'users#index'
 
   resources :certificates
-  resources :users
-  resources :events
-  resources :evecompares
-  resources :cercompares
-  resources :sessions
-  
-  #match "/users/:user_id" => "users#show", :as => :user
-  
+  resources :users do
+    member do
+      get 'authorize'
+    end
+    
+    collection do
+      get 'list_unauthorized'
+    end
+  end
+  resources :sessions  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

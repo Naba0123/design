@@ -1,5 +1,5 @@
 ﻿class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy,:authorize]
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
@@ -39,7 +39,7 @@
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
 #    @user.build_after_graduation(:other => "hogehoge")
 #    @user.build_graduate(:is_change => true)
-    @user.build_student(:student_number => 12345)
+#    @user.build_student(:student_number => 12345)
     # ここまでデバッグ用
     
     respond_to do |format|
@@ -76,6 +76,15 @@
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+  
+  def authorize
+  end
+  
+  
+  def list_unauthorized
+    @search = User.joins(:participant).merge(Participant.where(:unauthorized => true))
+    @users = @search 
   end
 
   private
