@@ -37,14 +37,14 @@
     @user.build_participant(:unauthorized => true)
     
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
-    @user.build_after_graduation(:other => "hogehoge")
-    @user.build_graduate(:is_change => true)
+#    @user.build_after_graduation(:other => "hogehoge")
+#    @user.build_graduate(:is_change => true)
     @user.build_student(:student_number => 12345)
     # ここまでデバッグ用
     
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'ユーザが作成されました' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -57,8 +57,9 @@
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+#      if @user.update(user_params)
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to @user, notice: 'ユーザが更新されました' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
