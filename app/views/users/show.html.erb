@@ -3,9 +3,6 @@
 
 <dl class="dl-horizontal">
   <%= render 'show_def' %>
-  <%unless @user.after_graduation.nil? %>
-    <%= render 'show_afg' %>
-  <% end %>
   <%unless @user.graduate.nil? %>
     <%= render 'show_grd' %>
   <% end %>
