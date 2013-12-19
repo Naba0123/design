@@ -83,12 +83,12 @@
 
   <h3>デバッグ用</h3>
   <div class="form-group">
-    <%= f.label :認証は？, class: "col-sm-2 control-label" %>
+    <%= f.label :Authorized, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.radio_button :authorized, 1 %>
-      <%= f.label 'されてない' %>
+      <%= f.label 'True' %>
       <%= f.radio_button :authorized, 0 %>
-      <%= f.label 'されてる' %>
+      <%= f.label 'False' %>
     </div>
   </div>
  
