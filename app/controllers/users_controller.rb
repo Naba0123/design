@@ -22,6 +22,7 @@
   # GET /users/new
   def new
     @user = User.new
+    @user.build_participant(:wish => '')
   end
 
   # GET /users/1/edit
