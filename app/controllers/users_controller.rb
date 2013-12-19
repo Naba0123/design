@@ -32,11 +32,9 @@
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
-    # デバッグ用に一時コメントアウト
-    @user.build_participant(:unauthorized => true)
     
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
+#   @user.build_participant(:wish => 12345)
 #    @user.build_after_graduation(:other => "hogehoge")
 #    @user.build_graduate(:is_change => true)
 #    @user.build_student(:student_number => 12345)
@@ -61,7 +59,6 @@
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-#      if @user.update(user_params)
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'ユーザが更新されました' }
         format.json { head :no_content }
