@@ -5,11 +5,12 @@
 
   def search
     @search = User.search(params[:q])
-    @users   = @search.result.page(params[:page]).per(10)
   end
 
   def list
-    @users = User.all
+    @search = User.search(params[:q])
+    @users   = @search.result.page(params[:page]).per(10)
+    #@users = User.all
   end
 
   # GET /users
