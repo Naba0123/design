@@ -10,19 +10,21 @@
 <%= render 'shared/topbar' %>
 <div class="container">
   <div class="row">
-    <% if session[:user_id] %>
-      <% if @current_user.user_type == :participant %>
-        <%= render 'shared/parsidebar' %>
-      <% elsif @current_user.user_type == :student %>
-        <%= render 'shared/stusidebar' %>
-      <% elsif @current_user.user_type == :graduate %>
-        <%= render 'shared/grasidebar' %>
+    <div class="col-md-3">
+      <% if session[:user_id] %>
+        <% if @current_user.user_type == :participant %>
+          <%= render 'shared/parsidebar' %>
+        <% elsif @current_user.user_type == :student %>
+          <%= render 'shared/stusidebar' %>
+        <% elsif @current_user.user_type == :graduate %>
+          <%= render 'shared/grasidebar' %>
+        <% else %>
+          <%= render 'shared/sidebar' %>
+        <% end %>
       <% else %>
-        <%= render 'shared/sidebar' %>
+        <%= render 'shared/newsidebar' %>
       <% end %>
-    <% else %>
-      <%= render 'shared/newsidebar' %>
-    <% end %>
+    </div>
     <div class="col-md-9">
       <%= yield %>
     </div>
