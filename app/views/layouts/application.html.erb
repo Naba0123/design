@@ -11,19 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <% if session[:user_id] %>
-        <% if @current_user.user_type == :participant %>
-          <%= render 'shared/parsidebar' %>
-        <% elsif @current_user.user_type == :student %>
-          <%= render 'shared/stusidebar' %>
-        <% elsif @current_user.user_type == :graduate %>
-          <%= render 'shared/grasidebar' %>
-        <% else %>
-          <%= render 'shared/sidebar' %>
-        <% end %>
-      <% else %>
-        <%= render 'shared/newsidebar' %>
-      <% end %>
+      <%= render "sidebars/#{@current_user.user_type}" %>
     </div>
     <div class="col-md-9">
       <%= yield %>
