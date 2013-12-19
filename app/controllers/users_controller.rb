@@ -3,15 +3,19 @@
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @search = User.search(params[:q])
+  end
+
+  def list
+    @search = User.search(params[:q])
+    @users   = @search.result.page(params[:page]).per(10)
+    #@users = User.all
+  end
+
   # GET /users
   # GET /users.json
   def index
-    #@users = User.all
-    @search = User.search(params[:q])
-    @users   = @search.result.page(params[:page]).per(10)
-    #if @user == nil
-    #  @user = User.all
-    #end
   end
 
   # GET /users/1
