@@ -44,7 +44,11 @@
     
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'ユーザが作成されました' }
+        if session[:user_id]
+          format.html { redirect_to @user, notice: 'ユーザが作成されました' }
+        else
+          format.html { redirect_to @user, notice: 'ユーザが作成されました。大学の認証をお待ちください' }
+        end
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
