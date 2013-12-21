@@ -10,6 +10,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_link_to (1.0.1)
+      actionpack
     activemodel (4.0.0)
       activesupport (= 4.0.0)
       builder (~> 3.1.0)
@@ -28,6 +30,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
     builder (3.1.4)
@@ -164,6 +167,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  active_link_to (= 1.0.1)
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (~> 3.0.2.0)
   capybara (= 2.2.0)
