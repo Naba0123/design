@@ -85,9 +85,16 @@
       <%= f.label 'gender_f', '女' %>
     </div>
   </div>
-
-  <h3>＜デバッグ用＞</h3>
-  <p><font color="red">現在、バグ（仕様）により、ログイン中のユーザ自身を編集する際にauthorizedをfalseにできない事象が起きています。</font></p>
+  
+  <!--
+    本番は以下をコメントインする。
+    Rails(Ruby)でのコメントは
+      ＜％＃　コメント　％＞
+    で実装できる（これ豆な）
+  -->
+  <%# <% if session[:user_id] and @current_user.user_type == :admin % > %>
+  <h3>＜管理者用＞</h3>
+  <p><font color="red">ログイン中のユーザ自身を編集する際、authorizedをfalseにできないので注意してください。</font></p>
   <div class="form-group">
     <%= f.label :Authorized, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
@@ -97,6 +104,7 @@
       <%= f.label 'False' %>
     </div>
   </div>
+  <%# <% end % > %>
   
   <!-- ここまで基本情報 -->
   

@@ -51,12 +51,13 @@
   def create
     @user = User.new(params[:user])
     
+    # 現在新規ユーザー登録にてauthorized処理をしているのでコメントアウトしているが、本番はコメントインする。
+#    @user.authorized = false
+    
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
 #    @user.build_participant()
-#    @user.build_after_graduation()
 #    @user.build_graduate()
 #    @user.build_student()
-    # ここまでデバッグ用
     
     respond_to do |format|
       if @user.save
