@@ -1,5 +1,5 @@
 ﻿class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy,:authorize]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
@@ -26,6 +26,20 @@
   # GET /users/new
   def new
     @user = User.new
+    @new_type = params[:new_type]
+    if @new_type == "graduate"
+      @user.build_graduate()
+    elsif @new_type == "student"
+      if session[:user_id]
+        if @current_user.user_type == :admin
+          @user.build_student()
+        end
+      else
+        @user.build_participant()
+      end
+    else
+      @user.build_participant()
+    end
   end
 
   # GET /users/1/edit
@@ -36,14 +50,12 @@
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
-    # デバッグ用に一時コメントアウト
-    @user.build_participant(:unauthorized => true)
     
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
-#    @user.build_after_graduation(:other => "hogehoge")
-#    @user.build_graduate(:is_change => true)
-#    @user.build_student(:student_number => 12345)
+#    @user.build_participant()
+#    @user.build_after_graduation()
+#    @user.build_graduate()
+#    @user.build_student()
     # ここまでデバッグ用
     
     respond_to do |format|
@@ -65,7 +77,6 @@
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-#      if @user.update(user_params)
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'ユーザが更新されました' }
         format.json { head :no_content }
@@ -91,7 +102,7 @@
   
   
   def list_unauthorized
-    @search = User.joins(:participant).merge(Participant.where(:unauthorized => true))
+    @search = User.where(:authorized => false)
     @users = @search 
   end
 

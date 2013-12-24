@@ -11,12 +11,11 @@
       t.belongs_to :job_kind
       t.date :birthday
       t.integer :gender
-      #adminを削除
+      t.boolean :authorized
       t.timestamps
     end
     create_table :students do |t|
       t.integer :user_id
-
       t.integer :grade
       t.integer :department
       t.integer :research_subject
@@ -29,34 +28,27 @@
     end
     create_table :graduates do |t|
       t.integer :user_id
-
       t.boolean :is_change
       t.date :finish_date
     end
     create_table :participants do |t|
       t.integer :user_id
-
       t.integer :wish
       t.integer :wish_course
       t.string :teacher
-      t.boolean :unauthorized
-      #登録済み、登録日を削除
     end
     create_table :meetings do |t|
       t.integer :user_id
-
       t.date :meeting_date
       t.string :meeting_place
       t.integer :event_kind
     end
     create_table :after_graduations do |t|
       t.integer :user_id
-
       t.string :belong
       t.string :position
       t.integer :work_kind
       t.text :other
-
       t.timestamps
     end
   end
