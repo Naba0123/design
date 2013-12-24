@@ -1,5 +1,5 @@
 ﻿class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy,:authorize]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
@@ -22,7 +22,24 @@
   # GET /users/new
   def new
     @user = User.new
-    @user.build_participant(:wish => '')
+    @new_type = params[:new_type]
+    if @new_type == "graduate"
+      @announce = "修了生"
+      @user.build_graduate()
+    elsif @new_type == "student"
+      if session[:user_id]
+        if @current_user.user_type == :admin
+          @announce = "在学生"
+          @user.build_student()
+        end
+      else
+        @announce = "参加者"
+        @user.build_participant()
+      end
+    else
+      @announce = "参加者"
+      @user.build_participant()
+    end
   end
 
   # GET /users/1/edit
@@ -35,10 +52,10 @@
     @user = User.new(params[:user])
     
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
-#   @user.build_participant(:wish => 12345)
-#    @user.build_after_graduation(:other => "hogehoge")
-#    @user.build_graduate(:is_change => true)
-#    @user.build_student(:student_number => 12345)
+#    @user.build_participant()
+#    @user.build_after_graduation()
+#    @user.build_graduate()
+#    @user.build_student()
     # ここまでデバッグ用
     
     respond_to do |format|
@@ -85,7 +102,7 @@
   
   
   def list_unauthorized
-    @search = User.joins(:participant).merge(Participant.where(:unauthorized => true))
+    @search = User.where(:authorized => false)
     @users = @search 
   end
 
