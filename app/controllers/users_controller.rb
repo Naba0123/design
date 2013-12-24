@@ -3,15 +3,19 @@
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @search = User.search(params[:q])
+  end
+
+  def list
+    @search = User.search(params[:q])
+    @users   = @search.result.page(params[:page]).per(10)
+    #@users = User.all
+  end
+
   # GET /users
   # GET /users.json
   def index
-    #@users = User.all
-    @search = User.search(params[:q])
-    @users   = @search.result.page(params[:page]).per(10)
-    #if @user == nil
-    #  @user = User.all
-    #end
   end
 
   # GET /users/1
@@ -24,20 +28,16 @@
     @user = User.new
     @new_type = params[:new_type]
     if @new_type == "graduate"
-      @announce = "修了生"
       @user.build_graduate()
     elsif @new_type == "student"
       if session[:user_id]
         if @current_user.user_type == :admin
-          @announce = "在学生"
           @user.build_student()
         end
       else
-        @announce = "参加者"
         @user.build_participant()
       end
     else
-      @announce = "参加者"
       @user.build_participant()
     end
   end

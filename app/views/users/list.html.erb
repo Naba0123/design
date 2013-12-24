@@ -1,7 +1,5 @@
-<% provide :title, 'List unauthorized users' %>
-<h1>Users Data(::Base)</h1>
-
-
+<% provide :title, 'List' %>
+<%= link_to 'search', search_users_path %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -27,13 +25,18 @@
         <td><%= user.address %></td>
         <td><%= user.phone %></td>
         <td><%= user.job %></td>
-        <td><%= user.job_kind %></td>
+        <td><%= user.job_kind.try(:name) %></td>
         <td><%= user.birthday %></td>
         <td><%= user.gender %></td>
-        <td><%= link_to 'Authorize', authorize_user_path(user) %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%#= paginate @users %>
 

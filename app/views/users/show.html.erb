@@ -1,4 +1,5 @@
-﻿<h1><%= @user.name %>(ut : <%= @user.user_type %>)さんの情報</h1>
+﻿<% provide :title, 'Show' %>
+<h1><%= @user.name %>(ut : <%= @user.user_type %>)さんの情報</h1>
 <p id="notice"><%= notice %></p>
 
 <dl class="dl-horizontal">

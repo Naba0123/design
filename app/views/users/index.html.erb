@@ -1,45 +1,4 @@
-﻿<h1>Users Data(::Base)</h1>
+﻿<% provide :title, 'Home' %>
 
-<%= render 'search_form' %>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Work</th>
-      <th>Worktype</th>
-      <th>Birth</th>
-      <th>Gender</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.country %></td>
-        <td><%= user.address %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.job %></td>
-        <td><%= user.job_kind.try(:name) %></td>
-        <td><%= user.birthday %></td>
-        <td><%= user.gender %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= paginate @users %>
-
+<h1>Users Data(::Base)</h1>
 <%= link_to 'New User', new_user_path %>
