@@ -9,3 +9,8 @@
 require 'active_record/fixtures'
 
 ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "job_kinds"
+ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "certificate_kinds"
+ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "guidance_kinds"
+ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "departments"
+ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "research_subjects"
+ActiveRecord::Fixtures.create_fixtures "#{Rails.root}/db/seeds", "research_rooms"

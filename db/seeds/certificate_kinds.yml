@@ -1,0 +1,9 @@
+bachelor:
+  id: 1
+  name: '学士'
+master's:
+  id: 2
+  name: '博士前期'
+doctor's:
+  id: 3
+  name: '博士後期'

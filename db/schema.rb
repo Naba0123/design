@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206161112) do
+ActiveRecord::Schema.define(version: 20131218105716) do
 
   create_table "after_graduations", force: true do |t|
     t.integer  "user_id"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.text     "other"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "certificate_kinds", force: true do |t|
+    t.string "name"
   end
 
   create_table "certificates", force: true do |t|
@@ -33,10 +37,18 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.datetime "updated_at"
   end
 
+  create_table "departments", force: true do |t|
+    t.string "name"
+  end
+
   create_table "graduates", force: true do |t|
     t.integer "user_id"
     t.boolean "is_change"
     t.date    "finish_date"
+  end
+
+  create_table "guidance_kinds", force: true do |t|
+    t.string "name"
   end
 
   create_table "job_kinds", force: true do |t|
@@ -56,6 +68,14 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.integer "wish_course"
     t.string  "teacher"
     t.boolean "unauthorized"
+  end
+
+  create_table "research_rooms", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "research_subjects", force: true do |t|
+    t.string "name"
   end
 
   create_table "students", force: true do |t|
