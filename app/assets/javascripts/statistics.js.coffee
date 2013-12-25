@@ -16,7 +16,6 @@ $ ->
     $(".tab-content").append incIns[incLen-1]
 
     $("#paramnum").val(incTab.length)
-
   incTab=[]
   incIns=[]
 
