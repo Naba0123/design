@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.integer "user_id"
     t.boolean "is_change"
     t.date    "finish_date"
+    t.boolean "is_entered"
   end
 
   create_table "job_kinds", force: true do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
+    t.boolean "authorized"
   end
 
   create_table "students", force: true do |t|
@@ -81,7 +83,6 @@ ActiveRecord::Schema.define(version: 20131206161112) do
     t.integer  "job_kind_id"
     t.date     "birthday"
     t.integer  "gender"
-    t.boolean  "authorized"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

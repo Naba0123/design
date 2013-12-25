@@ -1,5 +1,5 @@
 <% provide :title, 'List unauthorized users' %>
-<h1>Users Data(::Base)</h1>
+<h1>List Unauthorized <%= @list_name %> Users</h1>
 
 
 <table class="table table-striped">
@@ -30,7 +30,11 @@
         <td><%= user.job_kind %></td>
         <td><%= user.birthday %></td>
         <td><%= user.gender %></td>
-        <td><%= link_to 'Authorize', authorize_user_path(user) %></td>
+        <% if @list_type == "graduate" %>
+          <td><%= link_to 'Authorize', :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "graduate" %></td>
+        <% else %>
+          <td><%= link_to 'Authorize', :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "participant" %></td>
+        <% end %>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
