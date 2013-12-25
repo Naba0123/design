@@ -8,7 +8,7 @@ $ ->
   incLen=1
   $(".add").click ->
     incLen++
-    incTab.push $('<li><a href="#'+(incTab.length+1)+'" data-toggle="tab">Cond '+incLen+'</a></li>')
+    incTab.push $('<li><a href="#'+(incTab.length+1)+'" data-toggle="tab">条件 '+incLen+'</a></li>')
     incIns.push $('<div class="tab-pane" id="'+incLen+'"></div>')
     incIns[incLen-1].append searchDOM
 
@@ -21,7 +21,7 @@ $ ->
 
   incIns[0] = $('<div class="tab-pane active" id="1"></div>')
   incIns[0].append searchDOM
-  incTab[0] = $('<li class="active"><a href="#1" data-toggle="tab">Cond 1</a></li>')
+  incTab[0] = $('<li class="active"><a href="#1" data-toggle="tab">条件 1</a></li>')
   $(".nav").append incTab[0]
   $(".tab-content").append incIns[0]
-  $("#paramnum").val(1)
+  inclen=$("#paramnum").val()
