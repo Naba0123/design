@@ -6,22 +6,20 @@ searchDOM='<input type="text" name="q[][name_cont]">'+
 	'<input type="text" name="q[][address_cont]">'
 $ ->
   incLen=1
-  $(".add").click ->
+  $("#addCond").click ->
     incLen++
-    incTab.push $('<li><a href="#'+(incTab.length+1)+'" data-toggle="tab">条件 '+incLen+'</a></li>')
+    incTab.push $('<li><a href="#'+(incLen)+'" data-toggle="tab">条件 '+incLen+'</a></li>')
     incIns.push $('<div class="tab-pane" id="'+incLen+'"></div>')
     incIns[incLen-1].append searchDOM
 
-    $(".nav").append incTab[incLen-1]
-    $(".tab-content").append incIns[incLen-1]
+    $("#condTab").append incTab[incLen-1]
+    $("#condCont").append incIns[incLen-1]
 
-    $("#paramnum").val(incTab.length)
+    $("#paramnum").val(incLen)
   incTab=[]
   incIns=[]
 
-  incIns[0] = $('<div class="tab-pane active" id="1"></div>')
-  incIns[0].append searchDOM
-  incTab[0] = $('<li class="active"><a href="#1" data-toggle="tab">条件 1</a></li>')
-  $(".nav").append incTab[0]
-  $(".tab-content").append incIns[0]
-  inclen=$("#paramnum").val()
+  incLen=$("#paramnum").val()
+  for i in [0..incLen-1]
+    incTab[i] = $('<li><a href="#'+(i+1)+'" data-toggle="tab">条件 '+(i+1)+'</a></li>')
+    $("#condTab").append incTab[i]

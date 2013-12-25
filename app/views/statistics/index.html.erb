@@ -1,21 +1,27 @@
+<%= javascript_include_tag "statistics" %>
 ﻿<h1>統計分析</h1>
 <div class="tabbable">
-<ul class="nav nav-tabs">
-<li class="add"><a href="#p" data-toggle="button">+</a></li>
-</ul>
-<form>
-<div class="tab-content">
+	<ul class="nav nav-tabs" id="condTab">
+		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
+	</ul>
+<%= form_tag do %>
+		<div class="tab-content" id="condCont">
+			<% @queryNumber.times do |cnt| %>
+				<div class="tab-pane" id="<%= cnt+1 %>">
+					<%= render :partial=>"search_form",:locals=>{:cnt=>cnt} %>
+				</div>
+			<% end %>
+		</div>
+		<input type="hidden" name="num" value="<%= @search.size %>" id="paramnum">
+		<input type="submit" value="分析" class="btn btn-default" id="submit">
+<% end %>
 </div>
-<input type="hidden" name="num" value="<%= @search.size %>" id="paramnum">
-<input type="submit" value="分析">
-</form>
 <p>
 検索内容を含む生徒数
 <ul>
 <% @search.each do |r| %>
 <li><%= r.result.size %>人</li>
-<% end %>
 </ul>
 </p>
-<%= render "search_form" %>
+<% end %>
 <%= @queryString %>
