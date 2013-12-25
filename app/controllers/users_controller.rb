@@ -1,5 +1,5 @@
 ﻿class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :authorize]
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
@@ -9,7 +9,7 @@
 
   def list
     @search = User.search(params[:q])
-    @users   = @search.result.page(params[:page]).per(10)
+    @users = @search.result.page(params[:page]).per(10)
     #@users = User.all
   end
 
@@ -51,13 +51,11 @@
   def create
     @user = User.new(params[:user])
     
-    # 現在新規ユーザー登録にてauthorized処理をしているのでコメントアウトしているが、本番はコメントインする。
-#    @user.authorized = false
-    
-    # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
-#    @user.build_participant()
-#    @user.build_graduate()
-#    @user.build_student()
+    if !(@user.participant.nil?)
+      @user.participant.authorized = false
+    elsif !(user.graduate.nil?)
+      @user.graduate.is_entered = false
+    end
     
     respond_to do |format|
       if @user.save
@@ -99,11 +97,19 @@
   end
   
   def authorize
+    @authorize_type = params[:authorize_type]
   end
   
   
   def list_unauthorized
-    @search = User.where(:authorized => false)
+    @list_type = params[:list_type]
+    if @list_type == "graduate"
+      @search = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
+      @list_name = "Graduate"
+    else
+      @search = User.joins(:participant).merge(Participant.where(:authorized => false))
+      @list_name = "Participant"
+    end
     @users = @search 
   end
 

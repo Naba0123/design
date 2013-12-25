@@ -86,26 +86,6 @@
     </div>
   </div>
   
-  <!--
-    本番は以下をコメントインする。
-    Rails(Ruby)でのコメントは
-      ＜％＃　コメント　％＞
-    で実装できる（これ豆な）
-  -->
-  <%# <% if session[:user_id] and @current_user.user_type == :admin % > %>
-  <h3>＜管理者用＞</h3>
-  <p><font color="red">ログイン中のユーザ自身を編集する際、authorizedをfalseにできないので注意してください。</font></p>
-  <div class="form-group">
-    <%= f.label :Authorized, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.radio_button :authorized, 1 %>
-      <%= f.label 'True' %>
-      <%= f.radio_button :authorized, 0 %>
-      <%= f.label 'False' %>
-    </div>
-  </div>
-  <%# <% end % > %>
-  
   <!-- ここまで基本情報 -->
   
   
