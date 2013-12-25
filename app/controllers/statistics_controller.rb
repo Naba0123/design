@@ -8,10 +8,15 @@
     @queryString=params[:q]
     if @queryString != nil
       @queryNumber.times do |num|
-        @search << User.search(@queryString[num])
+        @search << User.search(@queryString[num.to_s])
+        if @queryString[num.to_s]==nil
+          @queryString[num.to_s]=Hash.new()
+        end
       end
     else
         @search << User.search(@queryString)
+        @queryString=Hash.new()
+        @queryString["0"]=Hash.new()
     end
     
   end

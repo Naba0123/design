@@ -1,54 +1,54 @@
   <div class="form-group">
-    <%= label :page, :account_cont, class: "col-sm-2 control-label" %>
+    <%= label_tag "q["+cnt.to_s+"][account_count]", :account_cont,class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= text_field :account_cont, class: "form-control" %>
+      <%= text_field_tag "q["+cnt.to_s+"][account_cont]", @queryString[cnt.to_s][:account_cont], class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= label :page, :name_cont, class: "col-sm-2 control-label" %>
+    <%= label_tag "q["+cnt.to_s+"][name_cont]", :name_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= text_field :name_cont, class: "form-control" %>
+      <%= text_field_tag "q["+cnt.to_s+"][name_cont]", @queryString[cnt.to_s][:name_cont], class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= label :page, :country_eq, class: "col-sm-2 control-label" %>
+    <%= label_tag "q["+cnt.to_s+"][country_eq]", :country_eq, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= localized_country_select :country_eq, [], { prompt: true }, { class: "form-control" } %>
+      <%= localized_country_select_tag "q["+cnt.to_s+"][country_eq]", { selected:@queryString[cnt.to_s][:country_eq] },[nil],{class:"form-control"} %>
     </div>
   </div>
   <div class="form-group">
-    <%= label :page, :address_cont, class: "col-sm-2 control-label" %>
+    <%= label_tag "q["+cnt.to_s+"][address_cont]", :address_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= text_field :address_cont, class: "form-control" %>
+      <%= text_field_tag "q["+cnt.to_s+"][address_cont]", @queryString[cnt.to_s][:address_cont], class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= label :page, :phone_cont, class: "col-sm-2 control-label" %>
+    <%= label_tag "q["+cnt.to_s+"][phone_cont]", :phone_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= telephone_field :phone_cont, class: "form-control" %>
+      <%= telephone_field_tag "q["+cnt.to_s+"][phone_cont]",@queryString[cnt.to_s][:phone_cont], class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= label :page, :job_cont, class: "col-sm-2 control-label" %>
+    <%= label_tag "q["+cnt.to_s+"][job_cont]", :job_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= text_field :job_cont, class: "form-control" %>
+      <%= text_field_tag "q["+cnt.to_s+"][job_cont]",@queryString[cnt.to_s][:job_cont], class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= label :page, :job_kind_id_eq, class: "col-sm-2 control-label" %>
+    <%= label_tag "q["+cnt.to_s+"][job_kind_id_eq]", :job_kind_id_eq, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= collection_select :job_kind_id_eq, :name, JobKind.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+      <%= collection_select "q["+cnt.to_s+"]", :job_kind_id_eq, JobKind.all, :id, :name, { selected:@queryString[cnt.to_s][:job_kind_id_eq],prompt: true }, { class: "form-control" } %>
     </div>
   </div>
   <div class="form-group">
-    <%= label :page, :birthday, class: "col-sm-2 control-label" %>
+    <%= label "q[][birthday]", :birthday, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <span class="date-controls">
-        <%= date_select :birthday_gteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control input-sm" } %>
+        <%= date_select "q["+cnt.to_s+"]", :birthday_gteq, { default:@queryString[cnt.to_s][:birthday_gteq], start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true}, { class: "form-control input-sm"} %>
       </span>
       から
       <span class="date-controls">
-        <%= date_select :birthday_lteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control input-sm" } %>
+        <%= date_select "q["+cnt.to_s+"]", :birthday_lteq, { default:@queryString[cnt.to_s][:birthday_lteq], start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control input-sm" } %>
       </span>
       までの期間
     </div>
