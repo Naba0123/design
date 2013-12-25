@@ -1,10 +1,9 @@
-<%= javascript_include_tag "statistics" %>
 ﻿<h1>統計分析</h1>
 <div class="tabbable">
 	<ul class="nav nav-tabs" id="condTab">
 		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
 	</ul>
-<%= form_tag do %>
+	<%= form_tag('/statis', :method=>:get) do %>
 		<div class="tab-content" id="condCont">
 			<% @queryNumber.times do |cnt| %>
 				<div class="tab-pane" id="<%= cnt+1 %>">
@@ -14,14 +13,14 @@
 		</div>
 		<input type="hidden" name="num" value="<%= @search.size %>" id="paramnum">
 		<input type="submit" value="分析" class="btn btn-default" id="submit">
-<% end %>
+	<% end %>
 </div>
 <p>
 検索内容を含む生徒数
 <ul>
 <% @search.each do |r| %>
 <li><%= r.result.size %>人</li>
-</ul>
 </p>
 <% end %>
+</ul>
 <%= @queryString %>

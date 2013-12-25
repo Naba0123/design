@@ -8,14 +8,15 @@ $ ->
   incLen=1
   $("#addCond").click ->
     incLen++
-    incTab.push $('<li><a href="#'+(incLen)+'" data-toggle="tab">条件 '+incLen+'</a></li>')
-    incIns.push $('<div class="tab-pane" id="'+incLen+'"></div>')
-    incIns[incLen-1].append searchDOM
+    #incTab.push $('<li><a href="#'+(incLen)+'" data-toggle="tab">条件 '+incLen+'</a></li>')
+    #incIns.push $('<div class="tab-pane" id="'+incLen+'"></div>')
+    #incIns[incLen-1].append searchDOM
 
-    $("#condTab").append incTab[incLen-1]
-    $("#condCont").append incIns[incLen-1]
-
+    #$("#condTab").append incTab[incLen-1]
+    #$("#condCont").append incIns[incLen-1]
     $("#paramnum").val(incLen)
+    $("#submit").click()
+
   incTab=[]
   incIns=[]
 
@@ -23,3 +24,5 @@ $ ->
   for i in [0..incLen-1]
     incTab[i] = $('<li><a href="#'+(i+1)+'" data-toggle="tab">条件 '+(i+1)+'</a></li>')
     $("#condTab").append incTab[i]
+  $("#condCont div:first-child").addClass "active"
+  $("#condTab > li:eq(1)").addClass "active"
