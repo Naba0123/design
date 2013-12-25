@@ -15,3 +15,4 @@ ja:
         job_kind:              '業種'
         birthday:              '生年月日'
         gender:                '性別'
+        user_type:             '権限'

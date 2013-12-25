@@ -1,0 +1,43 @@
+faculty of literature:
+  id: 1
+  name: '文学部'
+faculty of education:
+  id: 2
+  name: '教育学部'
+faculty of law:
+  id: 3
+  name: '法学部'
+faculty of economics:
+  id: 4
+  name: '経済学部'
+faculty of science:
+  id: 5
+  name: '理学部'
+faculty of medicine:
+  id: 6
+  name: '医学部'
+faculty of pharmacy:
+  id: 7
+  name: '薬学部'
+faculty of Engineering:
+  id: 8
+  name: '工学部'
+faculty of agriculture:
+  id: 9
+  name: '農学部'
+faculty of textile science:
+  id: 10
+  name: '繊維学部'
+faculty of music:
+  id: 11
+  name: '音楽学部'
+faculty of environment:
+  id: 12
+  name: '環境学部'
+faculty of human sciences:
+  id: 13
+  name: '人間科学部'
+others:
+  id: 14
+  name: 'その他'
+

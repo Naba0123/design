@@ -1,0 +1,15 @@
+open campus:
+  id: 1
+  name: 'オープンキャンパス'
+school orientation meeting:
+  id: 2
+  name: '学校説明会'
+orientation for entrance examinations:
+  id: 3
+  name: '入試説明会'
+orientation for new students:
+  id: 4
+  name: '入学説明会'
+others:
+  id: 5
+  name: 'その他'
