@@ -6,7 +6,7 @@
 <form>
 <div class="tab-content">
 </div>
-<input type="hidden" name="num" value="1" id="paramnum">
+<input type="hidden" name="num" value="<%= @search.size %>" id="paramnum">
 <input type="submit" value="分析">
 </form>
 <p>
@@ -17,4 +17,5 @@
 <% end %>
 </ul>
 </p>
+<%= render "search_form" %>
 <%= @queryString %>
