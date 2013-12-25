@@ -1,7 +1,7 @@
 ﻿class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :authorize]
   skip_before_action :check_logined, only: [:new, :create]
-  before_action :check_permission, only: [:show, :edit, :update, :destroy]
+  skip_before_action :check_permission, only: [:index, :show, :new, :edit, :create, :update, :destroy, :new_graduate]
 
   def search
     @search = User.search(params[:q])
@@ -25,20 +25,29 @@
 
   # GET /users/new
   def new
+    if session[:user_id]
+      unless @current_user.user_type == :admin
+        render 'nopermission'
+      end
+    end
     @user = User.new
     @new_type = params[:new_type]
     if @new_type == "graduate"
-      @user.build_graduate()
+      @user.build_graduate(:is_entered => false)
+      @new_name = "Graduate"
     elsif @new_type == "student"
       if session[:user_id]
         if @current_user.user_type == :admin
           @user.build_student()
+          @new_name = "Student"
         end
       else
-        @user.build_participant()
+        @user.build_participant(:authorized => false)
+        @new_name = "Participant"
       end
     else
-      @user.build_participant()
+      @user.build_participant(:authorized => false)
+      @new_name = "Participant"
     end
   end
 
@@ -50,12 +59,6 @@
   # POST /users.json
   def create
     @user = User.new(params[:user])
-    
-    if !(@user.participant.nil?)
-      @user.participant.authorized = false
-    elsif !(user.graduate.nil?)
-      @user.graduate.is_entered = false
-    end
     
     respond_to do |format|
       if @user.save
@@ -100,7 +103,6 @@
     @authorize_type = params[:authorize_type]
   end
   
-  
   def list_unauthorized
     @list_type = params[:list_type]
     if @list_type == "graduate"
@@ -111,6 +113,14 @@
       @list_name = "Participant"
     end
     @users = @search 
+  end
+  
+  def new_graduate
+    unless @current_user.user_type == :student
+      render 'nopermission'
+    end
+    @user = @current_user
+    @user.build_graduate()
   end
 
   private
