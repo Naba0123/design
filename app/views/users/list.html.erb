@@ -1,42 +1,41 @@
 <% provide :title, 'List' %>
 <%= link_to 'search', search_users_path %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Work</th>
-      <th>Worktype</th>
-      <th>Birth</th>
-      <th>Gender</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= t "countries.#{user.country}" %></td>
-        <td><%= user.address %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.job %></td>
-        <td><%= user.job_kind.try(:name) %></td>
-        <td><%= user.birthday %></td>
-        <td><%= t "sexes.#{user.gender}" %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= t 'activerecord.attributes.user.name' %></th>
+        <th><%= t 'activerecord.attributes.user.account' %></th>
+        <th><%= t 'activerecord.attributes.user.country' %></th>
+        <th><%= t 'activerecord.attributes.user.address' %></th>
+        <th><%= t 'activerecord.attributes.user.phone' %></th>
+        <th><%= t 'activerecord.attributes.user.job' %></th>
+        <th><%= t 'activerecord.attributes.user.job_kind' %></th>
+        <th><%= t 'activerecord.attributes.user.birthday' %></th>
+        <th><%= t 'activerecord.attributes.user.gender' %></th>
+        <th><%= t 'activerecord.attributes.user.user_type' %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name , user %></td>
+          <td><%= user.account %></td>
+          <td><%= t "countries.#{user.country}" %></td>
+          <td><%= user.address %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.job %></td>
+          <td><%= user.job_kind.try(:name) %></td>
+          <td><%= l user.birthday %></td>
+          <td><%= t "sexes.#{user.gender}" %></td>
+          <td><%= t "user_types.#{user.user_type}" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%#= paginate @users %>
+<%= paginate @users %>
 
