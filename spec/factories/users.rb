@@ -11,7 +11,6 @@ FactoryGirl.define do
     job_kind_id '1'
     birthday '1967-05-31'
     gender   1
-    authorized true
   end
 
   factory :akane, :class => User do
@@ -26,7 +25,6 @@ FactoryGirl.define do
     job_kind_id '2'
     birthday '1967-12-21'
     gender   1
-    authorized true
   end
 
   factory :taro, :class => User do
@@ -41,6 +39,5 @@ FactoryGirl.define do
     job_kind_id '3'
     birthday '1967-09-24'
     gender   0
-    authorized true
   end
 end

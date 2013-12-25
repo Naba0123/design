@@ -13,6 +13,7 @@
       get :list
       get :search
       get 'list_unauthorized'
+      get 'new_graduate'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
