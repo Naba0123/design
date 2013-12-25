@@ -3,15 +3,19 @@
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_permission, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @search = User.search(params[:q])
+  end
+
+  def list
+    @search = User.search(params[:q])
+    @users   = @search.result.page(params[:page]).per(10)
+    #@users = User.all
+  end
+
   # GET /users
   # GET /users.json
   def index
-    #@users = User.all
-    @search = User.search(params[:q])
-    @users   = @search.result.page(params[:page]).per(10)
-    #if @user == nil
-    #  @user = User.all
-    #end
   end
 
   # GET /users/1
@@ -22,6 +26,20 @@
   # GET /users/new
   def new
     @user = User.new
+    @new_type = params[:new_type]
+    if @new_type == "graduate"
+      @user.build_graduate()
+    elsif @new_type == "student"
+      if session[:user_id]
+        if @current_user.user_type == :admin
+          @user.build_student()
+        end
+      else
+        @user.build_participant()
+      end
+    else
+      @user.build_participant()
+    end
   end
 
   # GET /users/1/edit
@@ -32,19 +50,22 @@
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
-    # デバッグ用に一時コメントアウト
-    @user.build_participant(:unauthorized => true)
+    
+    # 現在新規ユーザー登録にてauthorized処理をしているのでコメントアウトしているが、本番はコメントインする。
+#    @user.authorized = false
     
     # ここからデバッグ用：それぞれの要素をコメントインすると対応付けられたユーザータイプになる
-    @user.build_after_graduation(:other => "hogehoge")
-    @user.build_graduate(:is_change => true)
-    @user.build_student(:student_number => 12345)
-    # ここまでデバッグ用
+#    @user.build_participant()
+#    @user.build_graduate()
+#    @user.build_student()
     
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        if session[:user_id]
+          format.html { redirect_to @user, notice: 'ユーザが作成されました' }
+        else
+          format.html { redirect_to @user, notice: 'ユーザが作成されました。大学の認証をお待ちください' }
+        end
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -57,8 +78,8 @@
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to @user, notice: 'ユーザが更新されました' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -75,6 +96,15 @@
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+  
+  def authorize
+  end
+  
+  
+  def list_unauthorized
+    @search = User.where(:authorized => false)
+    @users = @search 
   end
 
   private

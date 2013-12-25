@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
-    t.boolean "unauthorized"
   end
 
   create_table "research_rooms", force: true do |t|
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer  "job_kind_id"
     t.date     "birthday"
     t.integer  "gender"
+    t.boolean  "authorized"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

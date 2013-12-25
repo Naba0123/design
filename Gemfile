@@ -19,11 +19,11 @@ gem 'kaminari', '0.15.0'
 # for search feature
 gem 'ransack', '1.1.0'
 
+gem 'active_link_to', '1.0.1'
 gem 'localized_country_select', '0.9.7'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-
 gem 'bootstrap-sass', '~>3.0.2.0'
 
 # Use Uglifier as compressor for JavaScript assets

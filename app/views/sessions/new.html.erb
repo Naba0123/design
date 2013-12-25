@@ -19,7 +19,8 @@
         <% end %>
       </div>
       <div class="panel-footer">
-        <%= link_to 'Register here', new_user_path %>
+        <%= link_to 'Participant here', :controller => 'users', :action => 'new', :new_type => "participant" %>
+        <%= link_to 'Graduate here', :controller => 'users', :action => 'new', :new_type => "graduate" %>
       </div>
     </div>
   </div>
