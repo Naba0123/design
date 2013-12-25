@@ -1,0 +1,6 @@
+ja:
+  user_types:
+    admin: '管理者'
+    student: '学生'
+    participant: '参加者'
+    graduate: '卒業生'
