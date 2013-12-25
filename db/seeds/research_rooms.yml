@@ -1,0 +1,43 @@
+Morisako,Liu's laboratory:
+  id: 1
+  name: '森迫・劉研究室'
+Haeiwa's laboratory:
+  id: 2
+  name: '栄岩研究室'
+Kawahara's laboratory:
+  id: 3
+  name: '河原研究室'
+Hashimoto,Kayama,Ootani's laboratory:
+  id: 4
+  name: '橋本・香山・大谷研究室'
+Saitou,Kobayashi's laboratory:
+  id: 5
+  name: '斎藤・小林研究室'
+Izawa,Asano's laboratory:
+  id: 6
+  name: '井澤・アサノ研究室'
+Niimura,Kunimune's laboratory:
+  id: 7
+  name: '新村・國宗研究室'
+Wasaki's laboratory:
+  id: 8
+  name: '和崎研究室'
+Kawamoto's laboratory:
+  id: 9
+  name: 'カワモト研究室'
+Shidama,Yamazaki,Okazaki's laboratory:
+  id: 10
+  name: '師玉・山崎・岡崎研究室'
+Kaijiri,Kaiya,Ogata's laboratory:
+  id: 11
+  name: '海尻・海谷・小形研究室'
+Maruyama,Miyao's laboratory:
+  id: 12
+  name: '丸山・宮尾研究室'
+Okamoto,Yamamoto,Shirai's laboratory:
+  id: 13
+  name: '岡本・山本・白井研究室'
+others:
+  id: 14
+  name: 'その他'
+

@@ -1,0 +1,46 @@
+graduate school of letters:
+  id: 1
+  name: '文学研究科'
+graduate school of education:
+  id: 2
+  name: '教育学研究科'
+graduate school of law:
+  id: 3
+  name: '法学研究科'
+graduate school of economics:
+  id: 4
+  name: '経済学研究科'
+graduate school of science:
+  id: 5
+  name: '理学研究科'
+graduate school of medicine:
+  id: 6
+  name: '医学研究科'
+graduate school of pharmaceutical sciences:
+  id: 7
+  name: '薬学研究科'
+Graduate School of Engineering:
+  id: 8
+  name: '工学研究科'
+graduate school of agriculture:
+  id: 9
+  name: '農学研究科'
+fiber graduate school:
+  id: 10
+  name: '繊維学研究科'
+political science graduate school:
+  id: 11
+  name: '政治学研究科'
+sound graduate school:
+  id: 12
+  name: '音楽研究科'
+graduate school of environmental studies:
+  id: 13
+  name: '環境学研究科'
+graduate school of human sciences:
+  id: 14
+  name: '人間科学研究科'
+others:
+  id: 15
+  name: 'その他'
+
