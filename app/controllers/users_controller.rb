@@ -40,6 +40,8 @@
         if @current_user.user_type == :admin
           @user.build_student()
           @new_name = "Student"
+        else
+          render 'nopermission'
         end
       else
         @user.build_participant(:authorized => false)
@@ -62,7 +64,7 @@
     
     if !(@user.participant.nil?)
       @user.participant.authorized = false
-    elsif !(user.graduate.nil?)
+    elsif !(@user.graduate.nil?)
       @user.graduate.is_entered = false
     end
     
@@ -84,6 +86,11 @@
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+  
+#    if @user.user_type == :graduate and !(@user.graduate.is_entered)
+      @user.graduate.is_entered = false
+#    end
+  
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'ユーザが更新されました' }
@@ -118,7 +125,7 @@
       @search = User.joins(:participant).merge(Participant.where(:authorized => false))
       @list_name = "Participant"
     end
-    @users = @search 
+    @users = @search
   end
   
   def new_graduate
