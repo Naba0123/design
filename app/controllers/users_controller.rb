@@ -86,11 +86,6 @@
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-  
-#    if @user.user_type == :graduate and !(@user.graduate.is_entered)
-      @user.graduate.is_entered = false
-#    end
-  
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'ユーザが更新されました' }
@@ -133,7 +128,7 @@
       render 'nopermission'
     end
     @user = @current_user
-    @user.build_graduate()
+    @user.create_graduate(:is_entered => false)
   end
 
   private
