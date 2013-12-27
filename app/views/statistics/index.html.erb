@@ -1,17 +1,21 @@
 ﻿<h1>統計分析</h1>
+
+<%= form_for @search[@queryNumber], url: statis_path, :html => { class: "form-horizontal", hidden:"true" , class:"formBase"} do |field| %>
+	<%=  render "search_form", cnt: @queryNumber %>
+<% end %>
 <div class="tabbable">
 	<ul class="nav nav-tabs" id="condTab">
 		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
 	</ul>
-	<%= form_tag('/statis', :method=>:get) do %>
+	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" } do |field| %>
 		<div class="tab-content" id="condCont">
 			<% @queryNumber.times do |cnt| %>
 				<div class="tab-pane" id="<%= cnt+1 %>">
-					<%= render :partial=>"search_form",:locals=>{:cnt=>cnt} %>
+					<%=  render "search_form", cnt: cnt %>
 				</div>
 			<% end %>
 		</div>
-		<input type="hidden" name="num" value="<%= @search.size %>" id="paramnum">
+		<input type="hidden" name="num" value="<%= @queryNumber %>" id="paramnum">
 		<input type="submit" value="分析" class="btn btn-default" id="submit">
 	<% end %>
 </div>
@@ -24,3 +28,4 @@
 <% end %>
 </ul>
 <%= @queryString %>
+<%= @queryNumber %>
