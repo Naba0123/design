@@ -12,15 +12,7 @@
   <div class="row">
     <% if session[:user_id] %>
       <div class="col-md-3">
-        <% if @current_user.user_type == :graduate %>
-          <% unless @current_user.graduate.is_entered %>
-            <%= render "sidebars/student" %>
-          <% else %>
-            <%= render "sidebars/graduate" %>
-          <% end %>
-        <% else %>
-          <%= render "sidebars/#{@current_user.user_type}" %>
-        <% end %>
+        <%= render "sidebars/#{@current_user.user_type}" %>
       </div>
     <% end %>
     <div class="col-md-9">

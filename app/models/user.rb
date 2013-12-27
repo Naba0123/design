@@ -33,7 +33,12 @@
     
     def user_type
       if self.graduate
-        return :graduate
+        # 修了生の情報を持っていても承認がまだであれば生徒として扱う
+        if self.graduate.is_entered
+          return :graduate
+        else
+          return :student
+        end
       else
         if self.student
           return :student
