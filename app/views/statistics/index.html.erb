@@ -1,4 +1,4 @@
-﻿<%= javascript_include_tag "statistics" %>
+<%= javascript_include_tag "statistics" %>
 ﻿<%= javascript_include_tag "ccchart-min" %>
 <h1>統計分析</h1>
 <canvas id="circle"></canvas>
@@ -33,7 +33,6 @@ ccchart.init('circle', circle);
 	<%=  render "search_form", cnt: @queryNumber %>
 <% end %>
 <div class="tabbable">
-
 	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" } do |field| %>
 	<ul class="nav nav-tabs" id="condTab">
 		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
