@@ -1,46 +1,59 @@
-<%= fields_for @search[cnt] do |f| %>
+<%= fields_for :q, @search[cnt], {:index=>nil} do |f| %>
 	<div class="form-group">
 		<%= f.label :account_cont, class: "col-sm-2 control-label" %>
 		<div class="col-sm-10">
-			<%= f.text_field :account_cont,{ class: "form-control", name:"q[][account_cont]"} %>
+			<%= f.text_field :account_cont,{ class: "form-control"} %>
 		</div>
 	</div>
   <div class="form-group">
     <%= f.label :name_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :name_cont, {class: "form-control", name:"q[][name_cont]"} %>
+      <%= f.text_field :name_cont, {class: "form-control"} %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :country_eq, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.localized_country_select :country_eq, [], { prompt: true }, { class: "form-control", name:"q[][country_eq]" } %>
+      <%= f.localized_country_select :country_eq, [], { prompt: true }, { class: "form-control",name:"q[][country_eq]" } %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :address_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :address_cont, {class: "form-control", name:"q[][address_cont]"} %>
+      <%= f.text_field :address_cont, {class: "form-control"} %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :phone_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.telephone_field :phone_cont, {class: "form-control", name:"q[][phone_cont]"} %>
+      <%= f.telephone_field :phone_cont, {class: "form-control"} %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :job_cont, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.text_field :job_cont, {class: "form-control", name:"q[][job_cont]"} %>
+      <%= f.text_field :job_cont, {class: "form-control"} %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :job_kind_id_eq, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.collection_select :job_kind_id_eq, JobKind.all, :id, :name, { prompt: true }, { class: "form-control", name:"q[][job_kind_id_eq]" } %>
+      <%= f.collection_select :job_kind_id_eq, JobKind.all, :id, :name, { prompt: true }, { class: "form-control"} %>
     </div>
   </div>
 
+  <div class="form-group">
+    <%= f.label :birthday, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <span class="date-controls">
+        <%= f.date_select :birthday_gteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control input-sm" } %>
+      </span>
+      から
+      <span class="date-controls">
+        <%= f.date_select :birthday_lteq, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control input-sm" } %>
+      </span>
+      までの期間
+    </div>
+  </div>
 <% end %>
 
