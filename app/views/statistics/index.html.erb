@@ -7,7 +7,7 @@
 	<ul class="nav nav-tabs" id="condTab">
 		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
 	</ul>
-	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" } do |field| %>
+	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" , method:"get"} do |field| %>
 		<div class="tab-content" id="condCont">
 			<% @queryNumber.times do |cnt| %>
 				<div class="tab-pane" id="<%= cnt+1 %>">
