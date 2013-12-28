@@ -7,7 +7,7 @@ $ ->
   $("#addCond").click ->
     incLen++
     uniqueID++
-    incTab = $('<li id="tab'+uniqueID+'"><a href="#'+(uniqueID)+'" data-toggle="tab">条件 '+uniqueID+'　<i class="glyphicon-remove glyphicon" id="close'+uniqueID+'"></a></li>')
+    incTab = $('<li id="tab'+uniqueID+'"><a href="#'+(uniqueID)+'" data-toggle="tab">条件 '+uniqueID+'　<i class="glyphicon-remove glyphicon" id="close'+uniqueID+'"></i></a></li>')
     incIns = $('<div class="tab-pane" id="'+uniqueID+'"></div>')
     incIns.append searchDOM.children(":not(:first)").clone()
 
@@ -24,9 +24,6 @@ $ ->
 
   incLen=uniqueID=parseInt $("#paramnum").val()
   for i in [0..incLen-1]
-    incTab = $('<li id="tab'+(i+1)+'"><a href="#'+(i+1)+'" data-toggle="tab">条件 '+(i+1)+'　<i class="glyphicon-remove glyphicon" id="close'+(i+1)+'"></a></li>')
-    $("#condTab").append incTab
-
     $("#close"+(i+1)).click ->
       n=$(this).attr("id").charAt(5)
       $("#"+n).remove()

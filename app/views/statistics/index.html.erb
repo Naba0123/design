@@ -1,13 +1,46 @@
-﻿<h1>統計分析</h1>
+﻿<%= javascript_include_tag "statistics" %>
+﻿<%= javascript_include_tag "ccchart-min" %>
+<h1>統計分析</h1>
+<canvas id="circle"></canvas>
+<script>
+var circle = {
 
+  "config": {
+    "title": "統計分析",
+    "subTitle": "円チャート",
+    "type": "pie",
+    "useVal": "yes",
+    "pieDataIndex": 0,
+    "colNameFont": "100 18px 'Arial'",
+    "pieRingWidth": 80,
+    "pieHoleRadius": 40,
+    "textColor": "#888",
+    "bg": "#fff"
+  },
+
+  "data": [
+    ["データ",""],
+    <% @queryNumber.times do |cnt| %>
+    ["条件<%= cnt %>",<%= @search[cnt].result.size %>],
+    <% end %>
+  ]
+};
+
+ccchart.init('circle', circle);
+
+</script>
 <%= form_for @search[@queryNumber], url: statis_path, :html => { class: "form-horizontal", hidden:"true" , class:"formBase"} do |field| %>
 	<%=  render "search_form", cnt: @queryNumber %>
 <% end %>
 <div class="tabbable">
+
+	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" } do |field| %>
 	<ul class="nav nav-tabs" id="condTab">
 		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
+		<% @queryNumber.times do |cnt| %>
+			<li id="tab<%= cnt+1 %>"><a href="#<%= cnt+1 %>" data-toggle="tab">条件<%= cnt+1 %>　<i class="glyphicon-remove glyphicon" id="close<%= cnt+1 %>"></i></a></li>
+		<% end %>
 	</ul>
-	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" , method:"get"} do |field| %>
 		<div class="tab-content" id="condCont">
 			<% @queryNumber.times do |cnt| %>
 				<div class="tab-pane" id="<%= cnt+1 %>">
@@ -22,10 +55,9 @@
 <p>
 検索内容を含む生徒数
 <ul>
-<% @search.each do |r| %>
-<li><%= r.result.size %>人</li>
+<% @queryNumber.times do |r| %>
+<li><%= @search[r].result.size %>人</li>
 </p>
 <% end %>
 </ul>
 <%= @queryString %>
-<%= @queryNumber %>
