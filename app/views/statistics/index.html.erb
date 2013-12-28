@@ -33,30 +33,22 @@ ccchart.init('circle', circle);
 	<%=  render "search_form", cnt: @queryNumber %>
 <% end %>
 <div class="tabbable">
-	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" } do |field| %>
+	<%= form_for @search[0], url: statis_path, :html => { class: "form-horizontal" ,method:"get"} do |field| %>
 	<ul class="nav nav-tabs" id="condTab">
 		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
-		<% @queryNumber.times do |cnt| %>
+		<% (@queryNumber==0?1:@queryNumber).times do |cnt| %>
 			<li id="tab<%= cnt+1 %>"><a href="#<%= cnt+1 %>" data-toggle="tab">条件<%= cnt+1 %>　<i class="glyphicon-remove glyphicon" id="close<%= cnt+1 %>"></i></a></li>
 		<% end %>
 	</ul>
 		<div class="tab-content" id="condCont">
-			<% @queryNumber.times do |cnt| %>
+			<% (@queryNumber==0?1:@queryNumber).times do |cnt| %>
 				<div class="tab-pane" id="<%= cnt+1 %>">
 					<%=  render "search_form", cnt: cnt %>
 				</div>
 			<% end %>
 		</div>
-		<input type="hidden" name="num" value="<%= @queryNumber %>" id="paramnum">
-		<input type="submit" value="分析" class="btn btn-default" id="submit">
+    <%= hidden_field_tag "num", @queryNumber==0?1:@queryNumber, id: "paramnum" %>
+    <%= submit_tag "分析", {class: "btn btn-default"} %>
 	<% end %>
 </div>
-<p>
-検索内容を含む生徒数
-<ul>
-<% @queryNumber.times do |r| %>
-<li><%= @search[r].result.size %>人</li>
-</p>
-<% end %>
-</ul>
-<%= @queryString %>
+
