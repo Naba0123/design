@@ -3,23 +3,23 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'railroady'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.13.1'
-  gem 'capybara', '2.2.0'
-  gem 'factory_girl_rails', '4.3.0'
-  gem 'railroady'
+  gem 'rspec-rails', '2.14.1'       # testing framework for BDD
+  gem 'capybara', '2.2.0'           # integration testing tool
+  gem 'factory_girl_rails', '4.3.0' # DSL for defining and using factories
+  gem 'guard-rspec', '4.2.3'        # handle events on file system modifications
+  gem 'spring', '1.0.0'             # preloader for speed up development
 end
 
 gem 'unread', '0.3.1'
 
-# for pagenate
-gem 'kaminari', '0.15.0'
+gem 'kaminari', '0.15.0' # pagenator
 
 # for search feature
 gem 'ransack', '1.1.0'
