@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.string "name"
   end
 
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.string   "place"
+    t.text     "detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "graduates", force: true do |t|
     t.integer "user_id"
     t.boolean "is_change"

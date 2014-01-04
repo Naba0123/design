@@ -12,16 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :meeting_date %><br>
-    <%= f.date_select :meeting_date %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :meeting_place %><br>
-    <%= f.text_field :meeting_place %>
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
   </div>
   <div class="field">
-    <%= f.label :event_type %><br>
-    <%= f.number_field :event_type %>
+    <%= f.label :place %><br>
+    <%= f.text_field :place %>
+  </div>
+  <div class="field">
+    <%= f.label :detail %><br>
+    <%= f.text_area :detail %>
   </div>
   <div class="actions">
     <%= f.submit %>
