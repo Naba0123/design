@@ -31,7 +31,7 @@ FactoryGirl.define do
     country  'JP'
     address  'ゲンゴロウ島ペンギン村モモンガ1番地'
     phone    '00011112222'
-    job      ''
+    job      'ガッちゃん'
     job_kind_id '1'
     birthday '1967-05-31'
     gender   0
