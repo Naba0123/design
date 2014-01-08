@@ -11,6 +11,7 @@
       t.belongs_to :job_kind
       t.date :birthday
       t.integer :gender
+      t.boolean :authorized
       t.timestamps
     end
     create_table :students do |t|
@@ -36,7 +37,6 @@
       t.integer :wish
       t.integer :wish_course
       t.string :teacher
-      t.boolean :authorized
     end
     create_table :meetings do |t|
       t.integer :user_id

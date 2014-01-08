@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140108050158) do
     t.integer  "count"
     t.text     "purpose"
     t.string   "another_address"
+    t.boolean  "is_published"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

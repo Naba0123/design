@@ -18,10 +18,7 @@ class SessionsController < ApplicationController
     user = User.find_by_account params[:account]
     if user && user.authenticate(params[:pass])
       # 認証をまだ受けていない人はログインできない
-      if user.user_type == :participant and user.participant.authorized == false
-        flash.notice = "大学の承認待ちによりログインできません。"
-        redirect_to :controller => 'sessions', :action => 'new'
-      elsif user.user_type == :student and !(user.graduate.nil?) and user.graduate.is_entered == false
+      if user.authorized == false
         flash.notice = "大学の承認待ちによりログインできません。"
         redirect_to :controller => 'sessions', :action => 'new'
       else
@@ -30,7 +27,7 @@ class SessionsController < ApplicationController
         redirect_to :root
       end
     else
-      flash.notice = "アカウント名またはパスワードが間違っています"
+      flash.notice = "アカウント名またはパスワードが間違っています。"
       redirect_to :controller => 'sessions', :action => 'new'
     end
   end
