@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer  "count"
     t.text     "purpose"
     t.string   "another_address"
+    t.boolean  "is_published"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer "user_id"
     t.boolean "is_change"
     t.date    "finish_date"
+    t.boolean "is_entered"
   end
 
   create_table "guidance_kinds", force: true do |t|

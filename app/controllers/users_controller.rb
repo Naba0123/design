@@ -34,7 +34,7 @@
     @user = User.new
     @new_type = params[:new_type]
     if @new_type == "graduate"
-      @user.build_graduate(:is_entered => false)
+      @user.build_graduate()
       @new_name = "Graduate"
     elsif @new_type == "student"
       if session[:user_id]
@@ -45,11 +45,11 @@
           render 'nopermission'
         end
       else
-        @user.build_participant(:authorized => false)
+        @user.build_participant()
         @new_name = "Participant"
       end
     else
-      @user.build_participant(:authorized => false)
+      @user.build_participant()
       @new_name = "Participant"
     end
   end
@@ -63,10 +63,10 @@
   def create
     @user = User.new(params[:user])
     
-    if !(@user.participant.nil?)
-      @user.participant.authorized = false
-    elsif !(@user.graduate.nil?)
-      @user.graduate.is_entered = false
+    if session[:user_id]
+      @user.authorized = true
+    else
+      @user.authorized = false
     end
     
     respond_to do |format|
@@ -115,10 +115,12 @@
   def list_unauthorized
     @list_type = params[:list_type]
     if @list_type == "graduate"
-      @search = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
+      @search_tmp = User.where(:authorized => true)
+      @search = @search_tmp.joins(:graduate).merge(Graduate.where(:is_entered => false))
       @list_name = "Graduate"
     else
-      @search = User.joins(:participant).merge(Participant.where(:authorized => false))
+      @search_tmp = User.joins(:participant).merge(Participant.all)
+      @search = @search_tmp.where(:authorized => false)
       @list_name = "Participant"
     end
     @users = @search
