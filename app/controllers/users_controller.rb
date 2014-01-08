@@ -144,7 +144,12 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:account, :password, :password_confirmation, :name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender, :participant_attributes)
+      params.require(:user).permit(:account, :password, :password_confirmation, :name, :country,
+                                   :address, :phone, :job, :job_kind_id, :birthday, :gender, 
+                                   :participant_attributes => [:wish, :wish_course, :teacher],
+                                   :student_attributes => [:grade, :department, :research_subject, :research_room,
+                                   :student_number, :guarantor_name, :guarantor_address, :guarantor_phone, :entry_date],
+                                   :graduate_attributes => [:is_change, :finish_date, :is_entered])
     end
     
     # 大学以外は自分の情報しか参照できない
