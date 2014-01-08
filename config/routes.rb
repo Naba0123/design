@@ -1,7 +1,11 @@
 ﻿Design::Application.routes.draw do
+
   resources :guidances_users
 
   resources :guidances
+
+  resources :events
+
 
   root :to => 'users#index'
 

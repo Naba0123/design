@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Guidance id:</strong>
+  <%= @guidance.id %>
+</p>
+
+<p>
+  <strong>Guidance date:</strong>
+  <%= @guidance.guidance_date %>
+</p>
+
+<p>
+  <strong>Guidance place:</strong>
+  <%= @guidance.guidance_place %>
+</p>
+
+<p>
+  <strong>Guidance kind:</strong>
+  <%= @guidance.guidance_kind.try(:name) %>
+</p>
+  
+  
+<%= link_to 'Edit', edit_guidance_path(@guidance) %> |
+<%= link_to 'Back', guidances_path %>

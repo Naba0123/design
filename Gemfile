@@ -4,7 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: [:development]
+group :development do
+  gem 'sqlite3'
+  gem 'pry-rails'
+end
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -12,6 +15,8 @@ group :development, :test do
   gem 'factory_girl_rails', '4.3.0'
   gem 'railroady'
 end
+
+gem 'unread', '0.3.1'
 
 # for pagenate
 gem 'kaminari', '0.15.0'
@@ -51,7 +56,7 @@ end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'protected_attributes'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

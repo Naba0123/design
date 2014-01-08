@@ -1,6 +1,7 @@
 ﻿class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :authorize]
   skip_before_action :check_logined, only: [:new, :create]
+  before_action :check_admin, only: [:search, :list, :authorize, :list_unauthorized]
   skip_before_action :check_permission, only: [:index, :show, :new, :edit, :create, :update, :destroy, :new_graduate]
 
   def search
@@ -35,7 +36,7 @@
     @user = User.new
     @new_type = params[:new_type]
     if @new_type == "graduate"
-      @user.build_graduate(:is_entered => false)
+      @user.build_graduate()
       @new_name = "Graduate"
     elsif @new_type == "student"
       if session[:user_id]
@@ -46,11 +47,11 @@
           render 'nopermission'
         end
       else
-        @user.build_participant(:authorized => false)
+        @user.build_participant()
         @new_name = "Participant"
       end
     else
-      @user.build_participant(:authorized => false)
+      @user.build_participant()
       @new_name = "Participant"
     end
   end
@@ -62,12 +63,12 @@
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     
-    if !(@user.participant.nil?)
-      @user.participant.authorized = false
-    elsif !(@user.graduate.nil?)
-      @user.graduate.is_entered = false
+    if session[:user_id]
+      @user.authorized = true
+    else
+      @user.authorized = false
     end
     
     respond_to do |format|
@@ -89,7 +90,7 @@
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(user_params)
         format.html { redirect_to @user, notice: 'ユーザが更新されました' }
         format.json { head :no_content }
       else
@@ -116,10 +117,12 @@
   def list_unauthorized
     @list_type = params[:list_type]
     if @list_type == "graduate"
-      @search = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
+      @search_tmp = User.where(:authorized => true)
+      @search = @search_tmp.joins(:graduate).merge(Graduate.where(:is_entered => false))
       @list_name = "Graduate"
     else
-      @search = User.joins(:participant).merge(Participant.where(:authorized => false))
+      @search_tmp = User.joins(:participant).merge(Participant.all)
+      @search = @search_tmp.where(:authorized => false)
       @list_name = "Participant"
     end
     @users = @search
@@ -141,15 +144,23 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender)
+      params.require(:user).permit(:account, :password, :password_confirmation, :name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender, :participant_attributes)
     end
     
+    # 大学以外は自分の情報しか参照できない
     def check_permission
-      # 大学以外は自分の情報しか参照できない
       unless @current_user.user_type == :admin
         unless @user.id == @current_user.id
           render 'nopermission'
         end
       end
     end
+    
+   # 大学しかアクセスできないページの管理
+   def check_admin
+     unless @current_user.user_type == :admin
+       render 'nopermission'
+     end
+   end
+   
 end

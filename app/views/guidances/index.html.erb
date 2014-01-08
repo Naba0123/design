@@ -1,0 +1,33 @@
+<h1>Listing guidances</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Guidance id</th>
+      <th>Guidance date</th>
+      <th>Guidance place</th>
+      <th>Guidance kind</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guidances.each do |guidance| %>
+      <tr>
+        <td><%= guidance.id %></td>
+        <td><%= guidance.guidance_date %></td>
+        <td><%= guidance.guidance_place %></td>
+        <td><%= guidance.guidance_kind.try(:name) %></td>
+        <td><%= link_to 'Show', guidance %></td>
+        <td><%= link_to 'Edit', edit_guidance_path(guidance) %></td>
+        <td><%= link_to 'Destroy', guidance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guidance', new_guidance_path %>

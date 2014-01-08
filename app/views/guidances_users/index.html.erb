@@ -1,0 +1,29 @@
+<h1>Listing guidances_users</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Guidance</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guidances_users.each do |guidances_user| %>
+      <tr>
+        <td><%= guidances_user.user_id %></td>
+        <td><%= guidances_user.guidance_id %></td>
+        <td><%= link_to 'Show', guidances_user %></td>
+        <td><%= link_to 'Edit', edit_guidances_user_path(guidances_user) %></td>
+        <td><%= link_to 'Destroy', guidances_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guidances user', new_guidances_user_path %>
