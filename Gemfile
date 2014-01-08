@@ -16,6 +16,8 @@ group :development, :test do
   gem 'railroady'
 end
 
+gem 'unread', '0.3.1'
+
 # for pagenate
 gem 'kaminari', '0.15.0'
 
