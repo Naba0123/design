@@ -1,6 +1,7 @@
 ﻿class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :authorize]
   skip_before_action :check_logined, only: [:new, :create]
+  before_action :check_admin, only: [:search, :list, :authorize, :list_unauthorized]
   skip_before_action :check_permission, only: [:index, :show, :new, :edit, :create, :update, :destroy, :new_graduate]
 
   def search
@@ -142,12 +143,20 @@
       params.require(:user).permit(:name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender)
     end
     
+    # 大学以外は自分の情報しか参照できない
     def check_permission
-      # 大学以外は自分の情報しか参照できない
       unless @current_user.user_type == :admin
         unless @user.id == @current_user.id
           render 'nopermission'
         end
       end
     end
+    
+   # 大学しかアクセスできないページの管理
+   def check_admin
+     unless @current_user.user_type == :admin
+       render 'nopermission'
+     end
+   end
+   
 end
