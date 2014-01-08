@@ -5,6 +5,6 @@
   <%= active_link_to 'ユーザーの追加', new_user_path, { active: :exclusive, class: 'list-group-item' } %>
   <%= active_link_to '参加者の認証', list_unauthorized_users_path(:list_type=>"participant"), { active: /users\/list_unauthorized\?list_type=participant/, class: 'list-group-item' } %>
   <%= active_link_to '修了生の認証', list_unauthorized_users_path(:list_type=>"graduate"), { active: /users\/list_unauthorized\?list_type=graduate/, class: 'list-group-item' } %>
-  <%= active_link_to '統計分析', '#', { active: :exclusive, class: 'list-group-item' } %>
+  <%= active_link_to '統計分析', statis_path, { active: :exclusive, class: 'list-group-item' } %>
   <%= active_link_to '修了認定', '#', { active: :exclusive, class: 'list-group-item' } %>
 </div>

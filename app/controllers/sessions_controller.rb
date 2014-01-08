@@ -21,6 +21,9 @@ class SessionsController < ApplicationController
       if user.user_type == :participant and user.participant.authorized == false
         flash.notice = "大学の承認待ちによりログインできません。"
         redirect_to :controller => 'sessions', :action => 'new'
+      elsif user.user_type == :student and !(user.graduate.nil?) and user.graduate.is_entered == false
+        flash.notice = "大学の承認待ちによりログインできません。"
+        redirect_to :controller => 'sessions', :action => 'new'
       else
         session[:user_id] = user.id
 #        flash.notice = "ログインしました"
