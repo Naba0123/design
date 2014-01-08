@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      research_rooms: '研究室'
+    attributes:
+      research_rooms:
+        name:  '名前'

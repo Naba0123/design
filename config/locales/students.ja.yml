@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      students: '学生'
+    attributes:
+      students:
+        user_id:           'ID'
+        grade:             '学年'
+        department:        '学部'
+        research_subject:  '研究科'
+        research_room:     '研究室' 
+        student_number:    '学籍番号'
+        guarantor_name:    '保証人の氏名'
+        guarantor_address: '保証人の住所'
+        guarantor_phone:   '保証人の電話番号'
+        entry_date:        '申込日'

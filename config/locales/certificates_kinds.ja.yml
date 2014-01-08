@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      certificates_kinds: '証明書の種類'
+    attributes:
+      certificates_kinds:
+        name: '名前' 

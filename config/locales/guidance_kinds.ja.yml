@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      guidance_kinds: '説明会の種類'
+    attributes:
+      guidance_kinds:
+        name:  '名前'
+

@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      graduates: '説明会'
+    attributes:
+      graduates:
+        user_id:     'ID'
+        is_change:   '？'
+        finish_date: '終了日'

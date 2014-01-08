@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      event: 'イベント'
+    attributes:
+      event:
+        event_name:   'イベント名'
+        event_date:   '日時'
+        event_place:  '開催場所'
+        event_datail: 'イベント内容'
