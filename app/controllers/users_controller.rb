@@ -61,7 +61,7 @@
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     
     if session[:user_id]
       @user.authorized = true
@@ -88,7 +88,7 @@
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(user_params)
         format.html { redirect_to @user, notice: 'ユーザが更新されました' }
         format.json { head :no_content }
       else
@@ -142,7 +142,7 @@
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:account, :password, :password_confirmation, :name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender)
+      params.require(:user).permit(:account, :password, :password_confirmation, :name, :country, :address, :phone, :job, :job_kind_id, :birthday, :gender, :participant_attributes)
     end
     
     # 大学以外は自分の情報しか参照できない

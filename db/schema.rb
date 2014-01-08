@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218105716) do
+ActiveRecord::Schema.define(version: 20140108050158) do
 
   create_table "after_graduations", force: true do |t|
     t.integer  "user_id"
     t.string   "belong"
     t.string   "position"
-    t.integer  "work_kind"
+    t.integer  "job_kind_id"
     t.text     "other"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20131218105716) do
 
   create_table "departments", force: true do |t|
     t.string "name"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.string   "place"
+    t.text     "detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "graduates", force: true do |t|
@@ -69,7 +78,17 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
+    t.boolean "authorized"
   end
+
+  create_table "read_marks", force: true do |t|
+    t.integer  "readable_id"
+    t.integer  "user_id",                  null: false
+    t.string   "readable_type", limit: 20, null: false
+    t.datetime "timestamp"
+  end
+
+  add_index "read_marks", ["user_id", "readable_type", "readable_id"], name: "index_read_marks_on_user_id_and_readable_type_and_readable_id"
 
   create_table "research_rooms", force: true do |t|
     t.string "name"
@@ -103,7 +122,6 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer  "job_kind_id"
     t.date     "birthday"
     t.integer  "gender"
-    t.boolean  "authorized"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
