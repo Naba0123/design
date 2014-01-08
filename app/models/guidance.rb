@@ -5,6 +5,4 @@ class Guidance < ActiveRecord::Base
 # guidance_idと関係を持たせる
   belongs_to :guidance_kind
 
-# アクセス制限 : 以下に書かれているものはフォーム（ハッシュ）から変更可能にする。
-  attr_accessible :guidance_date,:guidance_place,:guidance_kind_id
 end

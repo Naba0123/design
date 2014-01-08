@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20140108050158) do
-
 
   create_table "after_graduations", force: true do |t|
     t.integer  "user_id"
@@ -35,7 +33,6 @@ ActiveRecord::Schema.define(version: 20140108050158) do
     t.integer  "count"
     t.text     "purpose"
     t.string   "another_address"
-    t.boolean  "is_published"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,8 +94,6 @@ ActiveRecord::Schema.define(version: 20140108050158) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
-    t.boolean "authorized"
-
   end
 
   create_table "read_marks", force: true do |t|
@@ -106,7 +101,6 @@ ActiveRecord::Schema.define(version: 20140108050158) do
     t.integer  "user_id",                  null: false
     t.string   "readable_type", limit: 20, null: false
     t.datetime "timestamp"
-
   end
 
   add_index "read_marks", ["user_id", "readable_type", "readable_id"], name: "index_read_marks_on_user_id_and_readable_type_and_readable_id"
@@ -143,6 +137,7 @@ ActiveRecord::Schema.define(version: 20140108050158) do
     t.integer  "job_kind_id"
     t.date     "birthday"
     t.integer  "gender"
+    t.boolean  "authorized"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
