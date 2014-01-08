@@ -1,4 +1,8 @@
 ﻿Design::Application.routes.draw do
+  resources :guidances_users
+
+  resources :guidances
+
   root :to => 'users#index'
 
   resources :certificates

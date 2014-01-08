@@ -1,6 +1,9 @@
 ﻿class User < ActiveRecord::Base
     has_secure_password
-
+    
+    # guidanceと多：多の関係を持たせる
+    has_many:guidances_users
+    has_many:guidances, :through => :guidances_users
     # validates_presence_of で必須事項になる。書く順番でエラーメッセージの順番が変わる
     validates_presence_of :account
     validates :account, :uniqueness => true

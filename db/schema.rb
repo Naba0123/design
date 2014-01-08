@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218105716) do
+ActiveRecord::Schema.define(version: 20140107155046) do
 
   create_table "after_graduations", force: true do |t|
     t.integer  "user_id"
@@ -45,10 +45,28 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer "user_id"
     t.boolean "is_change"
     t.date    "finish_date"
+    t.boolean "is_entered"
   end
 
   create_table "guidance_kinds", force: true do |t|
     t.string "name"
+  end
+
+  create_table "guidances", force: true do |t|
+    t.date     "guidance_date"
+    t.string   "guidance_place"
+    t.integer  "guidance_kind_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guidances_users", force: true do |t|
+    t.string   "user_id",     limit: 8, null: false
+    t.string   "guidance_id", limit: 8, null: false
+    t.datetime "create_at"
+    t.datetime "update_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "job_kinds", force: true do |t|
@@ -67,6 +85,7 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
+    t.boolean "authorized"
   end
 
   create_table "research_rooms", force: true do |t|
@@ -101,7 +120,6 @@ ActiveRecord::Schema.define(version: 20131218105716) do
     t.integer  "job_kind_id"
     t.date     "birthday"
     t.integer  "gender"
-    t.boolean  "authorized"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
