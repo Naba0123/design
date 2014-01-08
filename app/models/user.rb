@@ -22,6 +22,8 @@
     accepts_nested_attributes_for :after_graduation
 
     belongs_to :job_kind
+
+    acts_as_reader
     
     def user_type
       if self.graduate

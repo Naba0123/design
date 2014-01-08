@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event.mark_as_read!(:for => @current_user)
   end
 
   # GET /events/new
