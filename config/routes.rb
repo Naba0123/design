@@ -1,5 +1,7 @@
 ﻿Design::Application.routes.draw do
 
+  resources :after_graduations
+
   resources :guidances_users
 
   resources :guidances

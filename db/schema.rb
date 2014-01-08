@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108050158) do
+ActiveRecord::Schema.define(version: 20140108091012) do
 
   create_table "after_graduations", force: true do |t|
-    t.integer  "user_id"
     t.string   "belong"
     t.string   "position"
-    t.integer  "job_kind_id"
+    t.integer  "job_kind"
     t.text     "other"
+    t.integer  "graduate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

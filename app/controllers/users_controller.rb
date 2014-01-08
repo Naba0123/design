@@ -71,6 +71,10 @@
       @user.authorized = false
     end
     
+    unless @user.graduate.nil?
+      @user.graduate.is_entered = false
+    end
+    
     respond_to do |format|
       if @user.save
         if session[:user_id]
@@ -117,8 +121,7 @@
   def list_unauthorized
     @list_type = params[:list_type]
     if @list_type == "graduate"
-      @search_tmp = User.where(:authorized => true)
-      @search = @search_tmp.joins(:graduate).merge(Graduate.where(:is_entered => false))
+      @search = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
       @list_name = "Graduate"
     else
       @search_tmp = User.joins(:participant).merge(Participant.all)
