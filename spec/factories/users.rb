@@ -120,6 +120,7 @@ FactoryGirl.define do
   factory :graduate_taro, class: Graduate do
     is_change false
     finish_date '1985-03-31'
+    is_entered true
   end
 
   factory :taro, :class => User do
