@@ -10,7 +10,14 @@
  *
  */
 
+//$font-size-base: 14px;
+//$line-height-base: 1.3;
+
+@import "variables";
+@import "bootswatch";
+
 @import "bootstrap";
+@import "font-awesome";
 
 .date-controls .form-control {
   width: initial;
