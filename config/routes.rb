@@ -21,6 +21,9 @@
   get 'statis' =>'statistics#index'
   post 'statis' => 'statistics#index'
 
+  match 'users/new/:new_type' => 'users#new', :via => 'get', :as => 'new_user'
+  match 'users/unauthorized/:list_type' => 'users#list_unauthorized', :via => 'get', :as => 'unauthorized_users'
+
   resources :users do
     member do
       get 'authorize'
@@ -29,7 +32,6 @@
     collection do
       get :list
       get :search
-      get 'list_unauthorized'
       get 'new_graduate'
       get 'nopermission'
     end
