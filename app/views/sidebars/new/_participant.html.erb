@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">説明会参加者の新規作成</div>
+  <div class="panel-body">
+    <h5>学生管理システムにようこそ！</h5>
+    <p>
+      <small>右のフォームに必要事項を入力してアカウント登録を完了させてください． </small>
+    </p>
+    <hr>
+    <h5>もしかして修了生ですか？ </h5>
+    <p>
+      <small>
+        その場合は
+        <%= link_to 'こちら', create_new_user_path(:new_type => 'graduate') %>
+        からアカウントの登録をしてください．
+      </small>
+    </p>
+  </div>
+</div>
