@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      job_kinds: '説明会'
+    attributes:
+      job_kinds:
+        name:  '名前'

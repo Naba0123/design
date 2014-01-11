@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      research_subjects: '研究科'
+    attributes:
+      research_subjects:
+        name:  '名前'

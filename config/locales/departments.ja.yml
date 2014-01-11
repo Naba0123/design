@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      departments: '学部'
+    attributes:
+      departments:
+        name:  '名前'

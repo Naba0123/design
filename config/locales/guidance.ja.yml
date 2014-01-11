@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      guidance: '説明会'
+    attributes:
+      guidance:
+        guidance_date:  '日時'
+        guidance_place: '開催場所'
+        guidance_kind:  '説明会の種類'

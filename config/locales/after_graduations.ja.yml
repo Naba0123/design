@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      after_graduations: '卒業後'
+    attributes:
+      after_graduations: 
+        user_id:         'ID'
+        belong:          '所属'
+        position:        '勤め口'
+        work_kind:       '職種'
+        other:           'その他'
+        created_at:      '作成日'
+        updated_at:      '更新日'

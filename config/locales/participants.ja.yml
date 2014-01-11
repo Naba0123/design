@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      participants: '参加者'
+    attributes:
+      participants:
+        user_id:     'ID'
+        wish:        '志望'
+        wish_course: '志望コース'
+        teacher:     '志望教員'

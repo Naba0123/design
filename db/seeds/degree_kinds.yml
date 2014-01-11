@@ -1,0 +1,6 @@
+doctor:
+  id: 1
+  name: '博士'
+master:
+  id: 2
+  name: '修士'
