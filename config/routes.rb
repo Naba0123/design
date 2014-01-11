@@ -21,10 +21,10 @@
   get 'statis' =>'statistics#index'
   post 'statis' => 'statistics#index'
 
-  match 'users/new/:new_type' => 'users#new', :via => 'get', :as => 'new_user'
+  match 'users/new/:new_type' => 'users#new', :via => 'get', :as => 'create_new_user'
   match 'users/unauthorized/:list_type' => 'users#list_unauthorized', :via => 'get', :as => 'unauthorized_users'
 
-  resources :users do
+  resources :users, :except => [:new] do
     member do
       get 'authorize'
     end
