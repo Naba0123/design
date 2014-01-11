@@ -18,7 +18,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if session[:user_id] %>
           <li><%= link_to @current_user.name, User.find(session[:user_id]) %></li>
-          <li><%= link_to 'ログアウト', session_path(session[:user_id]), {:method => :delete, :confirm => 'ログアウトしますか？'}  %></li>
+          <li>
+          <%= link_to session_path(session[:user_id]), { :method => :delete, :rel => 'tooltip', :data => { :toggle => 'tooltip', :placement => 'bottom' }, :title => 'signout' } do %>
+              <span class="fa fa-sign-out"></span>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div><!--/.nav-collapse -->
