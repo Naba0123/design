@@ -19,7 +19,15 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.date-controls {
+  display: inline-block;
+}
+
 .date-controls .form-control {
   width: initial;
   display: inline-block;
+}
+
+.list-group .list-nested .list-group-item {
+  padding-left: 30px;
 }
