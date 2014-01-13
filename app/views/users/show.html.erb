@@ -1,8 +1,15 @@
-﻿<% provide :title, 'Show' %>
+<% provide :title, 'Show' %>
 <h2>
-  <%= @user.name %>さんの情報
-  <small><%= link_to 'Edit', edit_user_path(@user), { class: "" } %></small>
+  <%= @user.name %>
+  <small>
+    <%= link_to edit_user_path(@user), { class: "pull-right btn btn-default btn-sm" } do %>
+      <span class="fa fa-edit"></span>
+      編集
+    <% end %>
+  </small>
 </h2>
+
+<hr>
 
 <p id="notice"><%= notice %></p>
 
@@ -26,5 +33,3 @@
   <% end %>
 </p>
 <% end %>
-
-
