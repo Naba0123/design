@@ -1,4 +1,6 @@
 ﻿class StatisticsController < ApplicationController
+  before_action :check_admin
+
   def index
     @nameArr=params[:name]
     @search=[]
@@ -16,5 +18,13 @@
     end
     @search << User.search(nil)
   end
+  
+  private
+    
+    def check_admin
+      unless @current_user.user_type == :admin
+        redirect_to nopermission_users_path
+      end
+    end
   
 end

@@ -1,5 +1,6 @@
 class GuidancesController < ApplicationController
   before_action :set_guidance, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
 
   # GET /guidances
   # GET /guidances.json
@@ -28,7 +29,7 @@ class GuidancesController < ApplicationController
 
     respond_to do |format|
       if @guidance.save
-        format.html { redirect_to @guidance, notice: 'Guidance was successfully created.' }
+        format.html { redirect_to @guidance, notice: t("guidance_successfully_created") }
         format.json { render action: 'show', status: :created, location: @guidance }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class GuidancesController < ApplicationController
   def update
     respond_to do |format|
       if @guidance.update(guidance_params)
-        format.html { redirect_to @guidance, notice: 'Guidance was successfully updated.' }
+        format.html { redirect_to @guidance, notice: t("guidance_successfully_updated") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,5 +71,12 @@ class GuidancesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def guidance_params
       params.require(:guidance).permit(:guidance_date, :guidance_place, :guidance_kind_id)
+    end
+    
+    # 大学しかアクセスできないページの管理
+    def check_admin
+      unless @current_user.user_type == :admin
+        redirect_to nopermission_users_path
+      end
     end
 end

@@ -1,15 +1,17 @@
 <h4>参加者情報</h4>
 <dl class="dl-horizontal">
-  <dt>User ID</dt>
+  <dt>ID</dt>
   <dd><%= @user.id %></dd>
   <dt>希望課程</dt>
-  <dd><%= @user.participant.wish %></dd>
+  <dd><%= Department.find(@user.participant.wish).name %></dd>
   <dt>志望コース</dt>
-  <dd><%= @user.participant.wish_course %></dd>
+  <dd><%= ResearchRoom.find(@user.participant.wish_course).name %></dd>
   <dt>志望指導教員名</dt>
   <dd><%= @user.participant.teacher %></dd>
+  <% if @user.participant.is_entered %>
   <dt>入学済み</dt>
-  <dd>boolean型らしいけどDBに定義されてない(´・ω・｀)</dd>
+  <dd></dd>
   <dt>入学日</dt>
-  <dd>Date型らしいけどDBに定義されてない(´・ω・｀)</dd>
+  <dd><%= @user.participant.entry_date %></dd>
+  <% end %>
 </dl>

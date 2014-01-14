@@ -1,4 +1,8 @@
 ja:
+  event_information: 'イベント情報'
+  register_event: 'イベント情報の新規登録'
+  event_successfully_created: 'イベント情報が作成されました'
+  event_successfully_updated: 'イベント情報が更新されました'
   activerecord:
     models:
       event: 'イベント'
@@ -7,4 +11,4 @@ ja:
         event_name:   'イベント名'
         event_date:   '日時'
         event_place:  '開催場所'
-        event_datail: 'イベント内容'
+        event_detail: 'イベント内容'

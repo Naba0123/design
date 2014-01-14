@@ -1,0 +1,12 @@
+ja:
+  user_id: 'ID'
+  guidance_id: '説明会ID'  
+  register_guidances_user: '参加履歴情報の新規登録'
+  guidances_user_succesfully_created: '参加履歴情報を追加しました'
+  activerecord:
+    models:
+      guidances_user: '参加履歴一覧'
+    attributes:
+      guidances_user:
+        user_id:  'ID'
+        guidance_id: '説明会ID'

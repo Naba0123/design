@@ -82,8 +82,8 @@
       <div class="col-sm-10">
         <span class="date-controls">
           <%= f.date_select :birthday, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+          <%= content_tag :small, @user.errors.full_messages_for(:birthday).join(','), class: "text-danger" %>
         </span>
-        <%= content_tag :small, @user.errors.full_messages_for(:birthday).join(','), class: "text-danger" %>
       </div>
     </div>
     <div class="form-group">
@@ -93,6 +93,7 @@
         <%= f.label 'gender_m', '男' %>
         <%= f.radio_button :gender, 2, { id: 'user_gender_f' } %>
         <%= f.label 'gender_f', '女' %>
+        <%= content_tag :small, @user.errors.full_messages_for(:gender).join(','), class: "text-danger" %>
       </div>
     </div>
   </fieldset>
@@ -107,14 +108,16 @@
       <div class="form-group">
         <%= f.label :wish, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= participant_form.text_field :wish, class: "form-control" %>
+          <%= participant_form.collection_select :wish, Department.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
           <%= content_tag :small, @user.errors.full_messages_for(:wish).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :wish_course, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= participant_form.text_field :wish_course, class: "form-control" %>
+          <%= participant_form.collection_select :wish_course, ResearchRoom.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
         <%= content_tag :small, @user.errors.full_messages_for(:wish_course).join(','), class: "text-danger" %>
         </div>
       </div>
@@ -125,6 +128,25 @@
           <%= content_tag :small, @user.errors.full_messages_for(:teacher).join(','), class: "text-danger" %>
         </div>
       </div>
+      <% if session[:user_id] and @current_user.user_type==:admin %>
+        <div class="form-group">
+          <%= f.label :entry_date, class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <span class="date-controls">
+              <%= participant_form.date_select :entry_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :is_entered, class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= participant_form.radio_button :is_entered, 1 %>
+            <%= f.label 'gender_m', 'Yes' %>
+            <%= participant_form.radio_button :is_entered, 0 %>
+            <%= f.label 'gender_f', 'No' %>
+          </div>
+        </div>
+      <% end %>
     </fieldset>
   <% end %>
 
@@ -138,57 +160,59 @@
       <div class="form-group">
         <%= f.label :grade, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= student_form.text_field :grade, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:grade).join(','), class: "text-danger" %>
+          <%= student_form.number_field :grade, class: "form-control" %>
+          <%= content_tag :small, @user.student.errors.full_messages_for(:grade).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :department, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= student_form.text_field :department, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:department).join(','), class: "text-danger" %>
+          <%= student_form.collection_select :department, Department.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+          <%= content_tag :small, @user.student.errors.full_messages_for(:department).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :research_subject, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= student_form.text_field :research_subject, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:research_subject).join(','), class: "text-danger" %>
+          <%= student_form.collection_select :research_subject, ResearchSubject.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
+        <%= content_tag :small, @user.student.errors.full_messages_for(:research_subject).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :research_room, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= student_form.text_field :research_room, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:research_room).join(','), class: "text-danger" %>
+          <%= student_form.collection_select :research_room, ResearchRoom.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
+        <%= content_tag :small, @user.student.errors.full_messages_for(:research_room).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :student_number, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
           <%= student_form.text_field :student_number, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:student_number).join(','), class: "text-danger" %>
+          <%= content_tag :small, @user.student.errors.full_messages_for(:student_number).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :guarantor_name, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
           <%= student_form.text_field :guarantor_name, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:guarantor_name).join(','), class: "text-danger" %>
+          <%= content_tag :small, @user.student.errors.full_messages_for(:guarantor_name).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :guarantor_address, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
           <%= student_form.text_field :guarantor_address, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:guarantor_address).join(','), class: "text-danger" %>
+          <%= content_tag :small, @user.student.errors.full_messages_for(:guarantor_address).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :guarantor_phone, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
           <%= student_form.text_field :guarantor_phone, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:guarantor_phone).join(','), class: "text-danger" %>
+          <%= content_tag :small, @user.student.errors.full_messages_for(:guarantor_phone).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
@@ -196,11 +220,11 @@
         <div class="col-sm-10">
           <span class="date-controls">
             <%= student_form.date_select :entry_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+                      <%= content_tag :small, @user.student.errors.full_messages_for(:entry_date).join(','), class: "text-danger" %>
           </span>
         </div>
       </div>
     </fieldset>
->>>>>>> improve-view
   <% end %>
 
   <% # ここまで在学生情報 %>

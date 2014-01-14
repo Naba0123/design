@@ -1,13 +1,17 @@
-<h1>Listing guidances_users</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Guidance</th>
-      <th></th>
-      <th></th>
-      <th></th>
+<% provide :title, 'Join to Guidances' %>
+<h1>参加履歴一覧</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t 'activerecord.attributes.guidances_user.user_id' %></th>
+        <th><%= t 'activerecord.attributes.guidances_user.guidance_id' %></th>
+        <th>作成日</th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
   </thead>
 
@@ -16,14 +20,17 @@
       <tr>
         <td><%= guidances_user.user_id %></td>
         <td><%= guidances_user.guidance_id %></td>
+        <td><%= guidances_user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to 'Show', guidances_user %></td>
         <td><%= link_to 'Edit', edit_guidances_user_path(guidances_user) %></td>
-        <td><%= link_to 'Destroy', guidances_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', guidances_user, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to '参加履歴の登録', new_guidances_user_path %>
+</div>
 
 <br>
 
-<%= link_to 'New Guidances user', new_guidances_user_path %>
+

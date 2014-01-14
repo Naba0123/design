@@ -1,24 +1,19 @@
+<% provide :title, 'Event' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<dl class="dl-horizontal">
+  <dt><%= t("activerecord.attributes.event.event_name") %></dt>
+   <dd><%= @event.name %></dd>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
+  <dt><%= t("activerecord.attributes.event.event_date") %></dt>
+   <dd><%= @event.date %></dd>
 
-<p>
-  <strong>Place:</strong>
-  <%= @event.place %>
-</p>
+  <dt><%= t("activerecord.attributes.event.event_place") %></dt>
+    <dd><%= @event.place %></dd>
 
-<p>
-  <strong>Detail:</strong>
-  <%= @event.detail %>
-</p>
+  <dt><%= t("activerecord.attributes.event.event_detail") %></dt>
+    <dd><pre><%= @event.detail %></pre></dd>
+</dl>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

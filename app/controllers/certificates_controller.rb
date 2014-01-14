@@ -30,7 +30,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @certificate, notice: '修了証明書発行依頼が受注されました。' }
+        format.html { redirect_to users_path, notice: '修了証明書発行依頼が受注されました。郵送をお待ちください。' }
         format.json { render action: 'show', status: :created, location: @certificate }
       else
         format.html { render action: 'new' }
@@ -79,14 +79,14 @@ class CertificatesController < ApplicationController
      if @current_user.user_type == :admin
      elsif @current_user.user_type == :graduate
      else
-       render 'nopermission'
+       redirect_to nopermission_users_path
      end
    end
    
    # 大学しかアクセスできないページの管理
    def check_admin
      unless @current_user.user_type == :admin
-       render 'nopermission'
+       redirect_to nopermission_users_path
      end
    end
 

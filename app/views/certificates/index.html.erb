@@ -1,15 +1,16 @@
-<% provide :title, 'List' %>
-<h1>Listing certificates</h1>
+<% provide :title, 'Certificate List' %>
+<h1><%= t("certificate_information") %></h1>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
-        <th><%= t 'activerecord.attributes.certificate.kind' %></th>
-        <th><%= t 'activerecord.attributes.certificate.fnish_year' %></th>
-        <th><%= t 'activerecord.attributes.certificate.count' %></th>
-        <th><%= t 'activerecord.attributes.certificate.purpose' %></th>
-        <th><%= t 'activerecord.attributes.certificate.another_address' %></th>
+        <th><%= t("activerecord.attributes.certificate.certificate_kind") %></th>
+        <th><%= t("activerecord.attributes.certificate.finish_year") %></th>
+        <th><%= t("activerecord.attributes.certificate.count") %></th>
+        <th><%= t("activerecord.attributes.certificate.purpose") %></th>
+        <th><%= t("activerecord.attributes.certificate.another_address") %></th>
+        <th><%= t("activerecord.attributes.certificate.created_at") %></th>
       <th></th>
       <th></th>
     </tr>
@@ -23,13 +24,14 @@
         <td><%= certificate.count %></td>
         <td><%= certificate.purpose %></td>
         <td><%= certificate.another_address %></td>
+        <td><%= certificate.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to 'Show', certificate %></td>
-        <td><%= link_to 'Published', certificate, method: :delete, data: { confirm: '本当に発行しましたか？　データは削除されます' } %></td>
+        <td><%= link_to t("published"), certificate, method: :delete, data: { confirm: '本当に発行しましたか？　データは削除されます' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'New Certificate', :controller => 'certificates', :action => 'new' %>
+<%= link_to t("register_certificate"), :controller => 'certificates', :action => 'new' %>
 </div>
 
 <br>

@@ -2,7 +2,8 @@
   before_action :set_user, only: [:show, :edit, :update, :destroy, :authorize]
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_admin, only: [:search, :list, :authorize, :list_unauthorized]
-  skip_before_action :check_permission, only: [:index, :show, :new, :edit, :create, :update, :destroy, :new_graduate]
+  before_action :check_permission
+  skip_before_action :check_permission, only: [:index, :new, :edit, :create, :update, :destroy, :new_graduate]
 
   def search
     @search = User.search(params[:q])
@@ -118,6 +119,9 @@
     @authorize_type = params[:authorize_type]
   end
   
+  def nopermission
+  end
+  
   def list_unauthorized
     @list_type = params[:list_type]
     if @list_type == "graduate"
@@ -149,7 +153,7 @@
     def user_params
       params.require(:user).permit(:account, :password, :password_confirmation, :name, :country,
                                    :address, :phone, :job, :job_kind_id, :birthday, :gender, :authorized,
-                                   :participant_attributes => [:wish, :wish_course, :teacher],
+                                   :participant_attributes => [:wish, :wish_course, :teacher, :entry_date, :is_entered],
                                    :student_attributes => [:grade, :department, :research_subject, :research_room,
                                    :student_number, :guarantor_name, :guarantor_address, :guarantor_phone, :entry_date],
                                    :graduate_attributes => [:is_change, :finish_date, :is_entered])
