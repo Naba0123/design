@@ -1,0 +1,2 @@
+module AfterGraduationsHelper
+end

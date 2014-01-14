@@ -37,6 +37,10 @@ ActiveRecord::Schema.define(version: 20140108091012) do
     t.datetime "updated_at"
   end
 
+  create_table "degree_kinds", force: true do |t|
+    t.string "name"
+  end
+
   create_table "departments", force: true do |t|
     t.string "name"
   end

@@ -3,8 +3,8 @@ FactoryGirl.define do
   # midori: admin
   factory :midori, :class => User do
     account  'midori'
-    password 'hoge'
-    password_confirmation 'hoge'
+    password 'hogehoge'
+    password_confirmation 'hogehoge'
     name     '則巻みどり'
     country  'JP'
     address  'ゲンゴロウ島ペンギン村モモンガ1番地'
@@ -25,8 +25,8 @@ FactoryGirl.define do
 
   factory :gazilla, :class => User do
     account  'gazilla'
-    password 'hoge'
-    password_confirmation 'hoge'
+    password 'hogehoge'
+    password_confirmation 'hogehoge'
     name     '則巻ガジラ'
     country  'JP'
     address  'ゲンゴロウ島ペンギン村モモンガ1番地'
@@ -54,8 +54,8 @@ FactoryGirl.define do
 
   factory :arale, :class => User do
     account  'arale'
-    password 'hoge'
-    password_confirmation 'hoge'
+    password 'hogehoge'
+    password_confirmation 'hogehoge'
     name     '則巻アラレ'
     country  'JP'
     address  'ゲンゴロウ島ペンギン村モモンガ1番地'
@@ -89,8 +89,8 @@ FactoryGirl.define do
 
   factory :akane, :class => User do
     account  'akane'
-    password 'hoge'
-    password_confirmation 'hoge'
+    password 'hogehoge'
+    password_confirmation 'hogehoge'
     name     '木緑あかね'
     country  'US'
     address  'ゲンゴロウ島ペンギン村カモノハシ4番地'
@@ -125,8 +125,8 @@ FactoryGirl.define do
 
   factory :taro, :class => User do
     account  'taro'
-    password 'hoge'
-    password_confirmation 'hoge'
+    password 'hogehoge'
+    password_confirmation 'hogehoge'
     name     '空豆タロウ'
     country  'JP'
     address  'ゲンゴロウ島ペンギン村アルマジロ9番地'

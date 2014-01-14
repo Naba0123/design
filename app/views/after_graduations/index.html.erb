@@ -1,0 +1,33 @@
+<h1>Listing after_graduations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Belong</th>
+      <th>Position</th>
+      <th>Job kind</th>
+      <th>Other</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @after_graduations.each do |after_graduation| %>
+      <tr>
+        <td><%= after_graduation.belong %></td>
+        <td><%= after_graduation.position %></td>
+        <td><%= after_graduation.job_kind %></td>
+        <td><%= after_graduation.other %></td>
+        <td><%= link_to 'Show', after_graduation %></td>
+        <td><%= link_to 'Edit', edit_after_graduation_path(after_graduation) %></td>
+        <td><%= link_to 'Destroy', after_graduation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New After graduation', new_after_graduation_path %>
