@@ -25,14 +25,4 @@
 <% end %>
 <%unless @user.participant.nil? %>
   <%= render 'show_prt' %>
-  <p>
-  <b>過去の参加履歴</b>
-  <% @members.each do |guidance| %>
-   <p><td><%= guidance.id  %></td>
-      <td><%= guidance.guidance_date %></td>
-      <td><%= guidance.guidance_place %></td>
-      <td><%= guidance.guidance_kind.try(:name) %></td>
-  </p>
-  <% end %>
-</p>
 <% end %>
