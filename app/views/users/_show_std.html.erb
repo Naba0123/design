@@ -3,11 +3,11 @@
   <dt>学年</dt>
   <dd><%= @user.student.grade %></dd>
   <dt>学部</dt>
-  <dd><%= @user.student.department %></dd>
+  <dd><%= Department.find(@user.student.department).name %></dd>
   <dt>研究科</dt>
-  <dd><%= @user.student.research_subject %></dd>
+  <dd><%= ResearchSubject.find(@user.student.research_subject).name %></dd>
   <dt>研究室</dt>
-  <dd><%= @user.student.research_room %></dd>
+  <dd><%= ResearchRoom.find(@user.student.research_room).name %></dd>
   <dt>学籍番号</dt>
   <dd><%= @user.student.student_number %></dd>
   <dt>保証人氏名</dt>
