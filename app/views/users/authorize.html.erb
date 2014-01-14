@@ -1,5 +1,7 @@
 <% provide :title, 'Authorized' %>
 
+<% breadcrumb :authorize_user %>
+
 <h1>
   <% if @authorize_type == 'graduate' %>
     <%= t 'activerecord.attributes.unauthorized.graduate' %>

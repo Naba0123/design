@@ -16,6 +16,77 @@ crumb :user do |user|
   parent :list_users
 end
 
+crumb :events do
+  link "イベントの一覧・削除", events_path
+end
+
+crumb :new_event do
+  link "イベントの新規作成", new_event_path
+end
+
+crumb :edit_event do
+  link "イベントの編集", edit_event_path
+  parent :events
+end
+
+crumb :event do |event|
+  link "イベント詳細", event
+  parent :events
+end
+
+crumb :unauthorized_users do
+  link "未認証のユーザ一覧", unauthorized_users_path(:participant)
+end
+
+crumb :unauthorized_graduates do
+  link "未認証の修了生一覧", unauthorized_users_path(:graduate)
+end
+
+crumb :authorize_user do
+  link "ユーザの認証", authorize_user_path
+  parent :unauthorized_users
+end
+
+crumb :guidances do
+  link "説明会の一覧", guidances_path
+end
+
+crumb :new_guidance do
+  link "説明会の新規作成", new_guidance_path
+end
+
+crumb :edit_guidance do
+  link "説明会の編集", edit_guidance_path
+  parent :guidances
+end
+
+crumb :guidance do
+  link "説明会の詳細", guidance_path
+  parent :guidances
+end
+
+crumb :certificates do
+  link "証明書発行依頼の一覧", certificates_path
+end
+
+crumb :new_certificate do
+  link "証明書発行依頼の新規作成", new_certificate_path
+end
+
+crumb :edit_certificate do
+  link "証明書発行依頼の編集", edit_certificate_path
+  parent :certificates
+end
+
+crumb :certificate do
+  link "証明書発行依頼の詳細", show_certificate_path
+  parent :certificates
+end
+
+crumb :statistics do
+  link "統計分析", statis_path
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
