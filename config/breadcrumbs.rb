@@ -79,7 +79,7 @@ crumb :edit_certificate do
 end
 
 crumb :certificate do
-  link "証明書発行依頼の詳細", show_certificate_path
+  link "証明書発行依頼の詳細", certificate_path
   parent :certificates
 end
 
