@@ -12,7 +12,11 @@
     <dl class="dl-horizontal">
       <dt>所属</dt><dd><%= g.belong %></dd>
       <dt>役職</dt><dd><%= g.position %></dd>
-      <dt>業種</dt><dd><%= g.job_kind.try(:name) %></dd>
+<% begin %>
+      <dt>業種</dt><dd><%= JobKind.find(g.job_kind).name %></dd>
+<% rescue %>
+      <dt>業種</dt><dd>invalid value</dd>
+<% end %>
       <dt>その他</dt><dd><%= g.other %></dd>
     </dl>
   <% end %>
