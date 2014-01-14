@@ -1,20 +1,10 @@
 <%= form_for @event, :html => { class: "form-horizontal" } do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="form-group">
     <%= f.label :event_name, class: "col-sm-2 control-label"%>
     <div class="col-sm-10">
       <%= f.text_field :name, class: "form-control" %>
+      <%= content_tag :small, @event.errors.full_messages_for(:name).join(' '), class: "text-danger" %>
     </div>
   </div>
   <div class="form-group">
@@ -22,24 +12,27 @@
     <div class="col-sm-10">
       <span class="date-controls">
         <%= f.date_select :date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+        <%= content_tag :small, @event.errors.full_messages_for(:date).join(' '), class: "text-danger" %>
       </span>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :event_place, class: "col-sm-2 control-label"%>
     <div class="col-sm-10">
-    <%= f.text_field :place, class: "form-control" %>
+      <%= f.text_field :place, class: "form-control" %>
+      <%= content_tag :small, @event.errors.full_messages_for(:place).join(' '), class: "text-danger" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :event_detail, class: "col-sm-2 control-label"%>
     <div class="col-sm-10">
-    <%= f.text_area :detail, class: "form-control" %>
+      <%= f.text_area :detail, class: "form-control" %>
+      <%= content_tag :small, @event.errors.full_messages_for(:detail).join(' '), class: "text-danger" %>
     </div>
   </div>
   <div class="actions">
     <div class="col-sm-offset-2 col-sm-10">
-    <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>
