@@ -1,5 +1,6 @@
 class AfterGraduationsController < ApplicationController
   before_action :set_after_graduation, only: [:show, :edit, :update, :destroy]
+  before_action :check_access
 
   # GET /after_graduations
   # GET /after_graduations.json
@@ -72,4 +73,13 @@ class AfterGraduationsController < ApplicationController
     def after_graduation_params
       params.require(:after_graduation).permit(:belong, :position, :job_kind, :other)
     end
+    
+    # 修了生しかアクセスできない
+    def check_access
+     if @current_user.user_type == :graduate
+     else
+       render 'nopermission'
+     end
+   end
+   
 end
