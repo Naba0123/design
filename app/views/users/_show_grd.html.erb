@@ -6,11 +6,11 @@
   <dd><%= @user.graduate.finish_date%></dd>
 </dl>
 
-<% if @user.graduate.after_graduation != [] %>
+<% if @user.graduate.after_graduation.any? %>
   <h4>就職先情報</h4>
   <dl class="dl-horizontal">
   <% @user.graduate.after_graduation.each do |g| %>
-    <dt><%= g.belong %></dt><dd></dd>
+    <dt>所属</dt><dd><%= g.belong %></dd>
     <dt>役職</dt><dd><%= g.position %></dd>
     <dt>業種</dt><dd><%= g.job_kind %></dd>
     <dt>その他</dt><dd><%= g.other %></dd>

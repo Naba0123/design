@@ -31,3 +31,9 @@
 .list-group .list-nested .list-group-item {
   padding-left: 30px;
 }
+
+.dl-horizontal dt {
+  text-align: left;
+  font-size: $font-size-small;
+  font-weight: normal;
+}

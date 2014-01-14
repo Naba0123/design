@@ -22,7 +22,7 @@
   </div>
   <div class="form-group">
     <%= f.label :guidance_kind_id, t('activerecord.attributes.guidance.guidance_kind') %>
-    <%= f.collection_select :guidance_kind_id, GuidanceKind.all, :id, :name, { prompt: "Please choose... " }, { class: "form-control" } %>
+    <%= f.collection_select :guidance_kind_id, GuidanceKind.all, :id, :name, { prompt: true }, { class: "form-control" } %>
   </div>
   <div class="actions">
     <%= f.submit %>
