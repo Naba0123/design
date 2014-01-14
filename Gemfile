@@ -20,6 +20,7 @@ end
 gem 'unread', '0.3.1'
 
 gem 'kaminari', '0.15.0' # pagenator
+gem 'gretel', '3.0.5'
 
 # for search feature
 gem 'ransack', '1.1.0'
