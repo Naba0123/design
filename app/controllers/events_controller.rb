@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :check_permission
+  before_action :check_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -72,4 +74,19 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :date, :place, :detail)
     end
+    
+    def check_permission
+      if @current_user.user_type == :admin
+      elsif @current_user.user_type == :graduate
+      else
+        redirect_to nopermission_users_path
+     end
+    end
+    
+    def check_admin
+      unless @current_user.user_type == :admin
+        redirect_to nopermission_users_path
+      end
+    end
+    
 end

@@ -78,7 +78,7 @@ class AfterGraduationsController < ApplicationController
     def check_access
      if @current_user.user_type == :graduate
      else
-       render 'nopermission'
+       redirect_to nopermission_users_path
      end
    end
    

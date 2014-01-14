@@ -1,5 +1,6 @@
 class GuidancesController < ApplicationController
   before_action :set_guidance, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
 
   # GET /guidances
   # GET /guidances.json
@@ -70,5 +71,12 @@ class GuidancesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def guidance_params
       params.require(:guidance).permit(:guidance_date, :guidance_place, :guidance_kind_id)
+    end
+    
+    # 大学しかアクセスできないページの管理
+    def check_admin
+      unless @current_user.user_type == :admin
+        redirect_to nopermission_users_path
+      end
     end
 end
