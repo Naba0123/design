@@ -1,23 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Guidance id:</strong>
-  <%= @guidance.id %>
-</p>
-
-<p>
-  <strong>Guidance date:</strong>
-  <%= @guidance.guidance_date %>
-</p>
-
-<p>
-  <strong>Guidance place:</strong>
-  <%= @guidance.guidance_place %>
-</p>
-
-<p>
-  <strong>Guidance kind:</strong>
-  <%= @guidance.guidance_kind.try(:name) %>
+<dl>
+  <dt><%= t("guidance_id") %></dt>
+    <dd><%= @guidance.id %></dd>
+  <dt><%= t("activerecord.attributes.guidance.guidance_date") %></dt>
+    <dd><%= @guidance.guidance_date %></dd>
+  <dt><%= t("activerecord.attributes.guidance.guidance_place") %></dt>
+    <dd><%= @guidance.guidance_place %></dd>
+  <dt><%= t("activerecord.attributes.guidance.guidance_kind") %></dt>
+   <dd><%= @guidance.guidance_kind.try(:name) %></dd>
 </p>
   
   
