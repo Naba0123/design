@@ -1,24 +1,20 @@
+<% provide :title, 'After Graduation' %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Belong:</strong>
-  <%= @after_graduation.belong %>
-</p>
+<dl class="dl-horizontal">
+  <dt><%= t("activerecord.attributes.after_graduation.belong") %></dt>
+    <dd><%= @after_graduation.belong %></dd>
 
-<p>
-  <strong>Position:</strong>
-  <%= @after_graduation.position %>
-</p>
+  <dt><%= t("activerecord.attributes.after_graduation.position") %></dt>
+    <dd><%= @after_graduation.position %></dd>
 
-<p>
-  <strong>Job kind:</strong>
-  <%= @after_graduation.job_kind %>
-</p>
+  <dt><%= t("activerecord.attributes.after_graduation.job_kind") %></dt>
+    <dd><%= JobKind.find((@after_graduation.job_kind or 1)).name %></dd>
 
-<p>
-  <strong>Other:</strong>
-  <%= @after_graduation.other %>
-</p>
+  <dt><%= t("activerecord.attributes.after_graduation.other") %></dt>
+    <dd><pre><%= @after_graduation.other %></pre></dd>
+</dl>
 
 <%= link_to 'Edit', edit_after_graduation_path(@after_graduation) %> |
-
+<%= link_to 'Back', after_graduations_path %>

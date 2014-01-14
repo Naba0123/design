@@ -5,7 +5,7 @@ class AfterGraduationsController < ApplicationController
   # GET /after_graduations
   # GET /after_graduations.json
   def index
-    @after_graduations = AfterGraduation.all
+    @after_graduations = @current_user.graduate.after_graduation.all
   end
 
   # GET /after_graduations/1
@@ -29,7 +29,7 @@ class AfterGraduationsController < ApplicationController
 
     respond_to do |format|
       if @after_graduation.save
-        format.html { redirect_to @after_graduation, notice: 'After graduation was successfully created.' }
+        format.html { redirect_to @after_graduation, notice: t("after_graduation_successfully_created") }
         format.json { render action: 'show', status: :created, location: @after_graduation }
         @current_user.graduate.after_graduation << @after_graduation
       else
@@ -44,7 +44,7 @@ class AfterGraduationsController < ApplicationController
   def update
     respond_to do |format|
       if @after_graduation.update(after_graduation_params)
-        format.html { redirect_to @after_graduation, notice: 'After graduation was successfully updated.' }
+        format.html { redirect_to @after_graduation, notice: t("after_graduation_successfully_updated") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

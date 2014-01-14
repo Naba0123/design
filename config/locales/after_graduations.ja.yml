@@ -1,13 +1,16 @@
 ja:
+  register_after_graduation: '進路情報の追加'
+  after_graduation_successfully_created: '進路情報が追加されました'
+  after_graduation_successfully_updated: '進路情報が更新されました'
   activerecord:
     models:
-      after_graduations: '卒業後'
+      after_graduations: '卒業後進路'
     attributes:
-      after_graduations: 
+      after_graduation: 
         user_id:         'ID'
         belong:          '所属'
         position:        '勤め口'
-        work_kind:       '職種'
+        job_kind:       '職種'
         other:           'その他'
         created_at:      '作成日'
         updated_at:      '更新日'
