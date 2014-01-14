@@ -25,3 +25,5 @@ config/initializers/secret_token.rb
 .rvmrc
 *~
 /doc
+
+/db/schema.rb
