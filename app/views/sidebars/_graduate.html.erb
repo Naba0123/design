@@ -5,4 +5,5 @@
     <%= content_tag :span, Event.unread_by(@current_user).count, class: 'badge' %>
   <% end %>
   <%= active_link_to '修了証明書の発行依頼', new_certificate_path, { :active => :exclusive, class: 'list-group-item' } %>
+  <%= active_link_to '卒業後進路', after_graduations_path(session[:user_id]), { :active => :exclusive, class: 'list-group-item' } %>
 </div>
