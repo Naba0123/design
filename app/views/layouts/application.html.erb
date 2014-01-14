@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <title><%= yield :title %> | HandShake</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "bootstrap" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -15,8 +14,13 @@
       <div class="col-md-3">
         <%= render "sidebars/#{@current_user.user_type}" %>
       </div>
+    <% else %>
+      <div class="col-md-3">
+        <%= render "sidebars/new/#{params[:new_type]}" %>
+      </div>
     <% end %>
     <div class="col-md-9">
+      <%= breadcrumbs style: :bootstrap %>
       <%= yield %>
     </div>
   </div>

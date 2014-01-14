@@ -10,9 +10,24 @@
  *
  */
 
+//$font-size-base: 14px;
+//$line-height-base: 1.3;
+
+@import "variables";
+@import "bootswatch";
+
 @import "bootstrap";
+@import "font-awesome";
+
+.date-controls {
+  display: inline-block;
+}
 
 .date-controls .form-control {
   width: initial;
   display: inline-block;
+}
+
+.list-group .list-nested .list-group-item {
+  padding-left: 30px;
 }

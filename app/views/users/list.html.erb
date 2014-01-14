@@ -1,5 +1,11 @@
 <% provide :title, 'List' %>
-<%= link_to 'search', search_users_path %>
+
+<% breadcrumb :users_list %>
+
+<%= link_to search_users_path, class: 'pull-right btn btn-default btn-sm' do %>
+  <span class="fa fa-search"></span>
+  詳細検索 &raquo;
+<% end %>
 
 <div class="table-responsive">
   <table class="table table-striped">
