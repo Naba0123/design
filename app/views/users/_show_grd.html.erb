@@ -4,15 +4,16 @@
 <dt>修了日</dt>
   <dd><%= @user.graduate.finish_date%></dd>
 
-<h3>＜就職先情報＞</h3>
-<% @user.graduate.after_graduation.each do |g| %>
-  <dt><%= g.belong %></dt>
-    <dd>
-      <dl>
-        <dt>役職</dt><dd><%= g.position %></dd>
-        <dt>業種</dt><dd><%= g.job_kind %></dd>
-        <dt>その他</dt><dd><%= g.other %></dd>
-      </dl>
-    </dd>
+<% if @user.graduate.after_graduation != [] %>
+  <h3>＜就職先情報＞</h3>
+  <% @user.graduate.after_graduation.each do |g| %>
+    <dt><%= g.belong %></dt>
+      <dd>
+        <dl>
+          <dt>役職</dt><dd><%= g.position %></dd>
+          <dt>業種</dt><dd><%= g.job_kind %></dd>
+          <dt>その他</dt><dd><%= g.other %></dd>
+        </dl>
+      </dd>
+  <% end %>
 <% end %>
-
