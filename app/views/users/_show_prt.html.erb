@@ -3,9 +3,17 @@
   <dt>ID</dt>
   <dd><%= @user.id %></dd>
   <dt>希望課程</dt>
+<% begin %>
   <dd><%= Department.find(@user.participant.wish).name %></dd>
+<% rescue %>
+  <dd>invalid value</dd>
+<% end %>
   <dt>志望コース</dt>
+<% begin %>
   <dd><%= ResearchRoom.find(@user.participant.wish_course).name %></dd>
+<% rescue %>
+  <dd>invalid value</dd>
+<% end %>
   <dt>志望指導教員名</dt>
   <dd><%= @user.participant.teacher %></dd>
   <% if @user.participant.is_entered %>
