@@ -1,28 +1,22 @@
+<% provide :title, 'Certificate Show' %>
+
+<h2>
+  <%= @certificate.created_at.strftime("%Y-%m-%d %H:%M") %> 受注 ： 修了証明書発行依頼の参照
+</h2>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Kind:</strong>
-  <%= @certificate.certificate_kind.try(:name) %>
-</p>
-
-<p>
-  <strong>Finish year:</strong>
-  <%= @certificate.finish_year %>
-</p>
-
-<p>
-  <strong>Count:</strong>
-  <%= @certificate.count %>
-</p>
-
-<p>
-  <strong>Purpose:</strong>
-  <%= @certificate.purpose %>
-</p>
-
-<p>
-  <strong>Another address:</strong>
-  <%= @certificate.another_address %>
-</p>
+<dl class="dl-horizontal">
+  <dt><%= t 'activerecord.attributes.certificate.certificate_kind' %></dt>
+  <dd><%= @certificate.certificate_kind.try(:name) %></dd>
+  <dt><%= t 'activerecord.attributes.certificate.finish_year' %></dt>
+  <dd><%= @certificate.finish_year %></dd>
+  <dt><%= t 'activerecord.attributes.certificate.count' %></dt>
+  <dd><%= @certificate.count %></dd>
+  <dt><%= t 'activerecord.attributes.certificate.porpose' %></dt>
+  <dd><%= @certificate.purpose %></dd>
+  <dt><%= t 'activerecord.attributes.certificate.another_address' %></dt>
+  <dd><%= @certificate.another_address %></dd>
+</dl>
 
 <%= link_to 'Back', certificates_path %>

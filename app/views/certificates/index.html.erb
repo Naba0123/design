@@ -1,5 +1,5 @@
 <% provide :title, 'List' %>
-<h1>Listing certificates</h1>
+<h1>修了証明書発行依頼一覧</h1>
 
 <div class="table-responsive">
   <table class="table table-striped">
@@ -10,6 +10,7 @@
         <th><%= t 'activerecord.attributes.certificate.count' %></th>
         <th><%= t 'activerecord.attributes.certificate.purpose' %></th>
         <th><%= t 'activerecord.attributes.certificate.another_address' %></th>
+        <th>受注時刻</th>
       <th></th>
       <th></th>
     </tr>
@@ -23,6 +24,7 @@
         <td><%= certificate.count %></td>
         <td><%= certificate.purpose %></td>
         <td><%= certificate.another_address %></td>
+        <td><%= certificate.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to 'Show', certificate %></td>
         <td><%= link_to 'Published', certificate, method: :delete, data: { confirm: '本当に発行しましたか？　データは削除されます' } %></td>
       </tr>
