@@ -9,4 +9,8 @@
       :format => { :with => /\A[0-9]+\z/,:message =>"は半角数字で入力してください" }
     validates_presence_of :entry_date
     
+    validates :department,
+      :numericality => {:only_integer => true, :greater_than => 0}
+    validates :research_subject,
+      :numericality => {:only_integer => true, :greater_than => 0}
 end
