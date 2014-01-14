@@ -1,7 +1,10 @@
 <div class="list-group">
   <%= active_link_to 'イベント情報の一覧・登録', events_path, { active: :exclusive, class: 'list-group-item' } %>
   <%= active_link_to '検索・一覧表示', list_users_path, { active: :exclusive, class: 'list-group-item' } %>
-  <%= active_link_to '修了証明書発行依頼一覧', certificates_path, { active: :exclusive, class: 'list-group-item' } %>
+  <%= active_link_to certificates_path, { active: :exclusive, class: 'list-group-item' } do %>
+    修了証明書発行依頼一覧
+    <%= content_tag :span, Certificate.count, class: 'badge' %>
+  <% end %>
   <a class="list-group-item" data-toggle="collapse" href="#users-dropdown">
     ユーザーの追加
     <span class="fa fa-chevron-down pull-right"></span>
