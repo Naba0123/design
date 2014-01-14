@@ -95,7 +95,7 @@
     <fieldset>
       <legend>参加者情報</legend>
       <div class="form-group">
-        <%= f.label :wish, class: "col-sm-2 control-label" %>
+        <%= participant_form.label :wish, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
           <%= participant_form.collection_select :wish, Department.all, :id, :name, { prompt: true }, { class: "form-control" } %>
 
@@ -228,7 +228,7 @@
         <div class="col-sm-10">
           <span class="date-controls">
             <%= graduate_form.date_select :finish_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
-                      <%= content_tag :small, @user.graduategit .errors.full_messages_for(:finish_date).join(','), class: "text-danger" %>
+                      <%= content_tag :small, @user.graduate.errors.full_messages_for(:finish_date).join(','), class: "text-danger" %>
           </span>
         </div>
       </div>
