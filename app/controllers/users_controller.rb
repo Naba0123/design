@@ -2,7 +2,8 @@
   before_action :set_user, only: [:show, :edit, :update, :destroy, :authorize]
   skip_before_action :check_logined, only: [:new, :create]
   before_action :check_admin, only: [:search, :list, :authorize, :list_unauthorized]
-  skip_before_action :check_permission, only: [:index, :show, :new, :edit, :create, :update, :destroy, :new_graduate]
+  before_action :check_permission
+  skip_before_action :check_permission, only: [:index, :new, :edit, :create, :update, :destroy, :new_graduate]
 
   def search
     @search = User.search(params[:q])
@@ -116,6 +117,9 @@
   
   def authorize
     @authorize_type = params[:authorize_type]
+  end
+  
+  def nopermission
   end
   
   def list_unauthorized
