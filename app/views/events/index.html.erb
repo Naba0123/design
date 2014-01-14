@@ -1,12 +1,13 @@
-<h1>Listing events</h1>
+<% provide :title, 'Event' %>
+<h1><%= t("event_information") %></h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Place</th>
-      <th>Detail</th>
+      <th><%= t("activerecord.attributes.event.event_name") %></th>
+      <th><%= t("activerecord.attributes.event.event_date") %></th>
+      <th><%= t("activerecord.attributes.event.event_place") %></th>
+      <th><%= t("activerecord.attributes.event.event_detail") %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -30,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to t("register_event"), new_event_path %>
