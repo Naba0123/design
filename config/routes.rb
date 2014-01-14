@@ -24,7 +24,7 @@
   match 'users/new/:new_type' => 'users#new', :via => 'get', :as => 'create_new_user'
   match 'users/unauthorized/:list_type' => 'users#list_unauthorized', :via => 'get', :as => 'unauthorized_users'
 
-  resources :users, :except => [:new] do
+  resources :users, :except => [:index, :new] do
     member do
       get 'authorize'
     end
