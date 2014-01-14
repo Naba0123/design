@@ -27,7 +27,7 @@
   <%= render 'show_prt' %>
 <% end %>
 
-<% unless @current_user.user_type == :student %>
+<% unless @current_user.user_type == :student || @current_user.user_type == :graduate %>
   <% if current_page?(user_path(@current_user)) || @current_user.user_type == :admin %>
     <%= link_to 'アカウントの削除', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
