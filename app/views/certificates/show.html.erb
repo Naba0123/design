@@ -2,7 +2,7 @@
 
 <p>
   <strong>Kind:</strong>
-  <%= @certificate.kind %>
+  <%= @certificate.certificate_kind.try(:name) %>
 </p>
 
 <p>
@@ -25,5 +25,4 @@
   <%= @certificate.another_address %>
 </p>
 
-<%= link_to 'Edit', edit_certificate_path(@certificate) %> |
 <%= link_to 'Back', certificates_path %>

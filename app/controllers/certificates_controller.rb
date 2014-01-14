@@ -1,5 +1,7 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
+  before_action :check_access
+  before_action :check_admin, only: [:index, :show, :destroy]
 
   # GET /certificates
   # GET /certificates.json
@@ -18,8 +20,8 @@ class CertificatesController < ApplicationController
   end
 
   # GET /certificates/1/edit
-  def edit
-  end
+#  def edit
+#  end
 
   # POST /certificates
   # POST /certificates.json
@@ -28,7 +30,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully created.' }
+        format.html { redirect_to @certificate, notice: '修了証明書発行依頼が受注されました。' }
         format.json { render action: 'show', status: :created, location: @certificate }
       else
         format.html { render action: 'new' }
@@ -39,17 +41,17 @@ class CertificatesController < ApplicationController
 
   # PATCH/PUT /certificates/1
   # PATCH/PUT /certificates/1.json
-  def update
-    respond_to do |format|
-      if @certificate.update(certificate_params)
-        format.html { redirect_to @certificate, notice: 'Certificate was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @certificate.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+#  def update
+#    respond_to do |format|
+#      if @certificate.update(certificate_params)
+#        format.html { redirect_to @certificate, notice: 'Certificate was successfully updated.' }
+#        format.json { head :no_content }
+#      else
+#        format.html { render action: 'edit' }
+#        format.json { render json: @certificate.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
 
   # DELETE /certificates/1
   # DELETE /certificates/1.json
@@ -69,6 +71,23 @@ class CertificatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def certificate_params
-      params.require(:certificate).permit(:kind, :finish_year, :count, :purpose, :another_address)
+      params.require(:certificate).permit(:kind, :finish_year, :count, :purpose, :another_address, :certificate_kind_id)
     end
+    
+    # 大学と修了生しかアクセスできない
+   def check_access
+     if @current_user.user_type == :admin
+     elsif @current_user.user_type == :graduate
+     else
+       render 'nopermission'
+     end
+   end
+   
+   # 大学しかアクセスできないページの管理
+   def check_admin
+     unless @current_user.user_type == :admin
+       render 'nopermission'
+     end
+   end
+
 end

@@ -1,7 +1,7 @@
 class CreateCertificates < ActiveRecord::Migration
   def change
     create_table :certificates do |t|
-      t.integer :kind
+      t.belongs_to :certificate_kind
       t.integer :finish_year
       t.integer :count
       t.text :purpose
