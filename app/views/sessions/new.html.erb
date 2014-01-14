@@ -19,8 +19,15 @@
         <% end %>
       </div>
       <div class="panel-footer">
-        <%= link_to 'Participant here', :controller => 'users', :action => 'new', :new_type => "participant" %>
-        <%= link_to 'Graduate here', :controller => 'users', :action => 'new', :new_type => "graduate" %>
+        <h5>アカウントを持っていませんか？</h5>
+        <ul class="">
+          <li>
+            <small><%= link_to '説明会参加者として新規作成', :controller => 'users', :action => 'new', :new_type => "participant" %></small>
+          </li>
+          <li>
+            <small><%= link_to '修了生として新規作成', :controller => 'users', :action => 'new', :new_type => "graduate" %></small>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

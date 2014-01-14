@@ -1,19 +1,21 @@
-<h3>＜在学生情報＞</h3>
-<dt>学年</dt>
+<h4>在学生情報</h4>
+<dl class="dl-horizontal">
+  <dt>学年</dt>
   <dd><%= @user.student.grade %></dd>
-<dt>学部</dt>
+  <dt>学部</dt>
   <dd><%= @user.student.department %></dd>
-<dt>研究科</dt>
+  <dt>研究科</dt>
   <dd><%= @user.student.research_subject %></dd>
-<dt>研究室</dt>
+  <dt>研究室</dt>
   <dd><%= @user.student.research_room %></dd>
-<dt>学籍番号</dt>
+  <dt>学籍番号</dt>
   <dd><%= @user.student.student_number %></dd>
-<dt>保証人氏名</dt>
+  <dt>保証人氏名</dt>
   <dd><%= @user.student.guarantor_name %></dd>
-<dt>保証人住所</dt>
+  <dt>保証人住所</dt>
   <dd><%= @user.student.guarantor_address %></dd>
-<dt>保証人連絡先</dt>
+  <dt>保証人連絡先</dt>
   <dd><%= @user.student.guarantor_phone %></dd>
-<dt>入学日</dt>
+  <dt>入学日</dt>
   <dd><%= @user.student.entry_date %></dd>
+</dl>

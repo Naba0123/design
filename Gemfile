@@ -20,6 +20,7 @@ end
 gem 'unread', '0.3.1'
 
 gem 'kaminari', '0.15.0' # pagenator
+gem 'gretel', '3.0.5'
 
 # for search feature
 gem 'ransack', '1.1.0'
@@ -30,6 +31,7 @@ gem 'localized_country_select', '0.9.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~>3.0.2.0'
+gem 'font-awesome-rails', '4.0.3.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

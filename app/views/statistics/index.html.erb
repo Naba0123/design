@@ -1,6 +1,4 @@
-<%= javascript_include_tag "statistics" %>
-﻿<%= javascript_include_tag "ccchart-min" %>
-<h1>統計分析</h1>
+<% provide :title, 'Statistics' %>
 <% if @queryNumber > 0 %>
 <canvas id="circle"></canvas>
 <script>

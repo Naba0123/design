@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       end
     end
     unless @user
-      redirect_to :controller => 'sessions', :action => 'new'
+      redirect_to signin_path
     end
   end
   

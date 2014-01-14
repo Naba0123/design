@@ -1,13 +1,15 @@
-<h3>＜参加者情報＞</h3>
-<dt>User ID</dt>
+<h4>参加者情報</h4>
+<dl class="dl-horizontal">
+  <dt>User ID</dt>
   <dd><%= @user.id %></dd>
-<dt>希望課程</dt>
+  <dt>希望課程</dt>
   <dd><%= @user.participant.wish %></dd>
-<dt>志望コース</dt>
+  <dt>志望コース</dt>
   <dd><%= @user.participant.wish_course %></dd>
-<dt>志望指導教員名</dt>
+  <dt>志望指導教員名</dt>
   <dd><%= @user.participant.teacher %></dd>
-<dt>入学済み</dt>
+  <dt>入学済み</dt>
   <dd>boolean型らしいけどDBに定義されてない(´・ω・｀)</dd>
-<dt>入学日</dt>
+  <dt>入学日</dt>
   <dd>Date型らしいけどDBに定義されてない(´・ω・｀)</dd>
+</dl>

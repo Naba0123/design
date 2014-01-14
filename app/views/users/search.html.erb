@@ -1,5 +1,7 @@
 <% provide :title, 'Search' %>
 
+<% breadcrumb :users_search %>
+
 <%= search_form_for @search, url: list_users_path, :html => { class: "form-horizontal" } do |f| %>
   <div class="form-group">
     <%= f.label :account_cont, class: "col-sm-2 control-label" %>

@@ -1,14 +1,4 @@
 <% provide :title, 'New' %>
-<h1><%= @new_name %> New User</h1>
-
-<% if session[:user_id] %>
-  <% if @current_user.user_type == :admin %>
-    </p><%= link_to 'Participant User', :controller => 'users', :action => 'new', :new_type => "participant" %></p>
-    </p><%= link_to 'Graduate User', :controller => 'users', :action => 'new', :new_type => "graduate" %></p>
-    </p><%= link_to 'Student User', :controller => 'users', :action => 'new', :new_type => "student" %></p>
-  <% end %>
-<% end %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', users_path %>

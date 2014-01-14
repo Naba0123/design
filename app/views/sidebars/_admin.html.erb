@@ -1,10 +1,19 @@
 <div class="list-group">
-  <%= active_link_to 'イベント情報の登録', '#', { active: :exclusive, class: 'list-group-item' } %>
+  <%= active_link_to 'イベント情報の一覧・登録', events_path, { active: :exclusive, class: 'list-group-item' } %>
   <%= active_link_to '検索・一覧表示', list_users_path, { active: :exclusive, class: 'list-group-item' } %>
   <%= active_link_to '修了証明書発行依頼一覧', certificates_path, { active: :exclusive, class: 'list-group-item' } %>
-  <%= active_link_to 'ユーザーの追加', new_user_path, { active: :exclusive, class: 'list-group-item' } %>
-  <%= active_link_to '参加者の認証', list_unauthorized_users_path(:list_type=>"participant"), { active: /users\/list_unauthorized\?list_type=participant/, class: 'list-group-item' } %>
-  <%= active_link_to '修了生の認証', list_unauthorized_users_path(:list_type=>"graduate"), { active: /users\/list_unauthorized\?list_type=graduate/, class: 'list-group-item' } %>
+  <a class="list-group-item" data-toggle="collapse" href="#users-dropdown">
+    ユーザーの追加
+    <span class="fa fa-chevron-down pull-right"></span>
+    <span class="clearfix"></span>
+  </a>
+  <div class="collapse list-nested" id="users-dropdown">
+    <%= active_link_to '参加者', create_new_user_path(new_type: 'participant'), { active: :exclusive, class: 'list-group-item' } %>
+    <%= active_link_to '学生',   create_new_user_path(new_type: 'student'), { active: :exclusive, class: 'list-group-item' } %>
+    <%= active_link_to '卒業生', create_new_user_path(new_type: 'graduate'), { active: :exclusive, class: 'list-group-item' } %>
+  </div>
+  <%= active_link_to '参加者の認証', unauthorized_users_path(:list_type=>"participant"), { active: :exclusive, class: 'list-group-item' } %>
+  <%= active_link_to '修了生の認証', unauthorized_users_path(:list_type=>"graduate"), { active: :exclusive, class: 'list-group-item' } %>
   <%= active_link_to '統計分析', statis_path, { active: :exclusive, class: 'list-group-item' } %>
  <%= active_link_to '説明会情報の登録', guidances_path, { active: :exclusive, class: 'list-group-item' } %>
   <%= active_link_to '参加履歴の登録', guidances_users_path, { active: :exclusive, class: 'list-group-item' } %>

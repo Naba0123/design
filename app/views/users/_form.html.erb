@@ -10,201 +10,232 @@
       </ul>
     </div>
   <% end %>
-  
-  <!-- ここから基本情報 -->
-  
-  
-  
-  <h3>＜基本情報＞</h3>
-  <div class="form-group">
-    <%= f.label :account, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :account, class: "form-control" %>
+
+  <% # ここから基本情報 %>
+
+  <fieldset>
+    <legend>基本情報</legend>
+    <div class="form-group">
+      <%= f.label :account, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :account, class: "form-control" %>
+        <%= content_tag :small, @user.errors.full_messages_for(:account).join(' '), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :password, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.password_field :password, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :password, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.password_field :password_confirmation, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+        <%= content_tag :small, @user.errors.full_messages_for(:password).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :name, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :name, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control" %>
+        <%= content_tag :small, @user.errors.full_messages_for(:name).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :country, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= localized_country_select :user, :country, [], { include_blank: 'Please choose...' }, { class: "form-control" } %>
+    <div class="form-group">
+      <%= f.label :country, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= localized_country_select :user, :country, [], { prompt: true }, { class: "form-control" } %>
+        <%= content_tag :small, @user.errors.full_messages_for(:country).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :address, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :address, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :address, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :address, class: "form-control" %>
+        <%= content_tag :small, @user.errors.full_messages_for(:address).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :phone, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.telephone_field :phone, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :phone, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.telephone_field :phone, class: "form-control" %>
+        <%= content_tag :small, @user.errors.full_messages_for(:phone).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :job, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :job, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :job, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :job, class: "form-control" %>
+        <%= content_tag :small, @user.errors.full_messages_for(:job).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :job_kind_id, t('activerecord.attributes.user.job_kind'), class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.collection_select :job_kind_id, JobKind.all, :id, :name, { prompt: "Please choose... " }, { class: "form-control" } %>
+    <div class="form-group">
+      <%= f.label :job_kind_id, t('activerecord.attributes.user.job_kind'), class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.collection_select :job_kind_id, JobKind.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+        <%= content_tag :small, @user.errors.full_messages_for(:job_kind_id).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :birthday, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.date_select :birthday, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
+    <div class="form-group">
+      <%= f.label :birthday, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <span class="date-controls">
+          <%= f.date_select :birthday, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+        </span>
+        <%= content_tag :small, @user.errors.full_messages_for(:birthday).join(','), class: "text-danger" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :gender, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.radio_button :gender, 1, { id: 'user_gender_m' } %>
-      <%= f.label 'gender_m', '男' %>
-      <%= f.radio_button :gender, 2, { id: 'user_gender_f' } %>
-      <%= f.label 'gender_f', '女' %>
+    <div class="form-group">
+      <%= f.label :gender, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.radio_button :gender, 1, { id: 'user_gender_m' } %>
+        <%= f.label 'gender_m', '男' %>
+        <%= f.radio_button :gender, 2, { id: 'user_gender_f' } %>
+        <%= f.label 'gender_f', '女' %>
+      </div>
     </div>
-  </div>
-  
-  <!-- ここまで基本情報 -->
-  
-  
-  <!-- ここから参加者情報 -->
-  
-  <%= f.fields_for :participant, :html => { class: "form-horizontal" } do |participant_form| %>
-  <h3>＜参加者情報＞</h3>
-  <div class="form-group">
-    <%= f.label :wish, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= participant_form.text_field :wish, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :wish_course, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= participant_form.text_field :wish_course, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :teacher, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= participant_form.text_field :teacher, class: "form-control" %>
-    </div>
-  </div>
+  </fieldset>
+
+  <% # ここまで基本情報 %>
+
+  <% # ここから参加者情報 %>
+
+  <%= f.fields_for :participant do |participant_form| %>
+    <fieldset>
+      <legend>参加者情報</legend>
+      <div class="form-group">
+        <%= f.label :wish, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= participant_form.text_field :wish, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:wish).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :wish_course, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= participant_form.text_field :wish_course, class: "form-control" %>
+        <%= content_tag :small, @user.errors.full_messages_for(:wish_course).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :teacher, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= participant_form.text_field :teacher, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:teacher).join(','), class: "text-danger" %>
+        </div>
+      </div>
+    </fieldset>
   <% end %>
-  
-  <!-- ここまで参加者情報 -->
-  
-  <!-- ここから在学生情報 -->
-  
-  <%= f.fields_for :student, :html => { class: "form-horizontal" } do |student_form| %>
-  <h3>＜在学生情報＞</h3>
-  <div class="form-group">
-    <%= f.label :grade, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.number_field :grade, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :department, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.text_field :department, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :research_subject, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.text_field :research_subject, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :research_room, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.text_field :research_room, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :student_number, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.text_field :student_number, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :guarantor_name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.text_field :guarantor_name, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :guarantor_address, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.text_field :guarantor_address, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :guarantor_phone, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.text_field :guarantor_phone, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :entry_date, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= student_form.date_select :entry_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
-    </div>
-  </div>
+
+  <% # ここまで参加者情報 %>
+
+  <% # ここから在学生情報 %>
+
+  <%= f.fields_for :student do |student_form| %>
+    <fieldset>
+      <legend>在学生情報</legend>
+      <div class="form-group">
+        <%= f.label :grade, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :grade, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:grade).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :department, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :department, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:department).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :research_subject, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :research_subject, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:research_subject).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :research_room, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :research_room, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:research_room).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :student_number, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :student_number, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:student_number).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :guarantor_name, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :guarantor_name, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:guarantor_name).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :guarantor_address, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :guarantor_address, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:guarantor_address).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :guarantor_phone, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= student_form.text_field :guarantor_phone, class: "form-control" %>
+          <%= content_tag :small, @user.errors.full_messages_for(:guarantor_phone).join(','), class: "text-danger" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :entry_date, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <span class="date-controls">
+            <%= student_form.date_select :entry_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+          </span>
+        </div>
+      </div>
+    </fieldset>
+>>>>>>> improve-view
   <% end %>
-  
-  <!-- ここまで在学生情報 -->
-  
-  <!-- ここから修了生情報 -->
-  
-  <%= f.fields_for :graduate, :html => { class: "form-horizontal" } do |graduate_form| %>
-  <h3>＜修了生情報＞</h3>
-  <div class="form-group">
-    <%= f.label :finish_date, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= graduate_form.date_select :finish_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "" } %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :is_change, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= graduate_form.radio_button :is_change, 1 %>
-      <%= f.label 'True' %>
-      <%= graduate_form.radio_button :is_change, 0 %>
-      <%= f.label 'False' %>
-    </div>
-  </div>
+
+  <% # ここまで在学生情報 %>
+
+  <% # ここから修了生情報 %>
+
+  <%= f.fields_for :graduate do |graduate_form| %>
+    <fieldset>
+      <legend>修了生情報</legend>
+      <div class="form-group">
+        <%= f.label :finish_date, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <span class="date-controls">
+            <%= graduate_form.date_select :finish_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :is_change, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= graduate_form.radio_button :is_change, 1 %>
+          <%= f.label 'True' %>
+          <%= graduate_form.radio_button :is_change, 0 %>
+          <%= f.label 'False' %>
+        </div>
+      </div>
+    </fieldset>
   <% end %>
-  
-  <!-- ここまで修了生情報 -->
-  
- 
-  <div class="actions">
+
+  <% # ここまで修了生情報 %>
+
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary" %>
     </div>
   </div>
-  
+
 <% end %>
