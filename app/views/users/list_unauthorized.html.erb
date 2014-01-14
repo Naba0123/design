@@ -21,6 +21,7 @@
       <th><%= t 'activerecord.attributes.user.job_kind' %></th>
       <th><%= t 'activerecord.attributes.user.birthday' %></th>
       <th><%= t 'activerecord.attributes.user.gender' %></th>
+      <th><%= t 'activerecord.attributes.user.user_type' %></th>
     </tr>
   </thead>
 
@@ -35,10 +36,11 @@
         <td><%= user.job_kind.try(:name) %></td>
         <td><%= l user.birthday %></td>
         <td><%= t "sexes.#{user.gender}" %></td>
+        <td><%= t "user_types.#{user.user_type}" %></td>
         <% if @list_type == "graduate" %>
           <td><%= link_to t("activerecord.attributes.unauthorized.authorize"), :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "graduate" %></td>
         <% else %>
-          <td><%= link_to t("activerecord.attributes.unauthorized.authorize"), :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "participant" %></td>
+          <td><%= link_to t("activerecord.attributes.unauthorized.authorize"), :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "user" %></td>
         <% end %>
         <td><%= link_to t("activerecord.attributes.unauthorized.destroy"), user, method: :delete, data: { confirm: t("activerecord.attributes.unauthorized.are_you_sure") } %></td>
       </tr>

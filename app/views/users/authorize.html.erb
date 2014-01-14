@@ -1,6 +1,12 @@
-<h1><%= @authorize_type %> Authorize user</h1>
+<% provide :title, 'Authorized' %>
+
+<h1>
+  <% if @authorize_type == 'graduate' %>
+    <%= t 'activerecord.attributes.unauthorized.graduate' %>
+  <% else %>
+    <%= t 'activerecord.attributes.unauthorized.user' %>
+  <% end %>
+  （<%= @user.name %>さん）
+</h1>
 
 <%= render 'authorize_form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', '/users/list_unauthorized' %>

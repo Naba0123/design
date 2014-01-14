@@ -1,40 +1,39 @@
-
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @user, :html => { class: "form-horizontal" } do |f| %>
   
   <% if @authorize_type == "graduate" %>
-  
-    <%= f.fields_for :graduate, :html => { class: "form-horizontal" } do |graduate_form| %>
-      <div class="form-group">
-        <%= f.label :is_entered, class: "col-sm-2 control-label" %>
-        <div class="col-sm-10">
-          <%= graduate_form.radio_button :is_entered, 1 %>
-          <%= f.label 'True' %>
-          <%= graduate_form.radio_button :is_entered, 0 %>
-          <%= f.label 'False' %>
+    <p>修了日を確認の上、認証するかを選択してください。</p>
+    <%= f.fields_for :graduate do |graduate_form| %>
+      <fieldset>
+        <div class="form-group">
+          <%= f.label :"修了日", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <span class="date-controls">
+              <%= graduate_form.date_select :finish_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+              <%= content_tag :small, @user.graduate.errors.full_messages_for(:finish_date).join(','), class: "text-danger" %>
+            </span>
+          </div>
         </div>
-      </div>
+        <div class="form-group">
+          <%= f.label :"認証しますか？", class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= graduate_form.radio_button :is_entered, 1 %>
+            <%= f.label 'はい' %>
+            <%= graduate_form.radio_button :is_entered, 0 %>
+            <%= f.label 'いいえ' %>
+          </div>
+        </div>
+      </fieldset>
     <% end %>
   
   <% else %>
   
     <div class="form-group">
-      <%= f.label :Authorized, class: "col-sm-2 control-label" %>
+      <%= f.label :"認証しますか？", class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
         <%= f.radio_button :authorized, 1 %>
-        <%= f.label 'True' %>
+        <%= f.label 'はい' %>
         <%= f.radio_button :authorized, 0 %>
-        <%= f.label 'False' %>
+        <%= f.label 'いいえ' %>
       </div>
     </div>
   

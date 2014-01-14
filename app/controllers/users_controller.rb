@@ -73,7 +73,7 @@
     end
     
     unless @user.graduate.nil?
-      @user.graduate.is_entered = false
+      @user.graduate.is_entered = true
     end
     
     respond_to do |format|
@@ -127,8 +127,7 @@
     if @list_type == "graduate"
       @search = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
     else
-      @search_tmp = User.joins(:participant).merge(Participant.all)
-      @search = @search_tmp.where(:authorized => false)
+      @search = User.where(:authorized => false)
     end
     @users = @search
   end
