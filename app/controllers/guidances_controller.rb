@@ -29,7 +29,7 @@ class GuidancesController < ApplicationController
 
     respond_to do |format|
       if @guidance.save
-        format.html { redirect_to @guidance, notice: 'Guidance was successfully created.' }
+        format.html { redirect_to @guidance, notice: t("guidance_successfully_created") }
         format.json { render action: 'show', status: :created, location: @guidance }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class GuidancesController < ApplicationController
   def update
     respond_to do |format|
       if @guidance.update(guidance_params)
-        format.html { redirect_to @guidance, notice: 'Guidance was successfully updated.' }
+        format.html { redirect_to @guidance, notice: t("guidance_successfully_updated") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
