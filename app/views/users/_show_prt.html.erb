@@ -16,10 +16,11 @@
   <% end %>
   <dt>過去の参加履歴</dt>
   <dd><% @members.each do |guidance| %>
-   <td><%= guidance.id  %></td>
+   <p><td><%= guidance.id  %></td>
    <td><%= guidance.guidance_date %></td>
    <td><%= guidance.guidance_place %></td>
    <td><%= guidance.guidance_kind.try(:name) %></td>
+   </p>
    <% end %>
    <dd>
 </dl>
