@@ -8,41 +8,45 @@
 <% end %>
 <div class="clearfix"></div>
 
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= t 'activerecord.attributes.user.name' %></th>
-        <th><%= t 'activerecord.attributes.user.account' %></th>
-        <th><%= t 'activerecord.attributes.user.country' %></th>
-        <th><%= t 'activerecord.attributes.user.address' %></th>
-        <th><%= t 'activerecord.attributes.user.phone' %></th>
-        <th><%= t 'activerecord.attributes.user.job' %></th>
-        <th><%= t 'activerecord.attributes.user.job_kind' %></th>
-        <th><%= t 'activerecord.attributes.user.birthday' %></th>
-        <th><%= t 'activerecord.attributes.user.gender' %></th>
-        <th><%= t 'activerecord.attributes.user.user_type' %></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @users.each do |user| %>
+<% if @users.empty? %>
+  <p>該当するユーザはありません</p>
+<% else %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= link_to user.name , user %></td>
-          <td><%= user.account %></td>
-          <td><%= t "countries.#{user.country}" %></td>
-          <td><%= user.address %></td>
-          <td><%= user.phone %></td>
-          <td><%= user.job %></td>
-          <td><%= user.job_kind.try(:name) %></td>
-          <td><%= l user.birthday %></td>
-          <td><%= t "sexes.#{user.gender}" %></td>
-          <td><%= t "user_types.#{user.user_type}" %></td>
+          <th><%= t 'activerecord.attributes.user.name' %></th>
+          <th><%= t 'activerecord.attributes.user.account' %></th>
+          <th><%= t 'activerecord.attributes.user.country' %></th>
+          <th><%= t 'activerecord.attributes.user.address' %></th>
+          <th><%= t 'activerecord.attributes.user.phone' %></th>
+          <th><%= t 'activerecord.attributes.user.job' %></th>
+          <th><%= t 'activerecord.attributes.user.job_kind' %></th>
+          <th><%= t 'activerecord.attributes.user.birthday' %></th>
+          <th><%= t 'activerecord.attributes.user.gender' %></th>
+          <th><%= t 'activerecord.attributes.user.user_type' %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name , user %></td>
+            <td><%= user.account %></td>
+            <td><%= t "countries.#{user.country}" %></td>
+            <td><%= user.address %></td>
+            <td><%= user.phone %></td>
+            <td><%= user.job %></td>
+            <td><%= user.job_kind.try(:name) %></td>
+            <td><%= l user.birthday %></td>
+            <td><%= t "sexes.#{user.gender}" %></td>
+            <td><%= t "user_types.#{user.user_type}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
 
 <%= paginate @users %>
 
