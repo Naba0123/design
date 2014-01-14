@@ -1,7 +1,7 @@
 <% provide :title, 'Certificate Show' %>
 
 <h2>
-  <%= @certificate.created_at.strftime("%Y-%m-%d %H:%M") %> 受注 ： 修了証明書発行依頼の参照
+  <%= t 'activerecord.attributes.certificate.created_at' %> : <%= @certificate.created_at.strftime("%Y-%m-%d %H:%M") %> : <%= t("register_certificate") %>
 </h2>
 
 <p id="notice"><%= notice %></p>
@@ -13,7 +13,7 @@
   <dd><%= @certificate.finish_year %></dd>
   <dt><%= t 'activerecord.attributes.certificate.count' %></dt>
   <dd><%= @certificate.count %></dd>
-  <dt><%= t 'activerecord.attributes.certificate.porpose' %></dt>
+  <dt><%= t 'activerecord.attributes.certificate.purpose' %></dt>
   <dd><%= @certificate.purpose %></dd>
   <dt><%= t 'activerecord.attributes.certificate.another_address' %></dt>
   <dd><%= @certificate.another_address %></dd>
