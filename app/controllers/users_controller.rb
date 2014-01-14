@@ -110,7 +110,7 @@
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to @user, notice: t("user_successflly_destroy") }
+      format.html { redirect_to root_path, notice: t("user_successflly_destroy") }
       format.json { head :no_content }
     end
   end
@@ -125,7 +125,8 @@
   def list_unauthorized
     @list_type = params[:list_type]
     if @list_type == "graduate"
-      @search = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
+      @search_tmp = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
+      @search = @search_tmp.joins(:graduate).merge(Graduate.where.not(:finish_date => "1984-01-01"))
     else
       @search = User.where(:authorized => false)
     end
@@ -137,7 +138,7 @@
       render 'nopermission'
     end
     @user = @current_user
-    @user.create_graduate(:is_entered => false)
+    @user.create_graduate(:finish_date => "1984-01-01", :is_entered => false)
   end
 
   private
