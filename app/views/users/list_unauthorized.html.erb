@@ -1,21 +1,26 @@
 <% provide :title, 'List unauthorized users' %>
-<h1>List Unauthorized <%= @list_name %> Users</h1>
 
+<h1>
+  <% if @list_type=='graduate' %>
+    <%= t 'activerecord.attributes.unauthorized.graduate' %>
+  <% else %>
+    <%= t 'activerecord.attributes.unauthorized.participant' %>
+  <% end %>
+</h1>
+
+<p id="notice"><%= notice %></p>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Address</th>
-      <th>Tel</th>
-      <th>Work</th>
-      <th>Worktype</th>
-      <th>Birth</th>
-      <th>Gender</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= t 'activerecord.attributes.user.name' %></th>
+      <th><%= t 'activerecord.attributes.user.country' %></th>
+      <th><%= t 'activerecord.attributes.user.address' %></th>
+      <th><%= t 'activerecord.attributes.user.phone' %></th>
+      <th><%= t 'activerecord.attributes.user.job' %></th>
+      <th><%= t 'activerecord.attributes.user.job_kind' %></th>
+      <th><%= t 'activerecord.attributes.user.birthday' %></th>
+      <th><%= t 'activerecord.attributes.user.gender' %></th>
     </tr>
   </thead>
 
@@ -23,19 +28,19 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.country %></td>
+        <td><%= t "countries.#{user.country}" %></td>
         <td><%= user.address %></td>
         <td><%= user.phone %></td>
         <td><%= user.job %></td>
-        <td><%= user.job_kind %></td>
-        <td><%= user.birthday %></td>
-        <td><%= user.gender %></td>
+        <td><%= user.job_kind.try(:name) %></td>
+        <td><%= l user.birthday %></td>
+        <td><%= t "sexes.#{user.gender}" %></td>
         <% if @list_type == "graduate" %>
-          <td><%= link_to 'Authorize', :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "graduate" %></td>
+          <td><%= link_to t("activerecord.attributes.unauthorized.authorize"), :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "graduate" %></td>
         <% else %>
-          <td><%= link_to 'Authorize', :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "participant" %></td>
+          <td><%= link_to t("activerecord.attributes.unauthorized.authorize"), :controller => 'users', :action => 'authorize', :id => user, :authorize_type => "participant" %></td>
         <% end %>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t("activerecord.attributes.unauthorized.destroy"), user, method: :delete, data: { confirm: t("activerecord.attributes.unauthorized.are_you_sure") } %></td>
       </tr>
     <% end %>
   </tbody>

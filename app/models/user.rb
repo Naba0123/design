@@ -26,13 +26,11 @@
     has_one :student, :dependent => :destroy
     has_one :graduate, :dependent => :destroy
     has_one :participant, :dependent => :destroy
-    has_one :after_graduation, :dependent => :destroy
     
     # 親子関係の設定 : 以下のように設定をすることで、テーブル間の親子関係を設定する(こうするとすごく楽になる)
     accepts_nested_attributes_for :student
     accepts_nested_attributes_for :participant
     accepts_nested_attributes_for :graduate
-    accepts_nested_attributes_for :after_graduation
 
     belongs_to :job_kind
 
