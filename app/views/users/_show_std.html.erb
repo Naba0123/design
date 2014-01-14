@@ -5,9 +5,17 @@
   <dt>学部</dt>
   <dd><%= Department.find(@user.student.department).name %></dd>
   <dt>研究科</dt>
+<% begin %>
   <dd><%= ResearchSubject.find(@user.student.research_subject).name %></dd>
+<% rescue %>
+  <dd>invalid value</dd>
+<% end %>
   <dt>研究室</dt>
+<% begin %>
   <dd><%= ResearchRoom.find(@user.student.research_room).name %></dd>
+<% rescue %>
+  <dd>invalid value</dd>
+<% end %>
   <dt>学籍番号</dt>
   <dd><%= @user.student.student_number %></dd>
   <dt>保証人氏名</dt>
