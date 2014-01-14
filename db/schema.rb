@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108091012) do
+ActiveRecord::Schema.define(version: 20140114062709) do
 
   create_table "after_graduations", force: true do |t|
     t.string   "belong"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20140108091012) do
     t.integer "wish"
     t.integer "wish_course"
     t.string  "teacher"
+    t.date    "entry_date"
+    t.boolean "is_entered"
   end
 
   create_table "read_marks", force: true do |t|
