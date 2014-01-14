@@ -153,7 +153,7 @@
     def user_params
       params.require(:user).permit(:account, :password, :password_confirmation, :name, :country,
                                    :address, :phone, :job, :job_kind_id, :birthday, :gender, :authorized,
-                                   :participant_attributes => [:wish, :wish_course, :teacher],
+                                   :participant_attributes => [:wish, :wish_course, :teacher, :entry_date, :is_entered],
                                    :student_attributes => [:grade, :department, :research_subject, :research_room,
                                    :student_number, :guarantor_name, :guarantor_address, :guarantor_phone, :entry_date],
                                    :graduate_attributes => [:is_change, :finish_date, :is_entered])

@@ -1,12 +1,12 @@
-<h1>Listing guidances</h1>
-
+<% provide :title, 'Guidance' %>
+<h1><%= t("guidance_information") %></h1>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Guidance id</th>
-      <th>Guidance date</th>
-      <th>Guidance place</th>
-      <th>Guidance kind</th>
+      <th><%= t("guidance_id") %></th>
+      <th><%= t("activerecord.attributes.guidance.guidance_date") %></th>
+      <th><%= t("activerecord.attributes.guidance.guidance_place") %></th>
+      <th><%= t("activerecord.attributes.guidance.guidance_kind") %></th>
       <th></th>
       <th></th>
       <th></th>
@@ -22,7 +22,7 @@
         <td><%= guidance.guidance_kind.try(:name) %></td>
         <td><%= link_to 'Show', guidance %></td>
         <td><%= link_to 'Edit', edit_guidance_path(guidance) %></td>
-        <td><%= link_to 'Destroy', guidance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', guidance, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Guidance', new_guidance_path %>
+<%= link_to t("register_guidance"), new_guidance_path %>

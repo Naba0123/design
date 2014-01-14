@@ -127,6 +127,25 @@
           <%= content_tag :small, @user.errors.full_messages_for(:teacher).join(','), class: "text-danger" %>
         </div>
       </div>
+      <% if session[:user_id] and @current_user.user_type==:admin %>
+        <div class="form-group">
+          <%= f.label :entry_date, class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <span class="date-controls">
+              <%= participant_form.date_select :entry_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :is_entered, class: "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= participant_form.radio_button :is_entered, 1 %>
+            <%= f.label 'gender_m', 'Yes' %>
+            <%= participant_form.radio_button :is_entered, 0 %>
+            <%= f.label 'gender_f', 'No' %>
+          </div>
+        </div>
+      <% end %>
     </fieldset>
   <% end %>
 
@@ -144,25 +163,28 @@
           <%= content_tag :small, @user.errors.full_messages_for(:grade).join(','), class: "text-danger" %>
         </div>
       </div>
-      <div class="form-group">
+        <div class="form-group">
         <%= f.label :department, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= student_form.text_field :department, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:department).join(','), class: "text-danger" %>
+          <%= student_form.collection_select :department, Department.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
+        <%= content_tag :small, @user.errors.full_messages_for(:department).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :research_subject, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= student_form.text_field :research_subject, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:research_subject).join(','), class: "text-danger" %>
+          <%= student_form.collection_select :research_subject, ResearchSubject.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
+        <%= content_tag :small, @user.errors.full_messages_for(:research_subject).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :research_room, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= student_form.text_field :research_room, class: "form-control" %>
-          <%= content_tag :small, @user.errors.full_messages_for(:research_room).join(','), class: "text-danger" %>
+          <%= student_form.collection_select :research_room, ResearchRoom.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
+        <%= content_tag :small, @user.errors.full_messages_for(:research_room).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
