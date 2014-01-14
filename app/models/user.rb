@@ -6,10 +6,20 @@
     has_many:guidances, :through => :guidances_users
     # validates_presence_of で必須事項になる。書く順番でエラーメッセージの順番が変わる
     validates_presence_of :account
-    validates :account, :uniqueness => true
-    validates_presence_of :password, :on => :create
+    validates :account, 
+      :uniqueness => true,
+      :length => { :in => 4..16},
+      :format => { :with => /\A[a-zA-Z0-9]+\z/,:message => "は半角英数字で入力してください"}
+          
+    validates_presence_of :password,:on => :create
+    validates :password,
+    :length => { :in => 6..32},
+    :format => { :with => /\A[a-zA-Z0-9]+\z/,:message => "は半角英数字で入力してください"}
+ 
     validates_presence_of :name, :country, :address, :phone
-    validates :phone, format: { with:/\A[0-9]+\z/ }
+    validates :phone,
+      :length => { :in => 9..11},
+      :format => { :with => /\A[0-9]+\z/,:message =>"は半角数字で入力してください" }
     validates_presence_of :job, :job_kind_id, :birthday, :gender
     
     # アソシエーションの設定 : 下の「親子関係の設定」よりも上に書かないとエラーになる（先に定義する）
