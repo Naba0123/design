@@ -12,7 +12,7 @@
       :format => { :with => /\A[a-zA-Z0-9]+\z/,:message => "は半角英数字で入力してください"}
           
     validates_presence_of :password,:on => :create
-    validates :password,
+    validates :password,:on => :create, 
     :length => { :in => 6..32},
     :format => { :with => /\A[a-zA-Z0-9]+\z/,:message => "は半角英数字で入力してください"}
  

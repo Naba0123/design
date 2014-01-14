@@ -107,14 +107,16 @@
       <div class="form-group">
         <%= f.label :wish, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= participant_form.text_field :wish, class: "form-control" %>
+          <%= participant_form.collection_select :wish, Department.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
           <%= content_tag :small, @user.errors.full_messages_for(:wish).join(','), class: "text-danger" %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :wish_course, class: "col-sm-2 control-label" %>
         <div class="col-sm-10">
-          <%= participant_form.text_field :wish_course, class: "form-control" %>
+          <%= participant_form.collection_select :wish_course, ResearchRoom.all, :id, :name, { prompt: true }, { class: "form-control" } %>
+
         <%= content_tag :small, @user.errors.full_messages_for(:wish_course).join(','), class: "text-danger" %>
         </div>
       </div>

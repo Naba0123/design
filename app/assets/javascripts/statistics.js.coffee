@@ -7,7 +7,7 @@ $ ->
   $("#addCond").click ->
     incLen++
     uniqueID++
-    incTab = $('<li id="tab'+uniqueID+'"><a href="#'+(uniqueID)+'" data-toggle="tab"><input name="name[]" value="条件'+uniqueID+'", size="10"><i class="glyphicon-remove glyphicon" id="close'+uniqueID+'"></i></a></li>')
+    incTab = $('<li id="tab'+uniqueID+'"><a href="#'+(uniqueID)+'" data-toggle="tab"><input name="name[]" value="条件'+uniqueID+'", size="10">　<span id="close'+uniqueID+'">✕</span></a></li>')
     incIns = $('<div class="tab-pane" id="'+uniqueID+'"></div>')
     incIns.append searchDOM.children(":not(:first)").clone()
 
