@@ -28,17 +28,13 @@ ActiveRecord::Schema.define(version: 20140108091012) do
   end
 
   create_table "certificates", force: true do |t|
-    t.integer  "kind"
+    t.integer  "certificate_kind_id"
     t.integer  "finish_year"
     t.integer  "count"
     t.text     "purpose"
     t.string   "another_address"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "degree_kinds", force: true do |t|
-    t.string "name"
   end
 
   create_table "departments", force: true do |t|

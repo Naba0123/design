@@ -74,7 +74,7 @@ class CertificatesController < ApplicationController
       params.require(:certificate).permit(:kind, :finish_year, :count, :purpose, :another_address, :certificate_kind_id)
     end
     
-    # 大学と修了生しかアクセスできない
+   # 大学と修了生しかアクセスできない
    def check_access
      if @current_user.user_type == :admin
      elsif @current_user.user_type == :graduate
