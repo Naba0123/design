@@ -1,15 +1,16 @@
 <% provide :title, 'Guidance' %>
+
 <p id="notice"><%= notice %></p>
 
 <dl class="dl-horizontal">
   <dt><%= t("guidance_id") %></dt>
-    <dd><%= @guidance.id %></dd>
+  <dd><%= @guidance.id %></dd>
   <dt><%= t("activerecord.attributes.guidance.guidance_date") %></dt>
-    <dd><%= @guidance.guidance_date %></dd>
+  <dd><%= @guidance.guidance_date %></dd>
   <dt><%= t("activerecord.attributes.guidance.guidance_place") %></dt>
-    <dd><%= @guidance.guidance_place %></dd>
+  <dd><%= @guidance.guidance_place %></dd>
   <dt><%= t("activerecord.attributes.guidance.guidance_kind") %></dt>
-   <dd><%= @guidance.guidance_kind.try(:name) %></dd>
+  <dd><%= @guidance.guidance_kind.try(:name) %></dd>
 </p>
   
   
