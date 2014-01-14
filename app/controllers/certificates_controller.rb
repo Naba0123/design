@@ -30,7 +30,7 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to users_path, notice: '修了証明書発行依頼が受注されました。郵送をお待ちください。' }
+        format.html { redirect_to root_path, notice: '修了証明書発行依頼が受注されました。郵送をお待ちください。' }
         format.json { render action: 'show', status: :created, location: @certificate }
       else
         format.html { render action: 'new' }

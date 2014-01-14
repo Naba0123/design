@@ -130,9 +130,9 @@
           <%= f.label :入学済み, class: "col-sm-2 control-label" %>
           <div class="col-sm-10">
             <%= participant_form.radio_button :is_entered, 1 %>
-            <%= f.label 'is_entered_t', 'Yes' %>
+            <%= f.label 'is_entered_t', 'はい' %>
             <%= participant_form.radio_button :is_entered, 0 %>
-            <%= f.label 'is_entered_f', 'No' %>
+            <%= f.label 'is_entered_f', 'いいえ' %>
           </div>
         </div>
       <% end %>
@@ -228,7 +228,7 @@
         <div class="col-sm-10">
           <span class="date-controls">
             <%= graduate_form.date_select :finish_date, { start_year: Time.now.year-30, end_year: Time.now.year, include_blank: true }, { class: "form-control" } %>
-                      <%= content_tag :small, @user.graduate.errors.full_messages_for(:finish_date).join(','), class: "text-danger" %>
+            <%= content_tag :small, @user.graduate.errors.full_messages_for(:finish_date).join(','), class: "text-danger" %>
           </span>
         </div>
       </div>

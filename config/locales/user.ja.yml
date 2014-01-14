@@ -22,7 +22,7 @@ ja:
         user_type:             '権限'
       unauthorized:
         graduate:              '修了生認証'
-        participant:           '参加者認証'
+        participant:           '新規ユーザーの認証'
         authorize:             '認証'
         destroy:               '削除'
         are_you_sure:          '本当に削除しますか？'
