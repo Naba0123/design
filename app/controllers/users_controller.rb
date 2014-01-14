@@ -79,9 +79,9 @@
     respond_to do |format|
       if @user.save
         if session[:user_id]
-          format.html { redirect_to @user, notice: 'ユーザが作成されました' }
+          format.html { redirect_to @user, notice: t("user_successflly_created") }
         else
-          format.html { redirect_to @user, notice: 'ユーザが作成されました。大学の認証をお待ちください' }
+          format.html { redirect_to @user, notice: t("user_successflly_created_wait") }
         end
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -96,7 +96,7 @@
   def update
     respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to @user, notice: 'ユーザが更新されました' }
+        format.html { redirect_to @user, notice: t("user_successflly_updated") }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -110,7 +110,7 @@
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to @user, notice: t("user_successflly_destroy") }
       format.json { head :no_content }
     end
   end
@@ -126,11 +126,9 @@
     @list_type = params[:list_type]
     if @list_type == "graduate"
       @search = User.joins(:graduate).merge(Graduate.where(:is_entered => false))
-      @list_name = "Graduate"
     else
       @search_tmp = User.joins(:participant).merge(Participant.all)
       @search = @search_tmp.where(:authorized => false)
-      @list_name = "Participant"
     end
     @users = @search
   end
