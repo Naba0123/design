@@ -1,5 +1,11 @@
 <% provide :title, 'List unauthorized users' %>
 
+<% if @list_type == 'graduate' %>
+  <% breadcrumb :unauthorized_graduates %>
+<% else %>
+  <% breadcrumb :unauthorized_users %>
+<% end %>
+
 <h1>
   <% if @list_type=='graduate' %>
     <%= t 'activerecord.attributes.unauthorized.graduate' %>

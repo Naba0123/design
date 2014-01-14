@@ -1,5 +1,7 @@
 <% provide :title, 'Certificate Show' %>
 
+<% breadcrumb :certificate %>
+
 <h2>
   <%= t 'activerecord.attributes.certificate.created_at' %> : <%= @certificate.created_at.strftime("%Y-%m-%d %H:%M") %> : <%= t("register_certificate") %>
 </h2>
