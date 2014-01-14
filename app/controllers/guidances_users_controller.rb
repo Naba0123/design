@@ -29,7 +29,7 @@ class GuidancesUsersController < ApplicationController
 
     respond_to do |format|
       if @guidances_user.save
-        format.html { redirect_to @guidances_user, notice: 'Guidances user was successfully created.' }
+        format.html { redirect_to @guidances_user, notice: '作成されました' }
         format.json { render action: 'show', status: :created, location: @guidances_user }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class GuidancesUsersController < ApplicationController
   def update
     respond_to do |format|
       if @guidances_user.update(guidances_user_params)
-        format.html { redirect_to @guidances_user, notice: 'Guidances user was successfully updated.' }
+        format.html { redirect_to @guidances_user, notice: '更新されました' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
