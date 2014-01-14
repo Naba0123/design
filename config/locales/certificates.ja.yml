@@ -1,14 +1,14 @@
 ja:
   certificate_information: '修了証明書発行依頼一覧'
   certificate_id: '説明会ID'
-  register_certificate: '修了証明書発行依頼'
+  register_certificate: '新規修了証明書発行依頼'
   published: '発行済'
   activerecord:
     models:
       certificates: '証明書'
     attributes:
       certificate: 
-        certificate_kind:            '証明書種類'
+        certificate_kind: '証明書種類'
         finish_year:     '修了年度'
         count:           '発行枚数'
         purpose:         '使用目的'
