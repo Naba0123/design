@@ -1,7 +1,8 @@
 ja:
   event_information: 'イベント情報'
   register_event: 'イベント情報の新規登録'
-  guidance_succesfully_created: 'イベント情報を追加しました'
+  event_successfully_created: 'イベント情報が作成されました'
+  event_successfully_updated: 'イベント情報が更新されました'
   activerecord:
     models:
       event: 'イベント'

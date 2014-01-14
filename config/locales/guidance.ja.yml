@@ -2,7 +2,8 @@ ja:
   guidance_information: '説明会情報'
   guidance_id: '説明会ID'  
   register_guidance: '説明会情報の新規登録'
-  guidance_succesfully_created: '説明会情報を追加しました'
+  guidance_successfully_created: '説明会情報が作成されました'
+  guidance_successfully_updated: '説明会情報が更新されました'
   activerecord:
     models:
       guidance: '説明会'
