@@ -12,10 +12,11 @@ end
 group :development, :test do
   gem 'rspec-rails', '2.14.1'          # testing framework for BDD
   gem 'capybara', '2.2.0'              # integration testing tool
-  gem 'factory_girl_rails', '4.3.0'    # DSL for defining and using factories
   gem 'guard-rspec', '4.2.3'           # handle events on file system modifications
   gem 'spring-commands-rspec', '1.0.1' # preloader for speed up development
 end
+
+gem 'factory_girl_rails', '4.3.0'    # DSL for defining and using factories
 
 gem 'unread', '0.3.1'
 
