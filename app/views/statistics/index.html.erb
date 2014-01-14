@@ -36,7 +36,7 @@ ccchart.init('circle', circle);
 	<ul class="nav nav-tabs" id="condTab">
 		<li id="addCond"><a href="#p" data-toggle="button">+</a></li>
 		<% (@queryNumber==0?1:@queryNumber).times do |cnt| %>
-			<li id="tab<%= cnt+1 %>"><a href="#<%= cnt+1 %>" data-toggle="tab"><%= text_field_tag "name[]", @nameArr[cnt], size:"10" %>　<i class="glyphicon-remove glyphicon" id="close<%= cnt+1 %>"></i></a></li>
+			<li id="tab<%= cnt+1 %>"><a href="#<%= cnt+1 %>" data-toggle="tab"><%= text_field_tag "name[]", @nameArr[cnt], size:"10" %>　<span id="close<%= cnt+1 %>">✕</span></a></li>
 		<% end %>
 	</ul>
 		<div class="tab-content" id="condCont">
