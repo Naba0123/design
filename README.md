@@ -1,4 +1,4 @@
-#Design Project Team E
+#Design Project Team E（開発完了）
 デザインプロジェクトBのEチーム用です。  
 
 ##開発環境
